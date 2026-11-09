@@ -1,0 +1,28 @@
+{
+  "name": "word-monster",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "convert": "node scripts/convert-xlsx.mjs",
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build && node scripts/build-sw.mjs",
+    "preview": "node scripts/serve.mjs",
+    "test": "vitest run",
+    "check-data": "node scripts/convert-xlsx.mjs --check"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
+    "@vitejs/plugin-react": "^4.7.0",
+    "exceljs": "^4.4.0",
+    "fake-indexeddb": "^6.2.8",
+    "typescript": "^7.0.2",
+    "vite": "^5.4.21",
+    "vitest": "^2.1.9"
+  }
+}
