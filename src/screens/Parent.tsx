@@ -8,7 +8,7 @@ import { Btn, TopBar, chapterStats, DIR_LABEL, Modal, StageChip } from '../ui';
 import { REGIONS } from '../core/game';
 
 declare const __BUILD_TAG__: string;
-export const APP_VERSION = '1.0.0';
+export const APP_VERSION = '1.1.0';
 
 type Tab = 'stats' | 'wrong' | 'words' | 'grading' | 'backup' | 'reset' | 'exams';
 
@@ -136,9 +136,10 @@ function Grading() {
   return (
     <section className="panel">
       <h3>채점 (기본: 모두 켜짐 = 엄격 채점)</h3>
-      <Toggle k="caseSensitive" label="대소문자 구분" desc="끄면 Europe / europe를 같은 답으로 봐요" />
-      <Toggle k="spaceSensitive" label="띄어쓰기 구분" desc="끄면 단어 안·사이 띄어쓰기 차이를 무시해요" />
-      <Toggle k="punctSensitive" label="문장부호·괄호 구분" desc="끄면 쉼표·괄호·하이픈·슬래시 차이를 무시해요" />
+      <p className="small">📖 뜻 쓰기(영어 → 뜻)는 항상 <b>부호(괄호·~·쉼표·따옴표·/ 등)와 띄어쓰기를 무시</b>하고 채점해요. 글자와 순서는 교재와 같아야 해요. 예) “(~한 상태로) 변하다, 되다” → “한 상태로 변하다 되다”, “한상태로변하다/되다” 모두 정답. 아래 설정은 영어 쓰기에 적용돼요.</p>
+      <Toggle k="caseSensitive" label="대소문자 구분 (영어 쓰기)" desc="끄면 Europe / europe를 같은 답으로 봐요" />
+      <Toggle k="spaceSensitive" label="띄어쓰기 구분 (영어 쓰기)" desc="끄면 단어 안·사이 띄어쓰기 차이를 무시해요" />
+      <Toggle k="punctSensitive" label="문장부호·괄호 구분 (영어 쓰기)" desc="끄면 쉼표·괄호·하이픈·슬래시 차이를 무시해요" />
       <p className="small">완화 설정으로 맞힌 답은 ‘완화 정답’으로 따로 기록되고 숙련 단계는 올리지 않아요. 단어·뜻·순서가 다르면 완화 설정에서도 오답이에요.</p>
       <h3>게임</h3>
       <div className="row wrap"><span>한 판 문제 수</span>{([5, 8, 10] as const).map((n) => <Btn key={n} kind={s.questionsPerRound === n ? 'primary' : 'ghost'} onClick={() => set({ questionsPerRound: n })}>{n}문제</Btn>)}</div>

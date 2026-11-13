@@ -7,8 +7,11 @@ import { gradeItem, findSiblingMatch, siblings, diffChars, baseNorm } from '../c
 import { applyAnswer } from '../core/srs';
 import { localDate } from '../core/dates';
 import { pkey, type AnswerResult, type Dir } from '../core/types';
-import { REGIONS, enemyForChapters, ENEMIES, starsFor, rewardFor, levelOf } from '../core/game';
-import { Friend, Enemy, Backdrop, type Mood } from '../art/Characters';
+import { REGIONS, starsFor, rewardFor, levelOf } from '../core/game';
+import { Friend, Backdrop, type Mood } from '../art/Characters';
+import { FruitMonster } from '../art/FruitMonster';
+import { FRUIT_BY_ID } from '../core/fruits';
+import { chooseEncounter, canCapture } from '../core/capture';
 import { AnswerInput, Btn, Diff, DIR_ICON, DIR_LABEL, KEYBOARD_TIP, nav, Modal } from '../ui';
 import { play } from '../sound';
 
@@ -39,7 +42,9 @@ export default function Battle() {
   const retried = useRef(new Set<string>());
   const busy = useRef(false);
   const fbAt = useRef(0);
-  const enemyId = useMemo(() => enemyForChapters(cfg?.chapters ?? [1], app.game.rounds), []);
+  const encounter = useMemo(() => chooseEncounter(cfg?.chapters ?? [1], app.game, app.progress), []);
+  const fruit = FRUIT_BY_ID[encounter.id];
+  const [intro, setIntro] = useState(encounter.reason === 'legend' || encounter.reason === 'rare');
   const total = queue.length;
   const hits = counts.current.strict + counts.current.relaxed + counts.current.aided;
 
@@ -116,17 +121,20 @@ export default function Battle() {
     const rw = rewardFor({ strict: c.strict, other: c.relaxed + c.aided, overcame: c.overcame.length, stars });
     const g = app.game;
     const defeated = correct >= total;
-    const dex = { ...g.dex, [enemyId]: { met: (g.dex[enemyId]?.met ?? 0) + 1, defeated: (g.dex[enemyId]?.defeated ?? 0) + (defeated ? 1 : 0) } };
+    const captured = canCapture(fruit, { stars, aided: c.aided });
+    const firstCapture = captured && !g.captured?.[fruit.id];
+    const capturedMap = captured ? { ...(g.captured ?? {}), [fruit.id]: { at: g.captured?.[fruit.id]?.at ?? new Date().toISOString(), count: (g.captured?.[fruit.id]?.count ?? 0) + 1 } } : (g.captured ?? {});
+    const fruitMet = { ...(g.fruitMet ?? {}), [fruit.id]: (g.fruitMet?.[fruit.id] ?? 0) + 1 };
     const chapterStars = { ...g.chapterStars }, chapterClears = { ...g.chapterClears };
     cfg!.chapters.forEach((ch) => { if (cfg!.mode === 'explore') { chapterStars[ch] = Math.max(chapterStars[ch] ?? 0, stars); chapterClears[ch] = (chapterClears[ch] ?? 0) + 1; } });
-    const game = { ...g, xp: g.xp + rw.xp, coins: g.coins + rw.coins, dex, chapterStars, chapterClears, rounds: g.rounds + 1,
+    const game = { ...g, xp: g.xp + rw.xp, coins: g.coins + rw.coins + (firstCapture ? (fruit.rarity === 'legend' ? 50 : fruit.rarity === 'rare' ? 20 : 5) : 0), captured: capturedMap, fruitMet, chapterStars, chapterClears, rounds: g.rounds + 1,
       recentSessions: [...g.recentSessions, c.served].slice(-5), lastPlayDate: today };
     const carried: { id: string; dir: Dir }[] = [];
     const prog = { ...app.progress };
     queue.forEach((q) => { const r = prog[pkey(q.id, q.dir)]; if (r?.pendingRetry && !carried.some((x) => x.id === q.id && x.dir === q.dir)) carried.push({ id: q.id, dir: q.dir }); });
     const saved = await app.commit({}, { game });
     const summary: RoundSummary = { chapters: cfg!.chapters, mode: cfg!.mode, total, strict: c.strict, relaxed: c.relaxed, aided: c.aided, wrong: c.wrong,
-      overcame: c.overcame, carried, stars, xp: rw.xp, coins: rw.coins, enemy: enemyId, defeated, levelUp: levelOf(game.xp) > levelOf(g.xp), newDex: !g.dex[enemyId], saved };
+      overcame: c.overcame, carried, stars, xp: rw.xp, coins: game.coins - g.coins, enemy: fruit.id, defeated, levelUp: levelOf(game.xp) > levelOf(g.xp), newDex: !g.fruitMet?.[fruit.id], captured, firstCapture, saved };
     transient.summary = summary;
     play('win');
     nav('result');
@@ -140,7 +148,7 @@ export default function Battle() {
 
   const friendMood: Mood = fb ? (fb.result === 'wrong' ? 'happy' : 'cheer') : 'normal';
   const enemyMood: Mood = fb && fb.result !== 'wrong' ? 'hurt' : 'normal';
-  const enemyName = ENEMIES.find((e) => e.id === enemyId)!.name;
+  const enemyName = fruit.name;
 
   return (
     <main className="screen battle" style={{ ['--hue' as any]: R.hue }}>
@@ -155,7 +163,7 @@ export default function Battle() {
         <div className="fighter friend"><Friend id={app.game.friend!} deco={app.game.equipped} mood={friendMood} size={130} className={fx && fxOn && fx !== 'miss' ? 'lunge' : fx === 'miss' ? 'jump' : 'bob'} /></div>
         <div className="fighter enemy">
           <div className="hp" aria-label={`${enemyName} 남은 체력 ${total - hits}/${total}`}><span>{enemyName}</span><div className="hpbar"><i style={{ width: `${((total - hits) / total) * 100}%` }} /></div><small>체력 {total - hits}/{total}</small></div>
-          <Enemy id={enemyId} mood={enemyMood} size={120} className={fx && fx !== 'miss' && fxOn ? 'shake' : 'float'} />
+          <FruitMonster def={fruit} mood={enemyMood} size={130} className={fx && fx !== 'miss' && fxOn ? 'shake' : 'float'} />
         </div>
         {fx === 'overcome' && <div className="burst gold">💪 지난번보다 강해졌어!</div>}
         {fx === 'combo' && <div className="burst">🔥 {combo}콤보!</div>}
@@ -175,7 +183,7 @@ export default function Battle() {
         )}
         {!fb && (
           <>
-            <p className="tip">{KEYBOARD_TIP[dir]}{dir === 'ko' ? ' · 뜻이 여러 개면 교재와 같은 순서로 쉼표까지 모두 써요' : ''}</p>
+            <p className="tip">{KEYBOARD_TIP[dir]}{dir === 'ko' ? ' · 뜻이 여러 개면 교재와 같은 순서로 모두 써요 (괄호·쉼표·띄어쓰기는 안 써도 돼요)' : ''}</p>
             {hint === 1 && <p className="hint">💡 첫 글자: <b>{Array.from(answer)[0]}</b> · 모두 {Array.from(answer).length}글자</p>}
             {hint === 2 && <p className="hint">👀 정답: <b>{answer}</b> — 보고 직접 입력해 보세요 (이번엔 연습으로 기록돼요)</p>}
             <AnswerInput key={`${idx}-${cur.id}-${dir}`} dir={dir} onSubmit={submit} />
@@ -216,6 +224,17 @@ export default function Battle() {
           </div>
         )}
       </section>
+      {intro && (
+        <Modal onClose={() => setIntro(false)}>
+          <div className={`appear appear-${fruit.rarity}`} data-testid="appear">
+            <p className="appear-title">{fruit.rarity === 'legend' ? '🌟 전설의 몬스터가 나타났다!' : '✨ 희귀 몬스터가 나타났다!'}</p>
+            <FruitMonster def={fruit} size={220} className="jump" />
+            <h2>{fruit.name}</h2>
+            <p className="small">{fruit.rarity === 'legend' ? '힌트·정답 보기 없이 별 3개로 탐험을 마치면 포획할 수 있어요!' : '별 3개로 탐험을 마치면 포획할 수 있어요!'}</p>
+            <Btn kind="gold" onClick={() => setIntro(false)} data-testid="appear-go">도전하기!</Btn>
+          </div>
+        </Modal>
+      )}
       {quit && (
         <Modal onClose={() => setQuit(false)}>
           <p>탐험을 그만할까요? 지금까지 푼 답은 이미 저장됐어요. (보상은 끝까지 해야 받아요)</p>

@@ -1,0 +1,50 @@
+검사 시각: 2026-11-09T02:54:02.007Z
+원본 파일: 도윤_영단어_GRADE5.xlsx
+SHA-256: 017b940522dd27e43b70424b4ee5ba5ca69c1b83b8830a2478f78b713809e992
+총 항목: 500
+Chapter별 항목 수: 1:20 2:20 3:20 4:20 5:20 6:20 7:20 8:20 9:20 10:20 11:20 12:20 13:20 14:20 15:20 16:20 17:20 18:20 19:20 20:20 21:20 22:20 23:20 24:20 25:20
+C열과 E열이 다른 항목: 32개
+  ch06-07  C="disable(-d)"  E="disable"
+  ch09-20  C="saving(-s)"  E="saving"
+  ch11-06  C="carbonate(-d)"  E="carbonate"
+  ch17-14  C="confuse(-d)"  E="confuse"
+  ch17-18  C="disable(-d)"  E="disable"
+  ch18-01  C="tooth(teeth)"  E="tooth"
+  ch18-08  C="take(took) a walk"  E="take a walk"
+  ch18-10  C="borrow(-ed) books"  E="borrow books"
+  ch18-11  C="go(went) shopping"  E="go shopping"
+  ch18-12  C="get(got) a haircut"  E="get a haircut"
+  ch18-13  C="mail(-ed) a package"  E="mail a package"
+  ch18-14  C="eat(ate) dinner"  E="eat dinner"
+  ch22-01  C="smile(-d)"  E="smile"
+  ch22-02  C="walk(-ed) slowly"  E="walk slowly"
+  ch22-03  C="write(wrote) neatly"  E="write neatly"
+  ch22-04  C="run(ran) fast"  E="run fast"
+  ch22-05  C="sing(sang) loudly"  E="sing loudly"
+  ch22-06  C="jump(-ed) high"  E="jump high"
+  ch22-07  C="dance(-d) beautifully"  E="dance beautifully"
+  ch22-08  C="bake(-d)"  E="bake"
+  ch22-09  C="talk(-ed) quietly"  E="talk quietly"
+  ch22-10  C="try(tried)"  E="try"
+  ch22-11  C="study(studied)"  E="study"
+  ch22-12  C="cry(cried)"  E="cry"
+  ch24-01  C="do(did)"  E="do"
+  ch24-02  C="have(had)"  E="have"
+  ch24-03  C="read(read)"  E="read"
+  ch24-04  C="drink(drank)"  E="drink"
+  ch24-05  C="go(went)"  E="go"
+  ch24-06  C="see(saw)"  E="see"
+  ch24-07  C="eat(ate)"  E="eat"
+  ch24-08  C="come(came)"  E="come"
+F열(대조 확인) 값이 있는 항목: 0개
+G열(메모) 값이 있는 항목: 0개
+같은 영어 정답이 여러 Chapter에 있음(합치지 않고 따로 보존):
+  disable: ch06-07, ch17-18
+  have: ch10-12, ch24-02
+같은 뜻이 여러 항목에 있음(출제 시 Chapter·번호 표시):
+  기자: ch01-11, ch03-06
+  위험: ch05-18, ch12-08
+  대학: ch09-03, ch11-05
+  거대한: ch12-06, ch22-13
+  끔찍한: ch19-05, ch21-14
+오류: 없음

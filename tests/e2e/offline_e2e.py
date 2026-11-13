@@ -2,7 +2,7 @@
 온라인 준비 → 앱 종료 → 오프라인으로 새로 실행 → 미방문 Chapter 탐험 → 기록 저장 확인 → 새 버전 적용 후 기록 유지
 사용: npm run build 후  python3 tests/e2e/offline_e2e.py
 """
-import json, os, shutil, subprocess, sys, tempfile, time, urllib.request
+import json, re, os, shutil, subprocess, sys, tempfile, time, urllib.request
 from playwright.sync_api import sync_playwright, expect
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -33,6 +33,7 @@ def answer_round(page, wrong_first=True):
         iid, d = q.get_attribute('data-item'), q.get_attribute('data-dir')
         if '다시 도전' in q.inner_text(): retry_seen = True
         it = WORDS[iid]; ans = it['englishAnswer'] if d == 'en' else it['koreanAnswer']
+        if d == 'ko': ans = re.sub(r'[\s(),~/\-.]', '', ans)  # 뜻 쓰기: 부호·띄어쓰기 없이 입력해도 정답이어야 함
         if wrong_first and not seen_wrong: ans = 'zzz'; seen_wrong = True
         page.fill('[data-testid="answer"]', ans)
         page.click('[data-testid="answer-submit"]')
@@ -75,7 +76,13 @@ def main():
             n, retry_seen = answer_round(page)
             check(f'오프라인에서 Chapter 23 탐험 {n}문제 완료', n == 8)
             check('오답이 같은 판 2~4문제 뒤 재출제됨', retry_seen)
+            expect(page.locator('[data-testid="capture-event"]')).to_be_visible()
+            check('별 2개 이상 → 과일 몬스터 포획 이벤트 화면', True)
+            time.sleep(1.2); page.screenshot(path=os.path.join(ROOT, 'tests/e2e/screens/capture-event.png'))
+            page.click('[data-testid="capture-ok"]')
             page.click('[data-testid="home"]')
+            expect(page.locator('[data-testid="home-dex"]')).to_contain_text('1/50')
+            check('홈 도감 1/50 표시', True)
             page.reload()
             expect(page.locator('[data-testid="go-map"]')).to_be_visible()
             page.click('[data-testid="go-map"]')

@@ -20,11 +20,23 @@ export const isStrictSetting = (o: GradeOptions) => o.caseSensitive && o.spaceSe
 
 export interface Grade { kind: 'strict' | 'relaxed' | 'wrong'; matched: string | null }
 
-/** 엄격 정답(교재/부모 등록 정답과 완전히 같음)과 완화 정답을 구분해 돌려줌 */
-export function gradeAnswer(input: string, answers: string[], o: GradeOptions): Grade {
+/**
+ * 뜻 쓰기(영어 → 뜻) 비교용 형태: 부호와 띄어쓰기만 지움. 글자·단어·순서는 그대로 비교.
+ * 예) "(~한 상태로) 변하다, 되다" → "한상태로변하다되다"
+ *     "한상태로변하다/되다", "한 상태로 변하다 되다" 모두 정답. "되다, 변하다"(순서 바뀜)·"변하다"(일부)는 오답
+ */
+const KO_IGNORE = /[\s\p{P}\p{S}]/gu; // 공백, 문장부호((), ~, 쉼표, 따옴표, /, -, … 등), 기호
+export const koForm = (s: string) => baseNorm(s).replace(KO_IGNORE, '');
+
+/** 엄격 정답(교재/부모 등록 정답과 같음)과 완화 정답을 구분해 돌려줌. koMode면 부호·띄어쓰기를 무시하고 비교 */
+export function gradeAnswer(input: string, answers: string[], o: GradeOptions, koMode = false): Grade {
   const inp = baseNorm(input);
   if (inp === '') return { kind: 'wrong', matched: null };
   for (const a of answers) if (baseNorm(a) === inp) return { kind: 'strict', matched: a };
+  if (koMode) {
+    const k = koForm(inp);
+    if (k !== '') for (const a of answers) if (koForm(a) === k) return { kind: 'strict', matched: a };
+  }
   if (!isStrictSetting(o)) {
     const r = relaxedForm(inp, o);
     for (const a of answers) if (relaxedForm(a, o) === r && r !== '') return { kind: 'relaxed', matched: a };
@@ -33,7 +45,7 @@ export function gradeAnswer(input: string, answers: string[], o: GradeOptions): 
 }
 
 export function gradeItem(input: string, item: WordItem, dir: Dir, ov: Overrides, o: GradeOptions): Grade {
-  return gradeAnswer(input, acceptedAnswers(item, dir, ov), o);
+  return gradeAnswer(input, acceptedAnswers(item, dir, ov), o, dir === 'ko');
 }
 
 /** 같은 뜻(en 방향) 또는 같은 영어(ko 방향)를 가진 "다른 항목"의 답을 쓴 경우 그 항목을 찾음 (정답으로 인정하지 않음) */

@@ -25,7 +25,7 @@ export default function Home() {
   const selPending = g.selection.reduce((a, c) => a + chapterStats(c, app.progress, today).pending, 0);
   return (
     <main className="screen home">
-      <div className="home-top"><OfflineChip /><span className="chip coin">🪙 {g.coins}</span></div>
+      <div className="home-top"><OfflineChip /><span className="row"><span className="chip gold" data-testid="home-dex">🍓 도감 {Object.keys(g.captured ?? {}).length}/50</span><span className="chip coin">🪙 {g.coins}</span></span></div>
       <section className="hero">
         <Friend id={g.friend!} deco={g.equipped} mood={tot.pending + tot.due > 0 ? 'happy' : 'cheer'} size={180} className="bob" />
         <div>

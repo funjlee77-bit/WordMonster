@@ -54,10 +54,14 @@ export interface GameState {
   chapterStars: Record<string, number>; chapterClears: Record<string, number>;
   dex: Partial<Record<EnemyId, { met: number; defeated: number }>>;
   rounds: number; recentSessions: string[][]; selection: number[]; lastPlayDate: string | null;
+  /** 과일 몬스터 포획 기록 */
+  captured: Record<string, { at: string; count: number }>;
+  fruitMet: Record<string, number>;
 }
 export const DEFAULT_GAME: GameState = {
   friend: null, nickname: '', xp: 0, coins: 0, decorations: [], equipped: null,
   chapterStars: {}, chapterClears: {}, dex: {}, rounds: 0, recentSessions: [], selection: [1], lastPlayDate: null,
+  captured: {}, fruitMet: {},
 };
 
 export interface ExamRecord {

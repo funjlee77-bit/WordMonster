@@ -3,7 +3,7 @@ import type { DecoId, EnemyId, FriendId } from '../core/types';
 
 export type Mood = 'normal' | 'happy' | 'cheer' | 'hurt';
 
-function Eyes({ x1, x2, y, r = 9, mood, color = '#1d1b2f' }: { x1: number; x2: number; y: number; r?: number; mood: Mood; color?: string }) {
+export function Eyes({ x1, x2, y, r = 9, mood, color = '#1d1b2f' }: { x1: number; x2: number; y: number; r?: number; mood: Mood; color?: string }) {
   if (mood === 'happy')
     return (
       <g stroke={color} strokeWidth={4} fill="none" strokeLinecap="round">
@@ -42,7 +42,7 @@ function Eyes({ x1, x2, y, r = 9, mood, color = '#1d1b2f' }: { x1: number; x2: n
   );
 }
 
-function Mouth({ x, y, mood, w = 12 }: { x: number; y: number; mood: Mood; w?: number }) {
+export function Mouth({ x, y, mood, w = 12 }: { x: number; y: number; mood: Mood; w?: number }) {
   if (mood === 'cheer' || mood === 'happy')
     return (
       <g>
