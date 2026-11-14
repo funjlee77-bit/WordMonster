@@ -29,7 +29,7 @@ try:
         expect(pg.locator('[data-testid="capture-event"]')).to_contain_text('LEGEND'); ok.append('LEGEND 포획 이벤트')
         time.sleep(1.3); pg.screenshot(path=os.path.join(ROOT, 'tests/e2e/screens/legend-capture.png'))
         pg.click('[data-testid="capture-ok"]'); pg.goto(URL + '#/dex'); time.sleep(0.5)
-        expect(pg.locator('[data-testid="dex-count"]')).to_contain_text('1 / 50'); ok.append('도감 등록')
+        expect(pg.locator('[data-testid="dex-count"]')).to_contain_text('1 / 110'); ok.append('도감 등록')
         pg.screenshot(path=os.path.join(ROOT, 'tests/e2e/screens/dex-legend.png'), full_page=False)
         ctx.close()
 finally:

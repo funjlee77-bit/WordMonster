@@ -5,6 +5,8 @@ import { Btn, nav, chapterStats } from '../ui';
 import { CHAPTERS } from '../core/data';
 import { localDate } from '../core/dates';
 import { useOffline } from '../pwa';
+import { FRUITS } from '../core/fruits';
+import { scoreOf, correctCount } from '../core/endurance';
 import { transient } from '../session';
 import { dirsFor } from './MapScreen';
 
@@ -25,7 +27,7 @@ export default function Home() {
   const selPending = g.selection.reduce((a, c) => a + chapterStats(c, app.progress, today).pending, 0);
   return (
     <main className="screen home">
-      <div className="home-top"><OfflineChip /><span className="row"><span className="chip gold" data-testid="home-dex">🍓 도감 {Object.keys(g.captured ?? {}).length}/50</span><span className="chip coin">🪙 {g.coins}</span></span></div>
+      <div className="home-top"><OfflineChip /><span className="row"><span className="chip gold" data-testid="home-dex">🍓 도감 {Object.keys(g.captured ?? {}).length}/{FRUITS.length}</span><span className="chip coin">🪙 {g.coins}</span></span></div>
       <section className="hero">
         <Friend id={g.friend!} deco={g.equipped} mood={tot.pending + tot.due > 0 ? 'happy' : 'cheer'} size={180} className="bob" />
         <div>
@@ -48,6 +50,7 @@ export default function Home() {
           if (selPending > 0) { transient.round = { chapters: g.selection, mode: 'wrong', dirs: dirsFor(app.settings.dirMode) }; nav('battle'); }
           else nav('map?wrong');
         }}>👾 오답 몬스터 추격<small>{selPending > 0 ? `선택 범위 오답 ${selPending}개` : '오답 고르기'}</small></Btn>
+        <Btn kind="gold" className="big colosseum-btn" onClick={() => nav('endurance')} data-testid="go-endurance">🏟️ 끝장 퀴즈<small>{app.endurance ? (app.endurance.stage === 0 ? `이어하기 · ${app.endurance.main.filter((x) => x).length}/500` : `오답 스테이지 ${app.endurance.stage} 이어하기`) : '500단어 전부 도전 · 레전드'}</small></Btn>
         <Btn kind="secondary" className="big" onClick={() => nav('cards')}>🃏 학습 카드<small>먼저 단어 보기</small></Btn>
         <Btn kind="secondary" className="big" onClick={() => nav('exam')} data-testid="go-exam">📝 학교 실전 모드<small>게임 없이 시험처럼</small></Btn>
         <Btn kind="secondary" className="big" onClick={() => nav('dex')}>📚 도감·꾸미기<small>코인으로 장식</small></Btn>

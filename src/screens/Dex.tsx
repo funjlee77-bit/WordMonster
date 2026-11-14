@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useApp } from '../store';
 import { DECOS, ENEMIES, FRIENDS } from '../core/game';
-import { FRUITS, RARITY_LABEL, type Rarity, type FruitDef } from '../core/fruits';
+import { FRUITS, RARITY_LABEL, type Rarity, type FruitDef, type Zone } from '../core/fruits';
 import { appearRuleText, captureRuleText } from '../core/capture';
 import { Friend, Enemy } from '../art/Characters';
 import { FruitMonster } from '../art/FruitMonster';
@@ -11,19 +11,26 @@ import type { DecoId, FriendId } from '../core/types';
 export default function Dex() {
   const app = useApp(); const g = app.game;
   const [filter, setFilter] = useState<'all' | Rarity>('all');
+  const [zone, setZone] = useState<Zone>('region');
   const [detail, setDetail] = useState<FruitDef | null>(null);
   const setG = (p: Partial<typeof g>) => app.commit({}, { game: { ...g, ...p } });
   const buy = (id: DecoId, price: number) => { if (g.coins >= price && !g.decorations.includes(id)) setG({ coins: g.coins - price, decorations: [...g.decorations, id], equipped: id }); };
   const cap = g.captured ?? {};
-  const count = (r?: Rarity) => FRUITS.filter((f) => (!r || f.rarity === r) && cap[f.id]).length;
-  const list = FRUITS.filter((f) => filter === 'all' || f.rarity === filter);
+  const count = (r?: Rarity, z?: Zone) => FRUITS.filter((f) => (!r || f.rarity === r) && (!z || f.zone === z) && cap[f.id]).length;
+  const zoneList = FRUITS.filter((f) => f.zone === zone);
+  const list = zoneList.filter((f) => filter === 'all' || f.rarity === filter);
+  const total = (r: Rarity) => zoneList.filter((f) => f.rarity === r).length;
   const oldMet = ENEMIES.filter((e) => g.dex[e.id]);
   return (
     <main className="screen dex">
       <TopBar title="도감 · 꾸미기" />
       <section className="panel">
         <h2>🍓 과일 몬스터 도감 <span className="chip gold" data-testid="dex-count">{count()} / {FRUITS.length}</span></h2>
-        <p className="small">일반 {count('common')}/30 · 희귀 {count('rare')}/15 · 전설 {count('legend')}/5 — 희귀·전설은 복습을 꾸준히 해야 나타나요.</p>
+        <div className="row wrap">
+          <Btn kind={zone === 'region' ? 'gold' : 'ghost'} onClick={() => setZone('region')}>🗺️ 지역 몬스터 {count(undefined, 'region')}/50</Btn>
+          <Btn kind={zone === 'colosseum' ? 'gold' : 'ghost'} onClick={() => setZone('colosseum')} data-testid="dex-colosseum">🏟️ 콜로세움 몬스터 {count(undefined, 'colosseum')}/60</Btn>
+        </div>
+        <p className="small">일반 {count('common', zone)}/{total('common')} · 희귀 {count('rare', zone)}/{total('rare')} · 전설 {count('legend', zone)}/{total('legend')} — {zone === 'region' ? '희귀·전설은 복습을 꾸준히 해야 나타나요.' : '끝장 퀴즈에서 만나요. 레전드는 90점 이상 보상이에요.'}</p>
         <div className="row wrap">
           {(['all', 'common', 'rare', 'legend'] as const).map((r) => <Btn key={r} kind={filter === r ? 'primary' : 'ghost'} onClick={() => setFilter(r)}>{r === 'all' ? '전체' : RARITY_LABEL[r]}</Btn>)}
         </div>
@@ -32,7 +39,7 @@ export default function Dex() {
             const c = cap[f.id];
             return (
               <button key={f.id} className={`fruit-card r-${f.rarity} ${c ? 'got' : ''}`} onClick={() => setDetail(f)} data-testid={`fruit-${f.id}`}>
-                <span className="fc-no">No.{String(FRUITS.indexOf(f) + 1).padStart(2, '0')} · Ch.{f.chapter}</span>
+                <span className="fc-no">No.{String(FRUITS.indexOf(f) + 1).padStart(3, '0')} · {f.zone === 'region' ? `Ch.${f.chapter}` : '콜로세움'}</span>
                 <FruitMonster def={f} size={110} silhouette={!c} aura={!!c} />
                 <b>{c ? f.name : '???'}</b>
                 <span className={`rar rar-${f.rarity}`}>{RARITY_LABEL[f.rarity]}</span>
@@ -85,7 +92,7 @@ export default function Dex() {
               </>
             ) : (
               <>
-                <p>📍 Chapter {detail.chapter}에 살아요.</p>
+                <p>📍 {detail.zone === 'region' ? `Chapter ${detail.chapter}에 살아요.` : '끝장 퀴즈 콜로세움에 살아요.'}</p>
                 <p className="small">🔎 나타나는 조건: {appearRuleText(detail, app.progress)}</p>
                 <p className="small">🎯 포획 조건: {captureRuleText(detail)}</p>
               </>

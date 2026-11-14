@@ -7,11 +7,11 @@ await build({ stdin: { contents: `import { renderToStaticMarkup } from 'react-do
 export const items = FRUITS.map((f) => ({ f, svg: renderToStaticMarkup(h(FruitMonster, { def: f, size: 160 })) }));`, resolveDir: '.', loader: 'tsx' },
   bundle: true, platform: 'node', format: 'esm', outfile: out, jsx: 'automatic', packages: 'external' });
 const { items } = await import('../' + out);
-const cols = 10, cw = 170, ch = 200;
+const cols = 11, cw = 170, ch = 200;
 let body = '';
 items.forEach(({ f, svg }, i) => {
   const x = (i % cols) * cw, y = Math.floor(i / cols) * ch;
-  body += `<g transform="translate(${x} ${y})"><rect width="${cw - 4}" height="${ch - 4}" rx="10" fill="#fffaf0"/>${svg.replace('<svg', '<svg x="3" y="0"')}<text x="${cw / 2}" y="${ch - 14}" text-anchor="middle" font-size="14" font-family="Noto Sans CJK KR, sans-serif" font-weight="700">${f.chapter}. ${f.name}</text></g>`;
+  body += `<g transform="translate(${x} ${y})"><rect width="${cw - 4}" height="${ch - 4}" rx="10" fill="#fffaf0"/>${svg.replace('<svg', '<svg x="3" y="0"')}<text x="${cw / 2}" y="${ch - 14}" text-anchor="middle" font-size="14" font-family="Noto Sans CJK KR, sans-serif" font-weight="700">${f.chapter || '⚔'} ${f.name}</text></g>`;
 });
 const W = cols * cw, H = Math.ceil(items.length / cols) * ch;
 mkdirSync('tests/e2e/screens', { recursive: true });

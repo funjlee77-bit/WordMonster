@@ -244,3 +244,15 @@ h1, h2, h3 { margin: 0; line-height: 1.25; }
 .cap-confetti { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
 .cap-confetti i { position: absolute; top: -20px; left: var(--x); width: 10px; height: 16px; background: var(--c); border-radius: 3px; animation: fall 2.4s linear var(--d) infinite; }
 @keyframes fall { to { transform: translateY(110vh) rotate(540deg); } }
+
+/* 끝장 퀴즈 */
+.colosseum-btn { background: linear-gradient(180deg, #ffb36b, #e8742a); color: #3a1600; box-shadow: 0 4px 0 #a04a10; }
+.colosseum-hero { height: 200px; }
+.boss-stage .arena { box-shadow: 0 0 0 4px #ffd23f, 0 0 30px #ff8a0088; }
+.end-bar { height: 10px; }
+.legend-row { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+.award { display: flex; flex-direction: column; align-items: center; }
+.award.big p { margin: 0; font-size: 1.2rem; }
+.panel.center { align-items: center; text-align: center; }
+.panel.center h2 { font-size: 3rem; color: var(--pri2); }
+.endurance .arena { height: clamp(180px, 26vh, 240px); }

@@ -4,7 +4,7 @@ import type { DirRecord, ExamRecord, GameState, Overrides, ProgressMap, Settings
 
 const DB_NAME = 'word-monster';
 const DB_VERSION = 1;
-export interface KV { settings: Settings; game: GameState; overrides: Overrides; exams: ExamRecord[]; currentExam: unknown; meta: { createdAt: string } }
+export interface KV { settings: Settings; game: GameState; overrides: Overrides; exams: ExamRecord[]; currentExam: unknown; meta: { createdAt: string }; endurance: unknown; enduranceHistory: unknown[] }
 
 let dbp: Promise<IDBDatabase> | null = null;
 function db(): Promise<IDBDatabase> {

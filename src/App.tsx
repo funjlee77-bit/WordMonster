@@ -13,6 +13,7 @@ import Dex from './screens/Dex';
 import Exam from './screens/Exam';
 import Parent from './screens/Parent';
 import Guide from './screens/Guide';
+import Endurance from './screens/Endurance';
 
 function useRoute() {
   const get = () => location.hash.replace(/^#\/?/, '').split('?')[0];
@@ -32,7 +33,7 @@ export default function App() {
   }, [app.settings.reduceMotion, app.settings.skipEffects]);
 
   if (!app.loaded) return <div className="center-screen">불러오는 중…</div>;
-  const busy = route === 'battle' || route === 'exam';
+  const busy = route === 'battle' || route === 'exam' || route === 'endurance';
   let screen;
   if (!app.game.friend && route !== 'guide' && route !== 'parent') screen = <Start />;
   else switch (route) {
@@ -44,6 +45,7 @@ export default function App() {
     case 'exam': screen = <Exam />; break;
     case 'parent': screen = <Parent />; break;
     case 'guide': screen = <Guide />; break;
+    case 'endurance': screen = <Endurance />; break;
     default: screen = <Home />;
   }
   return (

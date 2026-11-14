@@ -8,7 +8,7 @@ import { Btn, TopBar, chapterStats, DIR_LABEL, Modal, StageChip } from '../ui';
 import { REGIONS } from '../core/game';
 
 declare const __BUILD_TAG__: string;
-export const APP_VERSION = '1.1.0';
+export const APP_VERSION = '1.2.0';
 
 type Tab = 'stats' | 'wrong' | 'words' | 'grading' | 'backup' | 'reset' | 'exams';
 
@@ -165,7 +165,7 @@ function Backup() {
   const [chk, setChk] = useState<BackupCheck | null>(null);
   const [msg, setMsg] = useState('');
   const exportIt = () => {
-    const b = makeBackup({ settings: app.settings, overrides: app.overrides, progress: app.progress, game: app.game, exams: app.exams }, `${APP_VERSION} (${__BUILD_TAG__})`);
+    const b = makeBackup({ settings: app.settings, overrides: app.overrides, progress: app.progress, game: app.game, exams: app.exams, endurance: app.endurance, enduranceHistory: app.enduranceHistory }, `${APP_VERSION} (${__BUILD_TAG__})`);
     download(`단어몬스터-백업-${localDate()}.json`, JSON.stringify(b, null, 1));
     setMsg('백업 파일을 만들었어요. iPad에서는 “파일에 저장”을 골라 보관해 주세요.');
   };

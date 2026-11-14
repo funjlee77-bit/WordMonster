@@ -360,3 +360,37 @@ export function AppIconArt() {
     </svg>
   );
 }
+
+/** 끝장 퀴즈 콜로세움 배경 (직접 그린 SVG) */
+export function Colosseum({ boss }: { boss?: boolean }) {
+  const crowd = ['#ff6b6b', '#ffd23f', '#4fd1ff', '#7cf7a0', '#c9a6ff', '#ff9ad5', '#ffffff'];
+  return (
+    <svg viewBox="0 0 800 160" preserveAspectRatio="xMidYMid slice" className="backdrop" aria-hidden>
+      <defs>
+        <linearGradient id="col-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor={boss ? '#3a1060' : '#ffb36b'} /><stop offset="1" stopColor={boss ? '#a0306a' : '#ffe2a8'} /></linearGradient>
+      </defs>
+      <rect width={800} height={160} fill="url(#col-sky)" />
+      {[0, 400].map((ox) => <g key={ox} transform={`translate(${ox} 0)`}>
+      {/* 경기장 벽 2층 아치 */}
+      <path d="M0 40 Q200 18 400 40 V120 H0Z" fill="#d9a066" />
+      <path d="M0 40 Q200 18 400 40 V48 Q200 26 0 48Z" fill="#b97a3f" />
+      {Array.from({ length: 16 }, (_, i) => <path key={'u' + i} d={`M${6 + i * 25} 74 v-14 a9 9 0 0 1 18 0 v14Z`} fill="#8a5428" />)}
+      <path d="M0 78 H400 V84 H0Z" fill="#b97a3f" />
+      {Array.from({ length: 13 }, (_, i) => <path key={'l' + i} d={`M${4 + i * 31} 118 v-20 a12 12 0 0 1 24 0 v20Z`} fill="#6b3e1c" />)}
+      {/* 관중 */}
+      {Array.from({ length: 60 }, (_, i) => <circle key={'c' + i} cx={4 + (i * 6.7) % 400} cy={36 - Math.sin(i) * 2 + (i % 2) * 4} r={2.6} fill={crowd[i % crowd.length]} />)}
+      {/* 깃발 */}
+      {[30, 130, 270, 370].map((x, i) => (
+        <g key={'f' + x}><path d={`M${x} 34 V6`} stroke="#5a3a1a" strokeWidth={2} /><path d={`M${x} 6 L${x + 20} 11 L${x} 17Z`} fill={['#e8323c', '#3f7dff', '#ffd23f', '#2fbf71'][i]} /></g>
+      ))}
+      {/* 횃불 */}
+      {[60, 340].map((x) => (
+        <g key={'t' + x}><rect x={x - 2} y={92} width={4} height={22} fill="#5a3a1a" /><path d={`M${x} 80 C${x + 7} 88 ${x + 5} 94 ${x} 95 C${x - 5} 94 ${x - 7} 88 ${x} 80Z`} fill="#ff8a1f" className="glow" /></g>
+      ))}
+      </g>)}
+      {/* 모래 바닥 */}
+      <ellipse cx={400} cy={156} rx={520} ry={30} fill="#f2d39b" />
+      <ellipse cx={400} cy={154} rx={300} ry={12} fill="#e8c27c" opacity={0.6} />
+    </svg>
+  );
+}

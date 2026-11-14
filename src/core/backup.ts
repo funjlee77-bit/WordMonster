@@ -1,13 +1,15 @@
 import type { ExamRecord, GameState, Overrides, ProgressMap, Settings, DirRecord } from './types';
 import { DEFAULT_GAME, DEFAULT_SETTINGS } from './types';
 import { ITEM_BY_ID, WORD_DATA } from './data';
+import type { EnduranceRun, EnduranceHistory } from './endurance';
 
 export const BACKUP_FORMAT = 1;
 export interface Backup {
   app: 'word-monster'; backupFormat: number; appVersion: string; dataVersion: number; textbook: string; textbookSha256: string;
   exportedAt: string; settings: Settings; overrides: Overrides; progress: ProgressMap; game: GameState; exams: ExamRecord[];
+  endurance?: EnduranceRun | null; enduranceHistory?: EnduranceHistory[];
 }
-export function makeBackup(s: { settings: Settings; overrides: Overrides; progress: ProgressMap; game: GameState; exams: ExamRecord[] }, appVersion: string): Backup {
+export function makeBackup(s: { settings: Settings; overrides: Overrides; progress: ProgressMap; game: GameState; exams: ExamRecord[]; endurance?: EnduranceRun | null; enduranceHistory?: EnduranceHistory[] }, appVersion: string): Backup {
   return { app: 'word-monster', backupFormat: BACKUP_FORMAT, appVersion, dataVersion: WORD_DATA.dataVersion, textbook: WORD_DATA.textbook,
     textbookSha256: WORD_DATA.sourceSha256, exportedAt: new Date().toISOString(), ...s };
 }
@@ -46,6 +48,8 @@ export function checkBackup(text: string): BackupCheck {
   b.settings = { ...DEFAULT_SETTINGS, ...(b.settings ?? {}) };
   b.game = { ...DEFAULT_GAME, ...b.game };
   b.exams = Array.isArray(b.exams) ? b.exams : [];
+  b.enduranceHistory = Array.isArray(b.enduranceHistory) ? b.enduranceHistory : [];
+  if (b.endurance && (!Array.isArray(b.endurance.order) || b.endurance.order.some((q: any) => !ITEM_BY_ID[q.id]))) { warnings.push('끝장 퀴즈 진행 기록이 이 단어 데이터와 맞지 않아 건너뛰어요.'); b.endurance = null; }
   return { ok: true, errors, warnings: warnings.slice(0, 20), data: b as Backup,
     summary: { records: Object.keys(b.progress).length, items: new Set(Object.keys(b.progress).map((k) => k.split('|')[0])).size,
       overrides: Object.keys(b.overrides).length, exams: b.exams.length, exportedAt: b.exportedAt, xp: b.game.xp } };

@@ -3,11 +3,12 @@ import type { DirRecord, ExamRecord, GameState, Overrides, ProgressMap, Settings
 import { DEFAULT_GAME, DEFAULT_SETTINGS, pkey } from './core/types';
 import * as db from './core/storage';
 import type { Backup } from './core/backup';
+import type { EnduranceRun, EnduranceHistory } from './core/endurance';
 
-export interface AppData { progress: ProgressMap; settings: Settings; game: GameState; overrides: Overrides; exams: ExamRecord[]; currentExam: any }
+export interface AppData { progress: ProgressMap; settings: Settings; game: GameState; overrides: Overrides; exams: ExamRecord[]; currentExam: any; endurance: EnduranceRun | null; enduranceHistory: EnduranceHistory[] }
 interface Ctx extends AppData {
   loaded: boolean; loadError: string | null; saveError: string | null;
-  commit(progress: Record<string, DirRecord>, kv?: Partial<Pick<AppData, 'game' | 'settings' | 'overrides' | 'exams' | 'currentExam'>>): Promise<boolean>;
+  commit(progress: Record<string, DirRecord>, kv?: Partial<Pick<AppData, 'game' | 'settings' | 'overrides' | 'exams' | 'currentExam' | 'endurance' | 'enduranceHistory'>>): Promise<boolean>;
   setOverride(id: string, dir: Dir, o: AnswerOverride | null, resetProgress: boolean): Promise<boolean>;
   restore(b: Backup): Promise<boolean>;
   resetAll(keepGame: boolean): Promise<boolean>;
@@ -17,7 +18,7 @@ const C = createContext<Ctx>(null as any);
 export const useApp = () => useContext(C);
 
 export function AppProvider({ children }: { children: React.ReactNode }) {
-  const [d, setD] = useState<AppData>({ progress: {}, settings: DEFAULT_SETTINGS, game: DEFAULT_GAME, overrides: {}, exams: [], currentExam: null });
+  const [d, setD] = useState<AppData>({ progress: {}, settings: DEFAULT_SETTINGS, game: DEFAULT_GAME, overrides: {}, exams: [], currentExam: null, endurance: null, enduranceHistory: [] });
   const [loaded, setLoaded] = useState(false);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [saveError, setSaveError] = useState<string | null>(null);
@@ -26,7 +27,8 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     db.loadAll().then(({ progress, kv }) => {
       setD({ progress, settings: { ...DEFAULT_SETTINGS, ...(kv.settings ?? {}) }, game: { ...DEFAULT_GAME, ...(kv.game ?? {}) },
-        overrides: kv.overrides ?? {}, exams: kv.exams ?? [], currentExam: kv.currentExam ?? null });
+        overrides: kv.overrides ?? {}, exams: kv.exams ?? [], currentExam: kv.currentExam ?? null,
+        endurance: (kv as any).endurance ?? null, enduranceHistory: (kv as any).enduranceHistory ?? [] });
       setLoaded(true);
     }).catch((e) => { setLoadError(String(e?.message ?? e)); setLoaded(true); });
     try { navigator.storage?.persist?.(); } catch { /* 무시 */ }
@@ -55,15 +57,15 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const restore: Ctx['restore'] = useCallback(async (b) => {
-    const next: AppData = { progress: b.progress, settings: b.settings, game: b.game, overrides: b.overrides, exams: b.exams, currentExam: null };
-    try { await db.replaceAll(next.progress, { settings: next.settings, game: next.game, overrides: next.overrides, exams: next.exams }); ref.current = next; setD(next); return true; }
+    const next: AppData = { progress: b.progress, settings: b.settings, game: b.game, overrides: b.overrides, exams: b.exams, currentExam: null, endurance: b.endurance ?? null, enduranceHistory: b.enduranceHistory ?? [] };
+    try { await db.replaceAll(next.progress, { settings: next.settings, game: next.game, overrides: next.overrides, exams: next.exams, endurance: next.endurance, enduranceHistory: next.enduranceHistory } as any); ref.current = next; setD(next); return true; }
     catch (e) { return fail(e); }
   }, []);
 
   const resetAll: Ctx['resetAll'] = useCallback(async (keepGame) => {
     const cur = ref.current;
     const next: AppData = { progress: {}, settings: cur.settings, overrides: cur.overrides, exams: [], currentExam: null,
-      game: keepGame ? cur.game : { ...DEFAULT_GAME } };
+      game: keepGame ? cur.game : { ...DEFAULT_GAME }, endurance: null, enduranceHistory: [] };
     try { await db.replaceAll({}, { settings: next.settings, overrides: next.overrides, game: next.game, exams: [] }); ref.current = next; setD(next); return true; }
     catch (e) { return fail(e); }
   }, []);

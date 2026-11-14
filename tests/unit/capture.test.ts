@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { FRUITS } from '../../src/core/fruits';
+import { REGION_FRUITS as FRUITS, COLOSSEUM_FRUITS, FRUITS as ALL } from '../../src/core/fruits';
 import { chooseEncounter, canCapture, rareProgress, legendProgress, RARE_NEED } from '../../src/core/capture';
 import { itemsInChapters } from '../../src/core/data';
 import { pkey, type ProgressMap, type DirRecord } from '../../src/core/types';
@@ -14,6 +14,14 @@ describe('과일 몬스터', () => {
     for (let c = 1; c <= 25; c++) expect(FRUITS.filter((f) => f.chapter === c)).toHaveLength(2);
     expect(new Set(FRUITS.map((f) => f.id)).size).toBe(50);
     expect(new Set(FRUITS.map((f) => f.name)).size).toBe(50);
+  });
+  it('콜로세움 60종: 일반 30·희귀 20·레전드 10, 전체 110종 이름·ID 중복 없음', () => {
+    expect(COLOSSEUM_FRUITS.filter((f) => f.rarity === 'common')).toHaveLength(30);
+    expect(COLOSSEUM_FRUITS.filter((f) => f.rarity === 'rare')).toHaveLength(20);
+    expect(COLOSSEUM_FRUITS.filter((f) => f.rarity === 'legend')).toHaveLength(10);
+    expect(ALL).toHaveLength(110);
+    expect(new Set(ALL.map((f) => f.id)).size).toBe(110); expect(new Set(ALL.map((f) => f.name)).size).toBe(110);
+    for (let k = 0; k < 30; k++) expect(chooseEncounter([7], { captured: {} }, {}).id).not.toMatch(/gladiator|crow/);
   });
   it('처음에는 그 Chapter의 아직 못 잡은 일반 몬스터가 나옴, 희귀·전설은 조건 전 안 나옴', () => {
     for (let k = 0; k < 20; k++) {

@@ -3,7 +3,7 @@
 //  · 희귀: 그 Chapter에서 '1일 뒤 복습'을 통과한 단어(어느 방향이든 3단계 이상)가 5개 이상이면 나타남 → 별 3개면 포획
 //  · 전설: 그 묶음(Chapter 1~5, 6~10 …) 100단어 중 양방향 숙련 20개 이상이면 나타남 → 도움(힌트·정답 보기) 없이 별 3개면 포획
 //  · 포획에 실패해도 사라지지 않고 다음에 또 나타남. 잃는 것은 없음
-import { FRUITS, type FruitDef } from './fruits';
+import { REGION_FRUITS as FRUITS, type FruitDef } from './fruits';
 import { ITEMS } from './data';
 import { pkey, type ProgressMap, type GameState } from './types';
 
@@ -45,11 +45,14 @@ export function canCapture(f: FruitDef, r: { stars: number; aided: number }): bo
   return r.stars >= 3 && r.aided === 0;
 }
 export function captureRuleText(f: FruitDef): string {
+  if (f.zone === 'colosseum') return f.rarity === 'legend' ? '끝장 퀴즈 또는 오답 스테이지에서 90점 이상이면 포획 (레전드는 순서대로 등장)'
+    : f.rarity === 'rare' ? '끝장 퀴즈에서 이 몬스터가 나온 10문제를 모두 맞히면 포획' : '끝장 퀴즈에서 이 몬스터가 나온 10문제 중 8개 이상 맞히면 포획';
   if (f.rarity === 'common') return '별 2개 이상으로 탐험을 마치면 포획';
   if (f.rarity === 'rare') return '별 3개로 탐험을 마치면 포획';
   return '힌트·정답 보기 없이 별 3개로 마치면 포획';
 }
 export function appearRuleText(f: FruitDef, p: ProgressMap): string {
+  if (f.zone === 'colosseum') return f.rarity === 'legend' ? '🏟️ 끝장 퀴즈 90점 보상으로 등장해요' : '🏟️ 끝장 퀴즈 콜로세움에서 10문제마다 등장해요';
   if (f.rarity === 'common') return `Chapter ${f.chapter} 탐험에서 만날 수 있어요`;
   if (f.rarity === 'rare') return `Chapter ${f.chapter}에서 '1일 뒤 복습'을 통과한 단어 ${RARE_NEED}개가 되면 나타나요 (지금 ${Math.min(rareProgress(f.chapter, p), RARE_NEED)}/${RARE_NEED})`;
   const g = groupOf(f.chapter), chs = groupChapters(g);

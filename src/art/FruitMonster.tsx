@@ -154,6 +154,19 @@ function Extras({ list, def, faceY, top, front }: { list: string[]; def: FruitDe
   if (has('whiskers')) out.push(<g key="wh" stroke="#3a2a2a" strokeWidth={2} strokeLinecap="round">{[-1, 1].map((s) => <g key={s}><path d={`M${100 + s * 20} ${my - 4} l${s * 26} -6`} /><path d={`M${100 + s * 20} ${my} l${s * 26} 4`} /></g>)}</g>);
   if (has('teeth')) out.push(<path key="te" d={`M84 ${my + 4} l4 6 l4 -6 l4 6 l4 -6 l4 6 l4 -6 l4 6 l4 -6`} stroke="#fff" strokeWidth={2.5} fill="none" />);
   if (has('tongue')) out.push(<path key="to" d={`M100 ${my + 6} l0 14 l-5 6 m5 -6 l5 6`} stroke="#ff3b5c" strokeWidth={3} fill="none" strokeLinecap="round" />);
+  if (has('helmet')) out.push(
+    <g key="helmet">
+      <path d={`M104 ${top - 8} Q132 ${top - 34} 150 ${top - 8} Q132 ${top - 22} 108 ${top - 2}Z`} fill="#e8323c" />
+      <path d={`M64 ${top + 26} Q64 ${top - 14} 100 ${top - 16} Q136 ${top - 14} 136 ${top + 26} L124 ${top + 26} L124 ${top + 10} L76 ${top + 10} L76 ${top + 26}Z`} fill="#c9d3dc" stroke="#6f7f8f" strokeWidth={3} />
+      <path d={`M100 ${top - 16} L100 ${top + 10}`} stroke="#6f7f8f" strokeWidth={3} />
+      <circle cx={72} cy={top + 18} r={3} fill="#6f7f8f" /><circle cx={128} cy={top + 18} r={3} fill="#6f7f8f" />
+    </g>);
+  if (has('shield')) out.push(
+    <g key="shield" transform={`translate(52 ${faceY + 44})`}>
+      <circle r={24} fill="#c99a3a" stroke="#7a5a10" strokeWidth={4} />
+      <circle r={15} fill="none" stroke="#ffe08a" strokeWidth={3} />
+      <path d={starPath(0, 0, 9, 4)} fill="#ffe08a" />
+    </g>);
   if (has('spout')) out.push(<g key="sp" fill="#8fd8ff">{[-14, 0, 14].map((x, i) => <circle key={i} cx={100 + x} cy={top - 18 - (i === 1 ? 10 : 0)} r={6} />)}<path d={`M100 ${top} L100 ${top - 14}`} stroke="#8fd8ff" strokeWidth={5} /></g>);
   return <g>{out}</g>;
 }
@@ -209,7 +222,7 @@ export function FruitMonster({ def, mood = 'normal', size = 150, className, silh
         {!extras.some((e) => ['beak', 'duckbill', 'snout', 'pigsnout', 'trunk', 'teeth'].includes(e)) && <Mouth x={100} y={faceY + 20} mood={mood} w={10} />}
         {(extras.includes('snout') || extras.includes('pigsnout') || extras.includes('teeth')) && <Mouth x={100} y={faceY + 32} mood={mood} w={8} />}
         {extras.includes('crown') && (
-          <g transform={`translate(100 ${top - (a.ears === 'bunny' || a.ears === 'fox' ? 26 : 12)})`}>
+          <g transform={`translate(100 ${top - (extras.includes('helmet') ? 30 : a.ears === 'bunny' || a.ears === 'fox' ? 26 : 12)})`}>
             <path d="M-22 6 L-22 -10 L-11 -2 L0 -16 L11 -2 L22 -10 L22 6Z" fill="#ffd23f" stroke="#b37400" strokeWidth={2.5} />
             <circle cx={0} cy={-2} r={3.5} fill="#ff3d6b" /><circle cx={-13} cy={2} r={2.5} fill="#3dd6ff" /><circle cx={13} cy={2} r={2.5} fill="#3dd6ff" />
           </g>
