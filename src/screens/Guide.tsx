@@ -18,7 +18,7 @@ export default function Guide() {
         {o.status === 'failed' && <><h2>⚠️ 오프라인 준비 실패</h2><p>{o.detail}</p><Btn kind="gold" onClick={retryPrepare}>다시 시도</Btn></>}
         {o.status === 'unsupported' && <h2>⚠️ 이 브라우저는 오프라인 기능을 지원하지 않아요</h2>}
         {o.status === 'dev' && <h2>🛠 개발 모드 (오프라인 꺼짐)</h2>}
-        <p className="small">‘준비 완료’는 인터넷 연결 여부가 아니라, 앱 파일과 500단어 데이터가 이 기기 저장소에 실제로 모두 들어 있는지 확인한 결과예요. {o.detail && o.status === 'ready' ? `(${o.detail})` : ''}</p>
+        <p className="small">‘준비 완료’는 인터넷 연결 여부가 아니라, 앱 파일과 단어 데이터 전체가 이 기기 저장소에 실제로 모두 들어 있는지 확인한 결과예요. {o.detail && o.status === 'ready' ? `(${o.detail})` : ''}</p>
         <p className="small">지금 화면: {standalone ? '🏠 홈 화면 앱' : '🧭 Safari 브라우저'} · 저장 공간 보호 요청: {persisted === null ? '확인 불가' : persisted ? '허용됨' : '허용 안 됨(기기가 공간을 정리할 때 지워질 수 있음)'}</p>
       </section>
       {!standalone && <p className="tag warn">⚠️ Safari에서 연 앱과 홈 화면에 추가한 앱은 학습 기록이 따로 저장될 수 있어요. 아래처럼 홈 화면에 추가한 뒤, 홈 화면 아이콘으로만 공부해 주세요.</p>}

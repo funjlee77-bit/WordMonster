@@ -56,9 +56,11 @@ for (let r = 2; r <= ws.rowCount; r++) {
   });
 }
 
-// 검사
-if (items.length !== 500) errors.push(`총 항목 ${items.length}개 (예상 500)`);
-for (let ch = 1; ch <= 25; ch++) {
+// 검사: Chapter는 1부터 빠짐없이 이어지고, Chapter마다 20개 (Chapter를 추가하면 자동으로 따라감)
+const PER = 20;
+const maxCh = Math.max(...items.map((i) => i.chapter));
+if (items.length !== maxCh * PER) errors.push(`총 항목 ${items.length}개 (Chapter ${maxCh}개 × ${PER} = ${maxCh * PER}개여야 함)`);
+for (let ch = 1; ch <= maxCh; ch++) {
   const nums = items.filter((i) => i.chapter === ch).map((i) => i.number);
   if (nums.length !== 20) errors.push(`Chapter ${ch}: ${nums.length}개 (예상 20)`);
   for (let n = 1; n <= 20; n++) {
@@ -67,7 +69,7 @@ for (let ch = 1; ch <= 25; ch++) {
     if (c > 1) errors.push(`Chapter ${ch} ${n}번 중복 ${c}개`);
   }
 }
-const extra = items.filter((i) => i.chapter < 1 || i.chapter > 25 || i.number < 1 || i.number > 20);
+const extra = items.filter((i) => i.chapter < 1 || i.number < 1 || i.number > PER);
 extra.forEach((i) => errors.push(`범위 밖 항목: ${i.id} (${i.sourceRow}행)`));
 const ids = new Set(); items.forEach((i) => { if (ids.has(i.id)) errors.push(`ID 중복 ${i.id}`); ids.add(i.id); });
 
@@ -80,7 +82,7 @@ const report = [
   `검사 시각: ${new Date().toISOString()}`,
   `원본 파일: ${file}`, `SHA-256: ${sha256}`,
   `총 항목: ${items.length}`,
-  `Chapter별 항목 수: ${Array.from({ length: 25 }, (_, k) => `${k + 1}:${items.filter((i) => i.chapter === k + 1).length}`).join(' ')}`,
+  `Chapter별 항목 수: ${Array.from({ length: maxCh }, (_, k) => `${k + 1}:${items.filter((i) => i.chapter === k + 1).length}`).join(' ')}`,
   `C열과 E열이 다른 항목: ${differ.length}개`,
   ...differ.map((i) => `  ${i.id}  C="${i.englishDisplay}"  E="${i.englishAnswer}"`),
   `F열(대조 확인) 값이 있는 항목: ${items.filter((i) => i.sourceCheck.trim()).length}개`,
@@ -93,7 +95,7 @@ writeFileSync(REPORT, report + '\n');
 console.log(report);
 if (errors.length) { console.error('\n검사 실패: JSON을 만들지 않았습니다.'); process.exit(1); }
 if (!checkOnly) {
-  const out = { dataVersion: 1, textbook: 'GRADE 5 Key Words (1~25과)', sourceFile: file, sourceSha256: sha256, itemCount: items.length,
+  const out = { dataVersion: 2, textbook: `GRADE 5 Key Words (1~${maxCh}과)`, chapterCount: maxCh, sourceFile: file, sourceSha256: sha256, itemCount: items.length,
     items: items.map(({ sourceRow, ...rest }) => rest) };
   writeFileSync(OUT, JSON.stringify(out, null, 1) + '\n');
   console.log(`\n${OUT} 저장 완료`);

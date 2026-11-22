@@ -1,0 +1,3002 @@
+[
+{
+"id": "C001",
+"tier": "common",
+"name": "스파이콘",
+"nameEn": "Spikon",
+"animal": "hedgehog",
+"animalKo": "고슴도치",
+"element": "rock",
+"kingdom": 1
+},
+{
+"id": "C002",
+"tier": "common",
+"name": "퀼로스",
+"nameEn": "Quilros",
+"animal": "hedgehog",
+"animalKo": "고슴도치",
+"element": "poison",
+"kingdom": 1
+},
+{
+"id": "C003",
+"tier": "common",
+"name": "바브로스",
+"nameEn": "Barbros",
+"animal": "porcupine",
+"animalKo": "호저",
+"element": "metal",
+"kingdom": 1
+},
+{
+"id": "C004",
+"tier": "common",
+"name": "포르쿠쿠스",
+"nameEn": "Porcukus",
+"animal": "porcupine",
+"animalKo": "호저",
+"element": "earth",
+"kingdom": 1
+},
+{
+"id": "C005",
+"tier": "common",
+"name": "아르마쿠스",
+"nameEn": "Armakus",
+"animal": "armadillo",
+"animalKo": "아르마딜로",
+"element": "metal",
+"kingdom": 1
+},
+{
+"id": "C006",
+"tier": "common",
+"name": "딜로덱스",
+"nameEn": "Dillodex",
+"animal": "armadillo",
+"animalKo": "아르마딜로",
+"element": "light",
+"kingdom": 1
+},
+{
+"id": "C007",
+"tier": "common",
+"name": "스칼덱스",
+"nameEn": "Scaldex",
+"animal": "pangolin",
+"animalKo": "천산갑",
+"element": "metal",
+"kingdom": 1
+},
+{
+"id": "C008",
+"tier": "common",
+"name": "팡고빈",
+"nameEn": "Pangovin",
+"animal": "pangolin",
+"animalKo": "천산갑",
+"element": "rock",
+"kingdom": 1
+},
+{
+"id": "C009",
+"tier": "common",
+"name": "버로빈",
+"nameEn": "Burrovin",
+"animal": "mole",
+"animalKo": "두더지",
+"element": "rock",
+"kingdom": 1
+},
+{
+"id": "C010",
+"tier": "common",
+"name": "탈파릭스",
+"nameEn": "Talpalix",
+"animal": "mole",
+"animalKo": "두더지",
+"element": "shadow",
+"kingdom": 1
+},
+{
+"id": "C011",
+"tier": "common",
+"name": "멜리릭스",
+"nameEn": "Melilix",
+"animal": "badger",
+"animalKo": "오소리",
+"element": "earth",
+"kingdom": 1
+},
+{
+"id": "C012",
+"tier": "common",
+"name": "바도록",
+"nameEn": "Badorok",
+"animal": "badger",
+"animalKo": "오소리",
+"element": "fire",
+"kingdom": 1
+},
+{
+"id": "C013",
+"tier": "common",
+"name": "라코록",
+"nameEn": "Raccorok",
+"animal": "raccoon",
+"animalKo": "너구리",
+"element": "shadow",
+"kingdom": 1
+},
+{
+"id": "C014",
+"tier": "common",
+"name": "반디다르",
+"nameEn": "Bandidar",
+"animal": "raccoon",
+"animalKo": "너구리",
+"element": "wind",
+"kingdom": 1
+},
+{
+"id": "C015",
+"tier": "common",
+"name": "머스코다르",
+"nameEn": "Muskodar",
+"animal": "skunk",
+"animalKo": "스컹크",
+"element": "wind",
+"kingdom": 1
+},
+{
+"id": "C016",
+"tier": "common",
+"name": "스컨벤",
+"nameEn": "Skunven",
+"animal": "skunk",
+"animalKo": "스컹크",
+"element": "light",
+"kingdom": 1
+},
+{
+"id": "C017",
+"tier": "common",
+"name": "미어벤",
+"nameEn": "Meerven",
+"animal": "meerkat",
+"animalKo": "미어캣",
+"element": "earth",
+"kingdom": 1
+},
+{
+"id": "C018",
+"tier": "common",
+"name": "수리젤",
+"nameEn": "Surizel",
+"animal": "meerkat",
+"animalKo": "미어캣",
+"element": "light",
+"kingdom": 1
+},
+{
+"id": "C019",
+"tier": "common",
+"name": "카타젤",
+"nameEn": "Cattazel",
+"animal": "lemur",
+"animalKo": "여우원숭이",
+"element": "shadow",
+"kingdom": 1
+},
+{
+"id": "C020",
+"tier": "common",
+"name": "레무모스",
+"nameEn": "Lemumos",
+"animal": "lemur",
+"animalKo": "여우원숭이",
+"element": "wind",
+"kingdom": 1
+},
+{
+"id": "C021",
+"tier": "common",
+"name": "스퀴모스",
+"nameEn": "Squimos",
+"animal": "squirrel",
+"animalKo": "다람쥐",
+"element": "plant",
+"kingdom": 1
+},
+{
+"id": "C022",
+"tier": "common",
+"name": "시우르브로스",
+"nameEn": "Sciurbros",
+"animal": "squirrel",
+"animalKo": "다람쥐",
+"element": "wind",
+"kingdom": 1
+},
+{
+"id": "C023",
+"tier": "common",
+"name": "다모브로스",
+"nameEn": "Damobros",
+"animal": "beaver",
+"animalKo": "비버",
+"element": "plant",
+"kingdom": 1
+},
+{
+"id": "C024",
+"tier": "common",
+"name": "비브가르",
+"nameEn": "Beavgar",
+"animal": "beaver",
+"animalKo": "비버",
+"element": "water",
+"kingdom": 1
+},
+{
+"id": "C025",
+"tier": "common",
+"name": "오타가르",
+"nameEn": "Ottagar",
+"animal": "otter",
+"animalKo": "수달",
+"element": "ice",
+"kingdom": 1
+},
+{
+"id": "C026",
+"tier": "common",
+"name": "루트라렉스",
+"nameEn": "Lutrarex",
+"animal": "otter",
+"animalKo": "수달",
+"element": "light",
+"kingdom": 1
+},
+{
+"id": "C027",
+"tier": "common",
+"name": "오르니스렉스",
+"nameEn": "Ornithrex",
+"animal": "platypus",
+"animalKo": "오리너구리",
+"element": "electric",
+"kingdom": 1
+},
+{
+"id": "C028",
+"tier": "common",
+"name": "플래티돈",
+"nameEn": "Platydon",
+"animal": "platypus",
+"animalKo": "오리너구리",
+"element": "water",
+"kingdom": 1
+},
+{
+"id": "C029",
+"tier": "common",
+"name": "캥거돈",
+"nameEn": "Kangadon",
+"animal": "kangaroo",
+"animalKo": "캥거루",
+"element": "earth",
+"kingdom": 1
+},
+{
+"id": "C030",
+"tier": "common",
+"name": "매크로닉스",
+"nameEn": "Macronix",
+"animal": "kangaroo",
+"animalKo": "캥거루",
+"element": "wind",
+"kingdom": 1
+},
+{
+"id": "C031",
+"tier": "common",
+"name": "파스코닉스",
+"nameEn": "Phasconix",
+"animal": "koala",
+"animalKo": "코알라",
+"element": "plant",
+"kingdom": 1
+},
+{
+"id": "C032",
+"tier": "common",
+"name": "코알톤",
+"nameEn": "Koalton",
+"animal": "koala",
+"animalKo": "코알라",
+"element": "light",
+"kingdom": 1
+},
+{
+"id": "C033",
+"tier": "common",
+"name": "브래디톤",
+"nameEn": "Bradyton",
+"animal": "sloth",
+"animalKo": "나무늘보",
+"element": "plant",
+"kingdom": 1
+},
+{
+"id": "C034",
+"tier": "common",
+"name": "슬로스토르",
+"nameEn": "Slothetor",
+"animal": "sloth",
+"animalKo": "나무늘보",
+"element": "rock",
+"kingdom": 1
+},
+{
+"id": "C035",
+"tier": "common",
+"name": "타만드토르",
+"nameEn": "Tamandtor",
+"animal": "anteater",
+"animalKo": "개미핥기",
+"element": "earth",
+"kingdom": 2
+},
+{
+"id": "C036",
+"tier": "common",
+"name": "미르메탈",
+"nameEn": "Myrmetal",
+"animal": "anteater",
+"animalKo": "개미핥기",
+"element": "poison",
+"kingdom": 2
+},
+{
+"id": "C037",
+"tier": "common",
+"name": "레피탈",
+"nameEn": "Lepital",
+"animal": "rabbit",
+"animalKo": "토끼",
+"element": "wind",
+"kingdom": 2
+},
+{
+"id": "C038",
+"tier": "common",
+"name": "하라자르",
+"nameEn": "Harazar",
+"animal": "rabbit",
+"animalKo": "토끼",
+"element": "ice",
+"kingdom": 2
+},
+{
+"id": "C039",
+"tier": "common",
+"name": "레이나자르",
+"nameEn": "Reynazar",
+"animal": "fox",
+"animalKo": "여우",
+"element": "wind",
+"kingdom": 2
+},
+{
+"id": "C040",
+"tier": "common",
+"name": "키츠콘",
+"nameEn": "Kitsukon",
+"animal": "fox",
+"animalKo": "여우",
+"element": "light",
+"kingdom": 2
+},
+{
+"id": "C041",
+"tier": "common",
+"name": "루파콘",
+"nameEn": "Lupakon",
+"animal": "wolf",
+"animalKo": "늑대",
+"element": "ice",
+"kingdom": 2
+},
+{
+"id": "C042",
+"tier": "common",
+"name": "바르그로스",
+"nameEn": "Vargros",
+"animal": "wolf",
+"animalKo": "늑대",
+"element": "metal",
+"kingdom": 2
+},
+{
+"id": "C043",
+"tier": "common",
+"name": "크로쿠로스",
+"nameEn": "Crocuros",
+"animal": "hyena",
+"animalKo": "하이에나",
+"element": "rock",
+"kingdom": 2
+},
+{
+"id": "C044",
+"tier": "common",
+"name": "하이엔쿠스",
+"nameEn": "Hyenkus",
+"animal": "hyena",
+"animalKo": "하이에나",
+"element": "poison",
+"kingdom": 2
+},
+{
+"id": "C045",
+"tier": "common",
+"name": "자카쿠스",
+"nameEn": "Jakakus",
+"animal": "jackal",
+"animalKo": "자칼",
+"element": "shadow",
+"kingdom": 2
+},
+{
+"id": "C046",
+"tier": "common",
+"name": "아누덱스",
+"nameEn": "Anudex",
+"animal": "jackal",
+"animalKo": "자칼",
+"element": "earth",
+"kingdom": 2
+},
+{
+"id": "C047",
+"tier": "common",
+"name": "메인덱스",
+"nameEn": "Manedex",
+"animal": "lion",
+"animalKo": "사자",
+"element": "light",
+"kingdom": 2
+},
+{
+"id": "C048",
+"tier": "common",
+"name": "레오빈",
+"nameEn": "Leovin",
+"animal": "lion",
+"animalKo": "사자",
+"element": "metal",
+"kingdom": 2
+},
+{
+"id": "C049",
+"tier": "common",
+"name": "티그르빈",
+"nameEn": "Tigrvin",
+"animal": "tiger",
+"animalKo": "호랑이",
+"element": "ice",
+"kingdom": 2
+},
+{
+"id": "C050",
+"tier": "common",
+"name": "스트라이릭스",
+"nameEn": "Strailix",
+"animal": "tiger",
+"animalKo": "호랑이",
+"element": "wind",
+"kingdom": 2
+},
+{
+"id": "C051",
+"tier": "common",
+"name": "녹스릭스",
+"nameEn": "Noxlix",
+"animal": "panther",
+"animalKo": "흑표범",
+"element": "poison",
+"kingdom": 2
+},
+{
+"id": "C052",
+"tier": "common",
+"name": "판타록",
+"nameEn": "Pantharok",
+"animal": "panther",
+"animalKo": "흑표범",
+"element": "ice",
+"kingdom": 2
+},
+{
+"id": "C053",
+"tier": "common",
+"name": "치록",
+"nameEn": "Cheerok",
+"animal": "cheetah",
+"animalKo": "치타",
+"element": "wind",
+"kingdom": 2
+},
+{
+"id": "C054",
+"tier": "common",
+"name": "아키노다르",
+"nameEn": "Acinodar",
+"animal": "cheetah",
+"animalKo": "치타",
+"element": "light",
+"kingdom": 2
+},
+{
+"id": "C055",
+"tier": "common",
+"name": "터프토다르",
+"nameEn": "Tuftodar",
+"animal": "lynx",
+"animalKo": "스라소니",
+"element": "ice",
+"kingdom": 2
+},
+{
+"id": "C056",
+"tier": "common",
+"name": "링크벤",
+"nameEn": "Lynkven",
+"animal": "lynx",
+"animalKo": "스라소니",
+"element": "shadow",
+"kingdom": 2
+},
+{
+"id": "C057",
+"tier": "common",
+"name": "브루인벤",
+"nameEn": "Bruinven",
+"animal": "bear",
+"animalKo": "곰",
+"element": "metal",
+"kingdom": 2
+},
+{
+"id": "C058",
+"tier": "common",
+"name": "그리즈젤",
+"nameEn": "Grizzzel",
+"animal": "bear",
+"animalKo": "곰",
+"element": "fire",
+"kingdom": 2
+},
+{
+"id": "C059",
+"tier": "common",
+"name": "나눅젤",
+"nameEn": "Nanukzel",
+"animal": "polarbear",
+"animalKo": "북극곰",
+"element": "light",
+"kingdom": 2
+},
+{
+"id": "C060",
+"tier": "common",
+"name": "폴라모스",
+"nameEn": "Polarmos",
+"animal": "polarbear",
+"animalKo": "북극곰",
+"element": "wind",
+"kingdom": 2
+},
+{
+"id": "C061",
+"tier": "common",
+"name": "판도모스",
+"nameEn": "Pandomos",
+"animal": "panda",
+"animalKo": "판다",
+"element": "plant",
+"kingdom": 2
+},
+{
+"id": "C062",
+"tier": "common",
+"name": "뱀브브로스",
+"nameEn": "Bambbros",
+"animal": "panda",
+"animalKo": "판다",
+"element": "rock",
+"kingdom": 2
+},
+{
+"id": "C063",
+"tier": "common",
+"name": "루포브로스",
+"nameEn": "Rufobros",
+"animal": "redpanda",
+"animalKo": "레서판다",
+"element": "fire",
+"kingdom": 2
+},
+{
+"id": "C064",
+"tier": "common",
+"name": "아일루가르",
+"nameEn": "Ailugar",
+"animal": "redpanda",
+"animalKo": "레서판다",
+"element": "plant",
+"kingdom": 2
+},
+{
+"id": "C065",
+"tier": "common",
+"name": "고르가르",
+"nameEn": "Gorrgar",
+"animal": "gorilla",
+"animalKo": "고릴라",
+"element": "rock",
+"kingdom": 2
+},
+{
+"id": "C066",
+"tier": "common",
+"name": "실보렉스",
+"nameEn": "Silvorex",
+"animal": "gorilla",
+"animalKo": "고릴라",
+"element": "metal",
+"kingdom": 2
+},
+{
+"id": "C067",
+"tier": "common",
+"name": "보노렉스",
+"nameEn": "Bonorex",
+"animal": "monkey",
+"animalKo": "원숭이",
+"element": "wind",
+"kingdom": 2
+},
+{
+"id": "C068",
+"tier": "common",
+"name": "마카돈",
+"nameEn": "Maccadon",
+"animal": "monkey",
+"animalKo": "원숭이",
+"element": "electric",
+"kingdom": 3
+},
+{
+"id": "C069",
+"tier": "common",
+"name": "오랑돈",
+"nameEn": "Orangdon",
+"animal": "orangutan",
+"animalKo": "오랑우탄",
+"element": "plant",
+"kingdom": 3
+},
+{
+"id": "C070",
+"tier": "common",
+"name": "퐁고닉스",
+"nameEn": "Pongonix",
+"animal": "orangutan",
+"animalKo": "오랑우탄",
+"element": "earth",
+"kingdom": 3
+},
+{
+"id": "C071",
+"tier": "common",
+"name": "터스크닉스",
+"nameEn": "Tusknix",
+"animal": "elephant",
+"animalKo": "코끼리",
+"element": "light",
+"kingdom": 3
+},
+{
+"id": "C072",
+"tier": "common",
+"name": "엘레파톤",
+"nameEn": "Elefaton",
+"animal": "elephant",
+"animalKo": "코끼리",
+"element": "plant",
+"kingdom": 3
+},
+{
+"id": "C073",
+"tier": "common",
+"name": "케라톤",
+"nameEn": "Keraton",
+"animal": "rhino",
+"animalKo": "코뿔소",
+"element": "metal",
+"kingdom": 3
+},
+{
+"id": "C074",
+"tier": "common",
+"name": "혼토르",
+"nameEn": "Hornetor",
+"animal": "rhino",
+"animalKo": "코뿔소",
+"element": "fire",
+"kingdom": 3
+},
+{
+"id": "C075",
+"tier": "common",
+"name": "포탐토르",
+"nameEn": "Potamtor",
+"animal": "hippo",
+"animalKo": "하마",
+"element": "rock",
+"kingdom": 3
+},
+{
+"id": "C076",
+"tier": "common",
+"name": "히파탈",
+"nameEn": "Hippatal",
+"animal": "hippo",
+"animalKo": "하마",
+"element": "water",
+"kingdom": 3
+},
+{
+"id": "C077",
+"tier": "common",
+"name": "지라탈",
+"nameEn": "Giratal",
+"animal": "giraffe",
+"animalKo": "기린",
+"element": "light",
+"kingdom": 3
+},
+{
+"id": "C078",
+"tier": "common",
+"name": "롱기자르",
+"nameEn": "Longizar",
+"animal": "giraffe",
+"animalKo": "기린",
+"element": "wind",
+"kingdom": 3
+},
+{
+"id": "C079",
+"tier": "common",
+"name": "쿼그자르",
+"nameEn": "Quaggzar",
+"animal": "zebra",
+"animalKo": "얼룩말",
+"element": "shadow",
+"kingdom": 3
+},
+{
+"id": "C080",
+"tier": "common",
+"name": "제브콘",
+"nameEn": "Zebrkon",
+"animal": "zebra",
+"animalKo": "얼룩말",
+"element": "wind",
+"kingdom": 3
+},
+{
+"id": "C081",
+"tier": "common",
+"name": "에퀴콘",
+"nameEn": "Equikon",
+"animal": "horse",
+"animalKo": "말",
+"element": "wind",
+"kingdom": 3
+},
+{
+"id": "C082",
+"tier": "common",
+"name": "스탤로로스",
+"nameEn": "Stalloros",
+"animal": "horse",
+"animalKo": "말",
+"element": "light",
+"kingdom": 3
+},
+{
+"id": "C083",
+"tier": "common",
+"name": "드로모로스",
+"nameEn": "Dromoros",
+"animal": "camel",
+"animalKo": "낙타",
+"element": "light",
+"kingdom": 3
+},
+{
+"id": "C084",
+"tier": "common",
+"name": "카마쿠스",
+"nameEn": "Camakus",
+"animal": "camel",
+"animalKo": "낙타",
+"element": "metal",
+"kingdom": 3
+},
+{
+"id": "C085",
+"tier": "common",
+"name": "카프라쿠스",
+"nameEn": "Caprakus",
+"animal": "goat",
+"animalKo": "염소",
+"element": "rock",
+"kingdom": 3
+},
+{
+"id": "C086",
+"tier": "common",
+"name": "빌로덱스",
+"nameEn": "Billodex",
+"animal": "goat",
+"animalKo": "염소",
+"element": "ice",
+"kingdom": 3
+},
+{
+"id": "C087",
+"tier": "common",
+"name": "컬덱스",
+"nameEn": "Curldex",
+"animal": "ram",
+"animalKo": "숫양",
+"element": "rock",
+"kingdom": 3
+},
+{
+"id": "C088",
+"tier": "common",
+"name": "아리에빈",
+"nameEn": "Arievin",
+"animal": "ram",
+"animalKo": "숫양",
+"element": "metal",
+"kingdom": 3
+},
+{
+"id": "C089",
+"tier": "common",
+"name": "야코빈",
+"nameEn": "Yakovin",
+"animal": "yak",
+"animalKo": "야크",
+"element": "ice",
+"kingdom": 3
+},
+{
+"id": "C090",
+"tier": "common",
+"name": "티보릭스",
+"nameEn": "Tibolix",
+"animal": "yak",
+"animalKo": "야크",
+"element": "earth",
+"kingdom": 3
+},
+{
+"id": "C091",
+"tier": "common",
+"name": "타탄릭스",
+"nameEn": "Tatanlix",
+"animal": "bison",
+"animalKo": "들소",
+"element": "earth",
+"kingdom": 3
+},
+{
+"id": "C092",
+"tier": "common",
+"name": "바이수록",
+"nameEn": "Bisurok",
+"animal": "bison",
+"animalKo": "들소",
+"element": "fire",
+"kingdom": 3
+},
+{
+"id": "C093",
+"tier": "common",
+"name": "보루록",
+"nameEn": "Borurok",
+"animal": "boar",
+"animalKo": "멧돼지",
+"element": "earth",
+"kingdom": 3
+},
+{
+"id": "C094",
+"tier": "common",
+"name": "서스크다르",
+"nameEn": "Suskdar",
+"animal": "boar",
+"animalKo": "멧돼지",
+"element": "metal",
+"kingdom": 3
+},
+{
+"id": "C095",
+"tier": "common",
+"name": "앤틀라다르",
+"nameEn": "Antladar",
+"animal": "deer",
+"animalKo": "사슴",
+"element": "light",
+"kingdom": 3
+},
+{
+"id": "C096",
+"tier": "common",
+"name": "서비벤",
+"nameEn": "Cerviven",
+"animal": "deer",
+"animalKo": "사슴",
+"element": "ice",
+"kingdom": 3
+},
+{
+"id": "C097",
+"tier": "common",
+"name": "무스벤",
+"nameEn": "Moosven",
+"animal": "moose",
+"animalKo": "말코손바닥사슴",
+"element": "plant",
+"kingdom": 3
+},
+{
+"id": "C098",
+"tier": "common",
+"name": "알체젤",
+"nameEn": "Alcezel",
+"animal": "moose",
+"animalKo": "말코손바닥사슴",
+"element": "ice",
+"kingdom": 3
+},
+{
+"id": "C099",
+"tier": "common",
+"name": "에코젤",
+"nameEn": "Echozel",
+"animal": "bat",
+"animalKo": "박쥐",
+"element": "electric",
+"kingdom": 3
+},
+{
+"id": "C100",
+"tier": "common",
+"name": "치로모스",
+"nameEn": "Chiromos",
+"animal": "bat",
+"animalKo": "박쥐",
+"element": "wind",
+"kingdom": 3
+},
+{
+"id": "C101",
+"tier": "common",
+"name": "스트릭스모스",
+"nameEn": "Strixmos",
+"animal": "owl",
+"animalKo": "부엉이",
+"element": "shadow",
+"kingdom": 4
+},
+{
+"id": "C102",
+"tier": "common",
+"name": "부보브로스",
+"nameEn": "Bubobros",
+"animal": "owl",
+"animalKo": "부엉이",
+"element": "light",
+"kingdom": 4
+},
+{
+"id": "C103",
+"tier": "common",
+"name": "랩투브로스",
+"nameEn": "Raptubros",
+"animal": "eagle",
+"animalKo": "독수리",
+"element": "metal",
+"kingdom": 4
+},
+{
+"id": "C104",
+"tier": "common",
+"name": "아퀴가르",
+"nameEn": "Aquigar",
+"animal": "eagle",
+"animalKo": "독수리",
+"element": "light",
+"kingdom": 4
+},
+{
+"id": "C105",
+"tier": "common",
+"name": "액시프가르",
+"nameEn": "Accipgar",
+"animal": "hawk",
+"animalKo": "매",
+"element": "wind",
+"kingdom": 4
+},
+{
+"id": "C106",
+"tier": "common",
+"name": "탈로렉스",
+"nameEn": "Talorex",
+"animal": "hawk",
+"animalKo": "매",
+"element": "rock",
+"kingdom": 4
+},
+{
+"id": "C107",
+"tier": "common",
+"name": "페레렉스",
+"nameEn": "Pererex",
+"animal": "falcon",
+"animalKo": "송골매",
+"element": "wind",
+"kingdom": 4
+},
+{
+"id": "C108",
+"tier": "common",
+"name": "팔코돈",
+"nameEn": "Falkodon",
+"animal": "falcon",
+"animalKo": "송골매",
+"element": "metal",
+"kingdom": 4
+},
+{
+"id": "C109",
+"tier": "common",
+"name": "크라돈",
+"nameEn": "Kraadon",
+"animal": "crow",
+"animalKo": "까마귀",
+"element": "wind",
+"kingdom": 4
+},
+{
+"id": "C110",
+"tier": "common",
+"name": "룩닉스",
+"nameEn": "Rooknix",
+"animal": "crow",
+"animalKo": "까마귀",
+"element": "ice",
+"kingdom": 4
+},
+{
+"id": "C111",
+"tier": "common",
+"name": "아라닉스",
+"nameEn": "Aranix",
+"animal": "parrot",
+"animalKo": "앵무새",
+"element": "light",
+"kingdom": 4
+},
+{
+"id": "C112",
+"tier": "common",
+"name": "시트톤",
+"nameEn": "Psittton",
+"animal": "parrot",
+"animalKo": "앵무새",
+"element": "plant",
+"kingdom": 4
+},
+{
+"id": "C113",
+"tier": "common",
+"name": "플라모톤",
+"nameEn": "Flamoton",
+"animal": "flamingo",
+"animalKo": "플라밍고",
+"element": "fire",
+"kingdom": 4
+},
+{
+"id": "C114",
+"tier": "common",
+"name": "로젤토르",
+"nameEn": "Roseltor",
+"animal": "flamingo",
+"animalKo": "플라밍고",
+"element": "water",
+"kingdom": 4
+},
+{
+"id": "C115",
+"tier": "common",
+"name": "스와노토르",
+"nameEn": "Swanotor",
+"animal": "swan",
+"animalKo": "백조",
+"element": "ice",
+"kingdom": 4
+},
+{
+"id": "C116",
+"tier": "common",
+"name": "시그나탈",
+"nameEn": "Cygnatal",
+"animal": "swan",
+"animalKo": "백조",
+"element": "light",
+"kingdom": 4
+},
+{
+"id": "C117",
+"tier": "common",
+"name": "파보탈",
+"nameEn": "Pavotal",
+"animal": "peacock",
+"animalKo": "공작",
+"element": "light",
+"kingdom": 4
+},
+{
+"id": "C118",
+"tier": "common",
+"name": "플럼자르",
+"nameEn": "Plumzar",
+"animal": "peacock",
+"animalKo": "공작",
+"element": "plant",
+"kingdom": 4
+},
+{
+"id": "C119",
+"tier": "common",
+"name": "트로키자르",
+"nameEn": "Trochizar",
+"animal": "hummingbird",
+"animalKo": "벌새",
+"element": "wind",
+"kingdom": 4
+},
+{
+"id": "C120",
+"tier": "common",
+"name": "허미콘",
+"nameEn": "Hummikon",
+"animal": "hummingbird",
+"animalKo": "벌새",
+"element": "electric",
+"kingdom": 4
+},
+{
+"id": "C121",
+"tier": "common",
+"name": "페코콘",
+"nameEn": "Peckokon",
+"animal": "woodpecker",
+"animalKo": "딱따구리",
+"element": "earth",
+"kingdom": 4
+},
+{
+"id": "C122",
+"tier": "common",
+"name": "드릴로로스",
+"nameEn": "Drilloros",
+"animal": "woodpecker",
+"animalKo": "딱따구리",
+"element": "metal",
+"kingdom": 4
+},
+{
+"id": "C123",
+"tier": "common",
+"name": "그리포로스",
+"nameEn": "Gryporos",
+"animal": "vulture",
+"animalKo": "대머리수리",
+"element": "rock",
+"kingdom": 4
+},
+{
+"id": "C124",
+"tier": "common",
+"name": "벌투쿠스",
+"nameEn": "Vultukus",
+"animal": "vulture",
+"animalKo": "대머리수리",
+"element": "fire",
+"kingdom": 4
+},
+{
+"id": "C125",
+"tier": "common",
+"name": "알바쿠스",
+"nameEn": "Albakus",
+"animal": "albatross",
+"animalKo": "알바트로스",
+"element": "wind",
+"kingdom": 4
+},
+{
+"id": "C126",
+"tier": "common",
+"name": "디오메덱스",
+"nameEn": "Diomedex",
+"animal": "albatross",
+"animalKo": "알바트로스",
+"element": "water",
+"kingdom": 4
+},
+{
+"id": "C127",
+"tier": "common",
+"name": "킹고덱스",
+"nameEn": "Kingodex",
+"animal": "kingfisher",
+"animalKo": "물총새",
+"element": "water",
+"kingdom": 4
+},
+{
+"id": "C128",
+"tier": "common",
+"name": "알세도빈",
+"nameEn": "Alcedovin",
+"animal": "kingfisher",
+"animalKo": "물총새",
+"element": "electric",
+"kingdom": 4
+},
+{
+"id": "C129",
+"tier": "common",
+"name": "람피빈",
+"nameEn": "Ramphivin",
+"animal": "toucan",
+"animalKo": "투칸",
+"element": "plant",
+"kingdom": 4
+},
+{
+"id": "C130",
+"tier": "common",
+"name": "투코릭스",
+"nameEn": "Tukolix",
+"animal": "toucan",
+"animalKo": "투칸",
+"element": "fire",
+"kingdom": 4
+},
+{
+"id": "C131",
+"tier": "common",
+"name": "크레스트릭스",
+"nameEn": "Crestlix",
+"animal": "rooster",
+"animalKo": "수탉",
+"element": "metal",
+"kingdom": 4
+},
+{
+"id": "C132",
+"tier": "common",
+"name": "갈로록",
+"nameEn": "Gallorok",
+"animal": "rooster",
+"animalKo": "수탉",
+"element": "light",
+"kingdom": 4
+},
+{
+"id": "C133",
+"tier": "common",
+"name": "스트루스록",
+"nameEn": "Struthrok",
+"animal": "ostrich",
+"animalKo": "타조",
+"element": "wind",
+"kingdom": 4
+},
+{
+"id": "C134",
+"tier": "common",
+"name": "오스트로다르",
+"nameEn": "Ostrodar",
+"animal": "ostrich",
+"animalKo": "타조",
+"element": "earth",
+"kingdom": 4
+},
+{
+"id": "C135",
+"tier": "common",
+"name": "턱소다르",
+"nameEn": "Tuxodar",
+"animal": "penguin",
+"animalKo": "펭귄",
+"element": "metal",
+"kingdom": 5
+},
+{
+"id": "C136",
+"tier": "common",
+"name": "스페니벤",
+"nameEn": "Spheniven",
+"animal": "penguin",
+"animalKo": "펭귄",
+"element": "wind",
+"kingdom": 5
+},
+{
+"id": "C137",
+"tier": "common",
+"name": "셀락벤",
+"nameEn": "Selachven",
+"animal": "shark",
+"animalKo": "상어",
+"element": "metal",
+"kingdom": 5
+},
+{
+"id": "C138",
+"tier": "common",
+"name": "갈레오젤",
+"nameEn": "Galeozel",
+"animal": "shark",
+"animalKo": "상어",
+"element": "electric",
+"kingdom": 5
+},
+{
+"id": "C139",
+"tier": "common",
+"name": "그램푸젤",
+"nameEn": "Grampuzel",
+"animal": "orca",
+"animalKo": "범고래",
+"element": "shadow",
+"kingdom": 5
+},
+{
+"id": "C140",
+"tier": "common",
+"name": "오르쿠모스",
+"nameEn": "Orcumos",
+"animal": "orca",
+"animalKo": "범고래",
+"element": "ice",
+"kingdom": 5
+},
+{
+"id": "C141",
+"tier": "common",
+"name": "세타모스",
+"nameEn": "Cetamos",
+"animal": "whale",
+"animalKo": "고래",
+"element": "ice",
+"kingdom": 5
+},
+{
+"id": "C142",
+"tier": "common",
+"name": "발레브로스",
+"nameEn": "Balaebros",
+"animal": "whale",
+"animalKo": "고래",
+"element": "wind",
+"kingdom": 5
+},
+{
+"id": "C143",
+"tier": "common",
+"name": "터시브로스",
+"nameEn": "Tursibros",
+"animal": "dolphin",
+"animalKo": "돌고래",
+"element": "light",
+"kingdom": 5
+},
+{
+"id": "C144",
+"tier": "common",
+"name": "델피가르",
+"nameEn": "Delfigar",
+"animal": "dolphin",
+"animalKo": "돌고래",
+"element": "wind",
+"kingdom": 5
+},
+{
+"id": "C145",
+"tier": "common",
+"name": "나르와가르",
+"nameEn": "Narwagar",
+"animal": "narwhal",
+"animalKo": "일각고래",
+"element": "ice",
+"kingdom": 5
+},
+{
+"id": "C146",
+"tier": "common",
+"name": "모노도렉스",
+"nameEn": "Monodorex",
+"animal": "narwhal",
+"animalKo": "일각고래",
+"element": "light",
+"kingdom": 5
+},
+{
+"id": "C147",
+"tier": "common",
+"name": "라요렉스",
+"nameEn": "Rayorex",
+"animal": "manta",
+"animalKo": "쥐가오리",
+"element": "electric",
+"kingdom": 5
+},
+{
+"id": "C148",
+"tier": "common",
+"name": "모부돈",
+"nameEn": "Mobudon",
+"animal": "manta",
+"animalKo": "쥐가오리",
+"element": "shadow",
+"kingdom": 5
+},
+{
+"id": "C149",
+"tier": "common",
+"name": "앙귈돈",
+"nameEn": "Anguildon",
+"animal": "eel",
+"animalKo": "곰치",
+"element": "shadow",
+"kingdom": 5
+},
+{
+"id": "C150",
+"tier": "common",
+"name": "무레닉스",
+"nameEn": "Muraenix",
+"animal": "eel",
+"animalKo": "곰치",
+"element": "poison",
+"kingdom": 5
+},
+{
+"id": "C151",
+"tier": "common",
+"name": "세라닉스",
+"nameEn": "Serranix",
+"animal": "piranha",
+"animalKo": "피라냐",
+"element": "metal",
+"kingdom": 5
+},
+{
+"id": "C152",
+"tier": "common",
+"name": "피라톤",
+"nameEn": "Piraton",
+"animal": "piranha",
+"animalKo": "피라냐",
+"element": "fire",
+"kingdom": 5
+},
+{
+"id": "C153",
+"tier": "common",
+"name": "후구톤",
+"nameEn": "Fuguton",
+"animal": "pufferfish",
+"animalKo": "복어",
+"element": "metal",
+"kingdom": 5
+},
+{
+"id": "C154",
+"tier": "common",
+"name": "테트라토르",
+"nameEn": "Tetrator",
+"animal": "pufferfish",
+"animalKo": "복어",
+"element": "electric",
+"kingdom": 5
+},
+{
+"id": "C155",
+"tier": "common",
+"name": "블레이도토르",
+"nameEn": "Bladotor",
+"animal": "swordfish",
+"animalKo": "황새치",
+"element": "metal",
+"kingdom": 5
+},
+{
+"id": "C156",
+"tier": "common",
+"name": "지피탈",
+"nameEn": "Xiphital",
+"animal": "swordfish",
+"animalKo": "황새치",
+"element": "wind",
+"kingdom": 5
+},
+{
+"id": "C157",
+"tier": "common",
+"name": "로포탈",
+"nameEn": "Lophotal",
+"animal": "anglerfish",
+"animalKo": "아귀",
+"element": "shadow",
+"kingdom": 5
+},
+{
+"id": "C158",
+"tier": "common",
+"name": "세라티아자르",
+"nameEn": "Ceratiazar",
+"animal": "anglerfish",
+"animalKo": "아귀",
+"element": "poison",
+"kingdom": 5
+},
+{
+"id": "C159",
+"tier": "common",
+"name": "세팔자르",
+"nameEn": "Cephalzar",
+"animal": "octopus",
+"animalKo": "문어",
+"element": "shadow",
+"kingdom": 5
+},
+{
+"id": "C160",
+"tier": "common",
+"name": "옥타콘",
+"nameEn": "Octakon",
+"animal": "octopus",
+"animalKo": "문어",
+"element": "rock",
+"kingdom": 5
+},
+{
+"id": "C161",
+"tier": "common",
+"name": "튜스콘",
+"nameEn": "Teuthkon",
+"animal": "squid",
+"animalKo": "오징어",
+"element": "ice",
+"kingdom": 5
+},
+{
+"id": "C162",
+"tier": "common",
+"name": "스퀼로스",
+"nameEn": "Squilros",
+"animal": "squid",
+"animalKo": "오징어",
+"element": "electric",
+"kingdom": 5
+},
+{
+"id": "C163",
+"tier": "common",
+"name": "크니다로스",
+"nameEn": "Cnidaros",
+"animal": "jellyfish",
+"animalKo": "해파리",
+"element": "light",
+"kingdom": 5
+},
+{
+"id": "C164",
+"tier": "common",
+"name": "메두쿠스",
+"nameEn": "Medukus",
+"animal": "jellyfish",
+"animalKo": "해파리",
+"element": "electric",
+"kingdom": 5
+},
+{
+"id": "C165",
+"tier": "common",
+"name": "히포크쿠스",
+"nameEn": "Hippockus",
+"animal": "seahorse",
+"animalKo": "해마",
+"element": "light",
+"kingdom": 5
+},
+{
+"id": "C166",
+"tier": "common",
+"name": "켈포덱스",
+"nameEn": "Kelpodex",
+"animal": "seahorse",
+"animalKo": "해마",
+"element": "plant",
+"kingdom": 5
+},
+{
+"id": "C167",
+"tier": "common",
+"name": "핀서덱스",
+"nameEn": "Pincerdex",
+"animal": "crab",
+"animalKo": "게",
+"element": "metal",
+"kingdom": 5
+},
+{
+"id": "C168",
+"tier": "common",
+"name": "캔크르빈",
+"nameEn": "Cancrvin",
+"animal": "crab",
+"animalKo": "게",
+"element": "fire",
+"kingdom": 6
+},
+{
+"id": "C169",
+"tier": "common",
+"name": "호마르빈",
+"nameEn": "Homarvin",
+"animal": "lobster",
+"animalKo": "바닷가재",
+"element": "fire",
+"kingdom": 6
+},
+{
+"id": "C170",
+"tier": "common",
+"name": "클로디릭스",
+"nameEn": "Clawdilix",
+"animal": "lobster",
+"animalKo": "바닷가재",
+"element": "rock",
+"kingdom": 6
+},
+{
+"id": "C171",
+"tier": "common",
+"name": "크릴릭스",
+"nameEn": "Krilllix",
+"animal": "shrimp",
+"animalKo": "새우",
+"element": "electric",
+"kingdom": 6
+},
+{
+"id": "C172",
+"tier": "common",
+"name": "스토마록",
+"nameEn": "Stomarok",
+"animal": "shrimp",
+"animalKo": "새우",
+"element": "light",
+"kingdom": 6
+},
+{
+"id": "C173",
+"tier": "common",
+"name": "아스테로록",
+"nameEn": "Asterorok",
+"animal": "starfish",
+"animalKo": "불가사리",
+"element": "light",
+"kingdom": 6
+},
+{
+"id": "C174",
+"tier": "common",
+"name": "스텔다르",
+"nameEn": "Stelldar",
+"animal": "starfish",
+"animalKo": "불가사리",
+"element": "rock",
+"kingdom": 6
+},
+{
+"id": "C175",
+"tier": "common",
+"name": "켈로다르",
+"nameEn": "Chelodar",
+"animal": "turtle",
+"animalKo": "거북",
+"element": "metal",
+"kingdom": 6
+},
+{
+"id": "C176",
+"tier": "common",
+"name": "테스투벤",
+"nameEn": "Testuven",
+"animal": "turtle",
+"animalKo": "거북",
+"element": "light",
+"kingdom": 6
+},
+{
+"id": "C177",
+"tier": "common",
+"name": "가비벤",
+"nameEn": "Gaviven",
+"animal": "crocodile",
+"animalKo": "악어",
+"element": "metal",
+"kingdom": 6
+},
+{
+"id": "C178",
+"tier": "common",
+"name": "수추젤",
+"nameEn": "Suchuzel",
+"animal": "crocodile",
+"animalKo": "악어",
+"element": "shadow",
+"kingdom": 6
+},
+{
+"id": "C179",
+"tier": "common",
+"name": "코모젤",
+"nameEn": "Komozel",
+"animal": "komodo",
+"animalKo": "코모도왕도마뱀",
+"element": "poison",
+"kingdom": 6
+},
+{
+"id": "C180",
+"tier": "common",
+"name": "바란모스",
+"nameEn": "Varanmos",
+"animal": "komodo",
+"animalKo": "코모도왕도마뱀",
+"element": "earth",
+"kingdom": 6
+},
+{
+"id": "C181",
+"tier": "common",
+"name": "게코모스",
+"nameEn": "Gekkomos",
+"animal": "gecko",
+"animalKo": "도마뱀붙이",
+"element": "light",
+"kingdom": 6
+},
+{
+"id": "C182",
+"tier": "common",
+"name": "스티키브로스",
+"nameEn": "Stikibros",
+"animal": "gecko",
+"animalKo": "도마뱀붙이",
+"element": "plant",
+"kingdom": 6
+},
+{
+"id": "C183",
+"tier": "common",
+"name": "드라콘브로스",
+"nameEn": "Draconbros",
+"animal": "iguana",
+"animalKo": "이구아나",
+"element": "plant",
+"kingdom": 6
+},
+{
+"id": "C184",
+"tier": "common",
+"name": "이고가르",
+"nameEn": "Iguogar",
+"animal": "iguana",
+"animalKo": "이구아나",
+"element": "rock",
+"kingdom": 6
+},
+{
+"id": "C185",
+"tier": "common",
+"name": "카메가르",
+"nameEn": "Chamaegar",
+"animal": "chameleon",
+"animalKo": "카멜레온",
+"element": "light",
+"kingdom": 6
+},
+{
+"id": "C186",
+"tier": "common",
+"name": "프리즈마렉스",
+"nameEn": "Prismarex",
+"animal": "chameleon",
+"animalKo": "카멜레온",
+"element": "shadow",
+"kingdom": 6
+},
+{
+"id": "C187",
+"tier": "common",
+"name": "후드라렉스",
+"nameEn": "Hoodrarex",
+"animal": "cobra",
+"animalKo": "코브라",
+"element": "fire",
+"kingdom": 6
+},
+{
+"id": "C188",
+"tier": "common",
+"name": "나자돈",
+"nameEn": "Najadon",
+"animal": "cobra",
+"animalKo": "코브라",
+"element": "light",
+"kingdom": 6
+},
+{
+"id": "C189",
+"tier": "common",
+"name": "파이스돈",
+"nameEn": "Pythdon",
+"animal": "python",
+"animalKo": "비단뱀",
+"element": "plant",
+"kingdom": 6
+},
+{
+"id": "C190",
+"tier": "common",
+"name": "코일로닉스",
+"nameEn": "Coilonix",
+"animal": "python",
+"animalKo": "비단뱀",
+"element": "rock",
+"kingdom": 6
+},
+{
+"id": "C191",
+"tier": "common",
+"name": "아누라닉스",
+"nameEn": "Anuranix",
+"animal": "frog",
+"animalKo": "개구리",
+"element": "electric",
+"kingdom": 6
+},
+{
+"id": "C192",
+"tier": "common",
+"name": "라나톤",
+"nameEn": "Ranaton",
+"animal": "frog",
+"animalKo": "개구리",
+"element": "light",
+"kingdom": 6
+},
+{
+"id": "C193",
+"tier": "common",
+"name": "살람톤",
+"nameEn": "Salamton",
+"animal": "salamander",
+"animalKo": "도롱뇽",
+"element": "ice",
+"kingdom": 6
+},
+{
+"id": "C194",
+"tier": "common",
+"name": "뉴토토르",
+"nameEn": "Newtotor",
+"animal": "salamander",
+"animalKo": "도롱뇽",
+"element": "poison",
+"kingdom": 6
+},
+{
+"id": "C195",
+"tier": "common",
+"name": "스카라토르",
+"nameEn": "Scarator",
+"animal": "beetle",
+"animalKo": "장수풍뎅이",
+"element": "metal",
+"kingdom": 6
+},
+{
+"id": "C196",
+"tier": "common",
+"name": "다이나탈",
+"nameEn": "Dynatal",
+"animal": "beetle",
+"animalKo": "장수풍뎅이",
+"element": "earth",
+"kingdom": 6
+},
+{
+"id": "C197",
+"tier": "common",
+"name": "루칸탈",
+"nameEn": "Lucantal",
+"animal": "stagbeetle",
+"animalKo": "사슴벌레",
+"element": "metal",
+"kingdom": 6
+},
+{
+"id": "C198",
+"tier": "common",
+"name": "핀초자르",
+"nameEn": "Pinchozar",
+"animal": "stagbeetle",
+"animalKo": "사슴벌레",
+"element": "plant",
+"kingdom": 6
+},
+{
+"id": "C199",
+"tier": "common",
+"name": "프레이오자르",
+"nameEn": "Preyozar",
+"animal": "mantis",
+"animalKo": "사마귀",
+"element": "ice",
+"kingdom": 6
+},
+{
+"id": "C200",
+"tier": "common",
+"name": "만토콘",
+"nameEn": "Mantokon",
+"animal": "mantis",
+"animalKo": "사마귀",
+"element": "light",
+"kingdom": 6
+},
+{
+"id": "R001",
+"tier": "rare",
+"name": "포르미리온",
+"nameEn": "Formirion",
+"animal": "ant",
+"animalKo": "개미",
+"element": "metal",
+"kingdom": 1
+},
+{
+"id": "R002",
+"tier": "rare",
+"name": "스팅고미르",
+"nameEn": "Stingomyr",
+"animal": "wasp",
+"animalKo": "말벌",
+"element": "fire",
+"kingdom": 1
+},
+{
+"id": "R003",
+"tier": "rare",
+"name": "오도나리스",
+"nameEn": "Odonalith",
+"animal": "dragonfly",
+"animalKo": "잠자리",
+"element": "wind",
+"kingdom": 1
+},
+{
+"id": "R004",
+"tier": "rare",
+"name": "루치오벡스",
+"nameEn": "Luciovex",
+"animal": "firefly",
+"animalKo": "반딧불이",
+"element": "fire",
+"kingdom": 1
+},
+{
+"id": "R005",
+"tier": "rare",
+"name": "부투제스",
+"nameEn": "Buthuzeth",
+"animal": "scorpion",
+"animalKo": "전갈",
+"element": "shadow",
+"kingdom": 1
+},
+{
+"id": "R006",
+"tier": "rare",
+"name": "위보드랙스",
+"nameEn": "Weavodrax",
+"animal": "spider",
+"animalKo": "거미",
+"element": "metal",
+"kingdom": 1
+},
+{
+"id": "R007",
+"tier": "rare",
+"name": "칠로크론",
+"nameEn": "Chilocron",
+"animal": "centipede",
+"animalKo": "지네",
+"element": "poison",
+"kingdom": 1
+},
+{
+"id": "R008",
+"tier": "rare",
+"name": "스피로쿼르",
+"nameEn": "Spiroquor",
+"animal": "snail",
+"animalKo": "달팽이",
+"element": "metal",
+"kingdom": 1
+},
+{
+"id": "R009",
+"tier": "rare",
+"name": "레피드베인",
+"nameEn": "Lepidvane",
+"animal": "moth",
+"animalKo": "나방",
+"element": "light",
+"kingdom": 1
+},
+{
+"id": "R010",
+"tier": "rare",
+"name": "모르포토스",
+"nameEn": "Morphothos",
+"animal": "butterfly",
+"animalKo": "나비",
+"element": "plant",
+"kingdom": 1
+},
+{
+"id": "R011",
+"tier": "rare",
+"name": "로쿠리온",
+"nameEn": "Locurion",
+"animal": "locust",
+"animalKo": "메뚜기",
+"element": "wind",
+"kingdom": 1
+},
+{
+"id": "R012",
+"tier": "rare",
+"name": "스포타미르",
+"nameEn": "Spottamyr",
+"animal": "leopard",
+"animalKo": "표범",
+"element": "shadow",
+"kingdom": 1
+},
+{
+"id": "R013",
+"tier": "rare",
+"name": "재구리스",
+"nameEn": "Jagulith",
+"animal": "jaguar",
+"animalKo": "재규어",
+"element": "light",
+"kingdom": 2
+},
+{
+"id": "R014",
+"tier": "rare",
+"name": "스토트벡스",
+"nameEn": "Stoatvex",
+"animal": "weasel",
+"animalKo": "족제비",
+"element": "shadow",
+"kingdom": 2
+},
+{
+"id": "R015",
+"tier": "rare",
+"name": "페라제스",
+"nameEn": "Ferrazeth",
+"animal": "ferret",
+"animalKo": "페럿",
+"element": "plant",
+"kingdom": 2
+},
+{
+"id": "R016",
+"tier": "rare",
+"name": "피니드랙스",
+"nameEn": "Pinnidrax",
+"animal": "seal",
+"animalKo": "물개",
+"element": "electric",
+"kingdom": 2
+},
+{
+"id": "R017",
+"tier": "rare",
+"name": "오도베크론",
+"nameEn": "Odobecron",
+"animal": "walrus",
+"animalKo": "바다코끼리",
+"element": "light",
+"kingdom": 2
+},
+{
+"id": "R018",
+"tier": "rare",
+"name": "스누쿼르",
+"nameEn": "Snooquor",
+"animal": "tapir",
+"animalKo": "맥",
+"element": "light",
+"kingdom": 2
+},
+{
+"id": "R019",
+"tier": "rare",
+"name": "라마베인",
+"nameEn": "Lamavane",
+"animal": "llama",
+"animalKo": "라마",
+"element": "ice",
+"kingdom": 2
+},
+{
+"id": "R020",
+"tier": "rare",
+"name": "미노트토스",
+"nameEn": "Minotthos",
+"animal": "bull",
+"animalKo": "황소",
+"element": "earth",
+"kingdom": 2
+},
+{
+"id": "R021",
+"tier": "rare",
+"name": "부발리온",
+"nameEn": "Bubalrion",
+"animal": "buffalo",
+"animalKo": "물소",
+"element": "rock",
+"kingdom": 2
+},
+{
+"id": "R022",
+"tier": "rare",
+"name": "허피미르",
+"nameEn": "Herpemyr",
+"animal": "mongoose",
+"animalKo": "몽구스",
+"element": "metal",
+"kingdom": 2
+},
+{
+"id": "R023",
+"tier": "rare",
+"name": "아르데아리스",
+"nameEn": "Ardealith",
+"animal": "heron",
+"animalKo": "왜가리",
+"element": "ice",
+"kingdom": 2
+},
+{
+"id": "R024",
+"tier": "rare",
+"name": "시아노벡스",
+"nameEn": "Cyanovex",
+"animal": "magpie",
+"animalKo": "까치",
+"element": "wind",
+"kingdom": 2
+},
+{
+"id": "R025",
+"tier": "rare",
+"name": "파소제스",
+"nameEn": "Passozeth",
+"animal": "sparrow",
+"animalKo": "참새",
+"element": "electric",
+"kingdom": 3
+},
+{
+"id": "R026",
+"tier": "rare",
+"name": "무니드랙스",
+"nameEn": "Munidrax",
+"animal": "raven",
+"animalKo": "큰까마귀",
+"element": "metal",
+"kingdom": 3
+},
+{
+"id": "R027",
+"tier": "rare",
+"name": "다시크론",
+"nameEn": "Dasycron",
+"animal": "stingray",
+"animalKo": "가오리",
+"element": "electric",
+"kingdom": 3
+},
+{
+"id": "R028",
+"tier": "rare",
+"name": "바라쿼르",
+"nameEn": "Barraquor",
+"animal": "barracuda",
+"animalKo": "꼬치고기",
+"element": "shadow",
+"kingdom": 3
+},
+{
+"id": "R029",
+"tier": "rare",
+"name": "실루어베인",
+"nameEn": "Silurvane",
+"animal": "catfish",
+"animalKo": "메기",
+"element": "rock",
+"kingdom": 3
+},
+{
+"id": "R030",
+"tier": "rare",
+"name": "커틀토스",
+"nameEn": "Cuttlethos",
+"animal": "cuttlefish",
+"animalKo": "갑오징어",
+"element": "electric",
+"kingdom": 3
+},
+{
+"id": "R031",
+"tier": "rare",
+"name": "파구르리온",
+"nameEn": "Pagurrion",
+"animal": "hermitcrab",
+"animalKo": "소라게",
+"element": "fire",
+"kingdom": 3
+},
+{
+"id": "R032",
+"tier": "rare",
+"name": "스퀼로미르",
+"nameEn": "Squilomyr",
+"animal": "mantisshrimp",
+"animalKo": "갯가재",
+"element": "electric",
+"kingdom": 3
+},
+{
+"id": "R033",
+"tier": "rare",
+"name": "포르쿠리스",
+"nameEn": "Porculith",
+"animal": "porcupine",
+"animalKo": "호저",
+"element": "poison",
+"kingdom": 3
+},
+{
+"id": "R034",
+"tier": "rare",
+"name": "스칼벡스",
+"nameEn": "Scalvex",
+"animal": "pangolin",
+"animalKo": "천산갑",
+"element": "shadow",
+"kingdom": 3
+},
+{
+"id": "R035",
+"tier": "rare",
+"name": "바도제스",
+"nameEn": "Badozeth",
+"animal": "badger",
+"animalKo": "오소리",
+"element": "rock",
+"kingdom": 3
+},
+{
+"id": "R036",
+"tier": "rare",
+"name": "머스코드랙스",
+"nameEn": "Muskodrax",
+"animal": "skunk",
+"animalKo": "스컹크",
+"element": "ice",
+"kingdom": 4
+},
+{
+"id": "R037",
+"tier": "rare",
+"name": "레무크론",
+"nameEn": "Lemucron",
+"animal": "lemur",
+"animalKo": "여우원숭이",
+"element": "light",
+"kingdom": 4
+},
+{
+"id": "R038",
+"tier": "rare",
+"name": "다모쿼르",
+"nameEn": "Damoquor",
+"animal": "beaver",
+"animalKo": "비버",
+"element": "metal",
+"kingdom": 4
+},
+{
+"id": "R039",
+"tier": "rare",
+"name": "플래티베인",
+"nameEn": "Platyvane",
+"animal": "platypus",
+"animalKo": "오리너구리",
+"element": "poison",
+"kingdom": 4
+},
+{
+"id": "R040",
+"tier": "rare",
+"name": "파스코토스",
+"nameEn": "Phascothos",
+"animal": "koala",
+"animalKo": "코알라",
+"element": "electric",
+"kingdom": 4
+},
+{
+"id": "R041",
+"tier": "rare",
+"name": "미르메리온",
+"nameEn": "Myrmerion",
+"animal": "anteater",
+"animalKo": "개미핥기",
+"element": "wind",
+"kingdom": 4
+},
+{
+"id": "R042",
+"tier": "rare",
+"name": "레이나미르",
+"nameEn": "Reynamyr",
+"animal": "fox",
+"animalKo": "여우",
+"element": "plant",
+"kingdom": 4
+},
+{
+"id": "R043",
+"tier": "rare",
+"name": "하이엔리스",
+"nameEn": "Hyenlith",
+"animal": "hyena",
+"animalKo": "하이에나",
+"element": "fire",
+"kingdom": 4
+},
+{
+"id": "R044",
+"tier": "rare",
+"name": "메인벡스",
+"nameEn": "Manevex",
+"animal": "lion",
+"animalKo": "사자",
+"element": "rock",
+"kingdom": 4
+},
+{
+"id": "R045",
+"tier": "rare",
+"name": "판타제스",
+"nameEn": "Panthazeth",
+"animal": "panther",
+"animalKo": "흑표범",
+"element": "metal",
+"kingdom": 4
+},
+{
+"id": "R046",
+"tier": "rare",
+"name": "터프토드랙스",
+"nameEn": "Tuftodrax",
+"animal": "lynx",
+"animalKo": "스라소니",
+"element": "rock",
+"kingdom": 4
+},
+{
+"id": "R047",
+"tier": "rare",
+"name": "폴라크론",
+"nameEn": "Polarcron",
+"animal": "polarbear",
+"animalKo": "북극곰",
+"element": "metal",
+"kingdom": 4
+},
+{
+"id": "R048",
+"tier": "rare",
+"name": "루포쿼르",
+"nameEn": "Rufoquor",
+"animal": "redpanda",
+"animalKo": "레서판다",
+"element": "wind",
+"kingdom": 5
+},
+{
+"id": "R049",
+"tier": "rare",
+"name": "마카베인",
+"nameEn": "Maccavane",
+"animal": "monkey",
+"animalKo": "원숭이",
+"element": "rock",
+"kingdom": 5
+},
+{
+"id": "R050",
+"tier": "rare",
+"name": "터스크토스",
+"nameEn": "Tuskthos",
+"animal": "elephant",
+"animalKo": "코끼리",
+"element": "metal",
+"kingdom": 5
+},
+{
+"id": "R051",
+"tier": "rare",
+"name": "히파리온",
+"nameEn": "Hipparion",
+"animal": "hippo",
+"animalKo": "하마",
+"element": "poison",
+"kingdom": 5
+},
+{
+"id": "R052",
+"tier": "rare",
+"name": "쿼그미르",
+"nameEn": "Quaggmyr",
+"animal": "zebra",
+"animalKo": "얼룩말",
+"element": "light",
+"kingdom": 5
+},
+{
+"id": "R053",
+"tier": "rare",
+"name": "카마리스",
+"nameEn": "Camalith",
+"animal": "camel",
+"animalKo": "낙타",
+"element": "rock",
+"kingdom": 5
+},
+{
+"id": "R054",
+"tier": "rare",
+"name": "컬벡스",
+"nameEn": "Curlvex",
+"animal": "ram",
+"animalKo": "숫양",
+"element": "fire",
+"kingdom": 5
+},
+{
+"id": "R055",
+"tier": "rare",
+"name": "바이수제스",
+"nameEn": "Bisuzeth",
+"animal": "bison",
+"animalKo": "들소",
+"element": "metal",
+"kingdom": 5
+},
+{
+"id": "R056",
+"tier": "rare",
+"name": "앤틀라드랙스",
+"nameEn": "Antladrax",
+"animal": "deer",
+"animalKo": "사슴",
+"element": "wind",
+"kingdom": 5
+},
+{
+"id": "R057",
+"tier": "rare",
+"name": "치로크론",
+"nameEn": "Chirocron",
+"animal": "bat",
+"animalKo": "박쥐",
+"element": "ice",
+"kingdom": 5
+},
+{
+"id": "R058",
+"tier": "rare",
+"name": "랩투쿼르",
+"nameEn": "Raptuquor",
+"animal": "eagle",
+"animalKo": "독수리",
+"element": "wind",
+"kingdom": 5
+},
+{
+"id": "R059",
+"tier": "rare",
+"name": "팔코베인",
+"nameEn": "Falkovane",
+"animal": "falcon",
+"animalKo": "송골매",
+"element": "electric",
+"kingdom": 5
+},
+{
+"id": "R060",
+"tier": "rare",
+"name": "아라토스",
+"nameEn": "Arathos",
+"animal": "parrot",
+"animalKo": "앵무새",
+"element": "electric",
+"kingdom": 6
+},
+{
+"id": "R061",
+"tier": "rare",
+"name": "시그나리온",
+"nameEn": "Cygnarion",
+"animal": "swan",
+"animalKo": "백조",
+"element": "wind",
+"kingdom": 6
+},
+{
+"id": "R062",
+"tier": "rare",
+"name": "트로키미르",
+"nameEn": "Trochimyr",
+"animal": "hummingbird",
+"animalKo": "벌새",
+"element": "plant",
+"kingdom": 6
+},
+{
+"id": "R063",
+"tier": "rare",
+"name": "벌투리스",
+"nameEn": "Vultulith",
+"animal": "vulture",
+"animalKo": "대머리수리",
+"element": "poison",
+"kingdom": 6
+},
+{
+"id": "R064",
+"tier": "rare",
+"name": "킹고벡스",
+"nameEn": "Kingovex",
+"animal": "kingfisher",
+"animalKo": "물총새",
+"element": "light",
+"kingdom": 6
+},
+{
+"id": "R065",
+"tier": "rare",
+"name": "갈로제스",
+"nameEn": "Gallozeth",
+"animal": "rooster",
+"animalKo": "수탉",
+"element": "fire",
+"kingdom": 6
+},
+{
+"id": "R066",
+"tier": "rare",
+"name": "턱소드랙스",
+"nameEn": "Tuxodrax",
+"animal": "penguin",
+"animalKo": "펭귄",
+"element": "light",
+"kingdom": 6
+},
+{
+"id": "R067",
+"tier": "rare",
+"name": "오르쿠크론",
+"nameEn": "Orcucron",
+"animal": "orca",
+"animalKo": "범고래",
+"element": "light",
+"kingdom": 6
+},
+{
+"id": "R068",
+"tier": "rare",
+"name": "터시쿼르",
+"nameEn": "Tursiquor",
+"animal": "dolphin",
+"animalKo": "돌고래",
+"element": "electric",
+"kingdom": 6
+},
+{
+"id": "R069",
+"tier": "rare",
+"name": "모부베인",
+"nameEn": "Mobuvane",
+"animal": "manta",
+"animalKo": "쥐가오리",
+"element": "light",
+"kingdom": 6
+},
+{
+"id": "R070",
+"tier": "rare",
+"name": "세라토스",
+"nameEn": "Serrathos",
+"animal": "piranha",
+"animalKo": "피라냐",
+"element": "electric",
+"kingdom": 6
+},
+{
+"id": "L001",
+"tier": "legend",
+"name": "레오고로스",
+"nameEn": "Leogoros",
+"animal": "lion",
+"animalKo": "사자",
+"element": "shadow",
+"kingdom": 1
+},
+{
+"id": "L002",
+"tier": "legend",
+"name": "스트라이모르베인",
+"nameEn": "Straimorvane",
+"animal": "tiger",
+"animalKo": "호랑이",
+"element": "shadow",
+"kingdom": 1
+},
+{
+"id": "L003",
+"tier": "legend",
+"name": "루파발도르",
+"nameEn": "Lupavaldor",
+"animal": "wolf",
+"animalKo": "늑대",
+"element": "shadow",
+"kingdom": 1
+},
+{
+"id": "L004",
+"tier": "legend",
+"name": "랩투넥사르",
+"nameEn": "Raptunexar",
+"animal": "eagle",
+"animalKo": "독수리",
+"element": "shadow",
+"kingdom": 1
+},
+{
+"id": "L005",
+"tier": "legend",
+"name": "팔코벨그림",
+"nameEn": "Falkovelgrim",
+"animal": "falcon",
+"animalKo": "송골매",
+"element": "light",
+"kingdom": 1
+},
+{
+"id": "L006",
+"tier": "legend",
+"name": "그램푸펜라스",
+"nameEn": "Grampufenrath",
+"animal": "orca",
+"animalKo": "범고래",
+"element": "metal",
+"kingdom": 2
+},
+{
+"id": "L007",
+"tier": "legend",
+"name": "세타드라콘",
+"nameEn": "Cetadrakon",
+"animal": "whale",
+"animalKo": "고래",
+"element": "light",
+"kingdom": 2
+},
+{
+"id": "L008",
+"tier": "legend",
+"name": "갈레오타른",
+"nameEn": "Galeotharn",
+"animal": "shark",
+"animalKo": "상어",
+"element": "water",
+"kingdom": 2
+},
+{
+"id": "L009",
+"tier": "legend",
+"name": "브루인카이저",
+"nameEn": "Bruinkaiser",
+"animal": "bear",
+"animalKo": "곰",
+"element": "earth",
+"kingdom": 2
+},
+{
+"id": "L010",
+"tier": "legend",
+"name": "터스크자리온",
+"nameEn": "Tuskzarion",
+"animal": "elephant",
+"animalKo": "코끼리",
+"element": "rock",
+"kingdom": 2
+},
+{
+"id": "L011",
+"tier": "legend",
+"name": "케라솔가르",
+"nameEn": "Kerasolgar",
+"animal": "rhino",
+"animalKo": "코뿔소",
+"element": "earth",
+"kingdom": 3
+},
+{
+"id": "L012",
+"tier": "legend",
+"name": "실보오라스",
+"nameEn": "Silvoorath",
+"animal": "gorilla",
+"animalKo": "고릴라",
+"element": "fire",
+"kingdom": 3
+},
+{
+"id": "L013",
+"tier": "legend",
+"name": "바이수고로스",
+"nameEn": "Bisugoros",
+"animal": "bison",
+"animalKo": "들소",
+"element": "electric",
+"kingdom": 3
+},
+{
+"id": "L014",
+"tier": "legend",
+"name": "앤틀라모르베인",
+"nameEn": "Antlamorvane",
+"animal": "deer",
+"animalKo": "사슴",
+"element": "plant",
+"kingdom": 3
+},
+{
+"id": "L015",
+"tier": "legend",
+"name": "무스발도르",
+"nameEn": "Moosvaldor",
+"animal": "moose",
+"animalKo": "말코손바닥사슴",
+"element": "light",
+"kingdom": 3
+},
+{
+"id": "L016",
+"tier": "legend",
+"name": "부보넥사르",
+"nameEn": "Bubonexar",
+"animal": "owl",
+"animalKo": "부엉이",
+"element": "wind",
+"kingdom": 4
+},
+{
+"id": "L017",
+"tier": "legend",
+"name": "가비벨그림",
+"nameEn": "Gavivelgrim",
+"animal": "crocodile",
+"animalKo": "악어",
+"element": "water",
+"kingdom": 4
+},
+{
+"id": "L018",
+"tier": "legend",
+"name": "후드라펜라스",
+"nameEn": "Hoodrafenrath",
+"animal": "cobra",
+"animalKo": "코브라",
+"element": "shadow",
+"kingdom": 4
+},
+{
+"id": "L019",
+"tier": "legend",
+"name": "파이스드라콘",
+"nameEn": "Pythdrakon",
+"animal": "python",
+"animalKo": "비단뱀",
+"element": "water",
+"kingdom": 4
+},
+{
+"id": "L020",
+"tier": "legend",
+"name": "라요타른",
+"nameEn": "Rayotharn",
+"animal": "manta",
+"animalKo": "쥐가오리",
+"element": "wind",
+"kingdom": 4
+},
+{
+"id": "L021",
+"tier": "legend",
+"name": "나르와카이저",
+"nameEn": "Narwakaiser",
+"animal": "narwhal",
+"animalKo": "일각고래",
+"element": "electric",
+"kingdom": 5
+},
+{
+"id": "L022",
+"tier": "legend",
+"name": "녹스자리온",
+"nameEn": "Noxzarion",
+"animal": "panther",
+"animalKo": "흑표범",
+"element": "shadow",
+"kingdom": 5
+},
+{
+"id": "L023",
+"tier": "legend",
+"name": "치솔가르",
+"nameEn": "Cheesolgar",
+"animal": "cheetah",
+"animalKo": "치타",
+"element": "fire",
+"kingdom": 5
+},
+{
+"id": "L024",
+"tier": "legend",
+"name": "스탤로오라스",
+"nameEn": "Stalloorath",
+"animal": "horse",
+"animalKo": "말",
+"element": "metal",
+"kingdom": 5
+},
+{
+"id": "L025",
+"tier": "legend",
+"name": "아리에고로스",
+"nameEn": "Ariegoros",
+"animal": "ram",
+"animalKo": "숫양",
+"element": "ice",
+"kingdom": 5
+},
+{
+"id": "L026",
+"tier": "legend",
+"name": "테일로모르베인",
+"nameEn": "Tailomorvane",
+"animal": "scorpion",
+"animalKo": "전갈",
+"element": "earth",
+"kingdom": 6
+},
+{
+"id": "L027",
+"tier": "legend",
+"name": "루칸발도르",
+"nameEn": "Lucanvaldor",
+"animal": "stagbeetle",
+"animalKo": "사슴벌레",
+"element": "electric",
+"kingdom": 6
+},
+{
+"id": "L028",
+"tier": "legend",
+"name": "세팔넥사르",
+"nameEn": "Cephalnexar",
+"animal": "octopus",
+"animalKo": "문어",
+"element": "water",
+"kingdom": 6
+},
+{
+"id": "L029",
+"tier": "legend",
+"name": "시그나벨그림",
+"nameEn": "Cygnavelgrim",
+"animal": "swan",
+"animalKo": "백조",
+"element": "water",
+"kingdom": 6
+},
+{
+"id": "L030",
+"tier": "legend",
+"name": "나눅펜라스",
+"nameEn": "Nanukfenrath",
+"animal": "polarbear",
+"animalKo": "북극곰",
+"element": "water",
+"kingdom": 6
+}
+]

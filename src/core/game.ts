@@ -30,6 +30,8 @@ export const REGIONS: { name: string; hue: number; motif: 'tree' | 'wave' | 'cry
   { name: '오로라 언덕', hue: 160, motif: 'star' }, { name: '해적 항구', hue: 205, motif: 'wave' }, { name: '거울 미로', hue: 285, motif: 'crystal' },
   { name: '거인의 정원', hue: 95, motif: 'tree' }, { name: '번개 고원', hue: 55, motif: 'mountain' }, { name: '달빛 신전', hue: 250, motif: 'star' },
   { name: '하늘 성', hue: 220, motif: 'snow' },
+  { name: '오아시스 숲', hue: 140, motif: 'tree' }, { name: '천둥 협곡', hue: 50, motif: 'mountain' }, { name: '모래폭풍 성채', hue: 30, motif: 'mountain' },
+  { name: '수정 도서관', hue: 265, motif: 'crystal' }, { name: '여명의 탑', hue: 15, motif: 'star' },
 ];
 export const enemyForChapters = (chs: number[], round: number): EnemyId => ENEMIES[((chs[0] ?? 1) + round) % ENEMIES.length].id;
 

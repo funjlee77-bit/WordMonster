@@ -8,7 +8,7 @@ import { Btn, TopBar, chapterStats, DIR_LABEL, Modal, StageChip } from '../ui';
 import { REGIONS } from '../core/game';
 
 declare const __BUILD_TAG__: string;
-export const APP_VERSION = '1.2.0';
+export const APP_VERSION = '2.0.0';
 
 type Tab = 'stats' | 'wrong' | 'words' | 'grading' | 'backup' | 'reset' | 'exams';
 
@@ -55,7 +55,7 @@ function Stats() {
       <div className="table-wrap"><table className="table">
         <thead><tr><th>Chapter</th><th>만남</th><th>영어쓰기 숙련</th><th>뜻쓰기 숙련</th><th>양방향</th><th>남은 오답</th><th>오늘 복습</th><th>탐험 별</th></tr></thead>
         <tbody>{CHAPTERS.map((c) => { const s = chapterStats(c, app.progress, today); return (
-          <tr key={c}><td>{c} {REGIONS[c - 1].name}</td><td>{s.met}/20</td><td>{s.enM}</td><td>{s.koM}</td><td>{s.both}</td><td>{s.pending}</td><td>{s.due}</td><td>{app.game.chapterStars[c] ?? 0}</td></tr>); })}</tbody>
+          <tr key={c}><td>{c} {REGIONS[c - 1].name}</td><td>{s.met}/{s.total}</td><td>{s.enM}</td><td>{s.koM}</td><td>{s.both}</td><td>{s.pending}</td><td>{s.due}</td><td>{app.game.chapterStars[c] ?? 0}</td></tr>); })}</tbody>
       </table></div>
     </section>
   );

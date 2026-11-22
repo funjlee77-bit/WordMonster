@@ -3,6 +3,9 @@ import { useApp } from '../store';
 import { FRIENDS } from '../core/game';
 import { Friend } from '../art/Characters';
 import { Btn, nav } from '../ui';
+import { ITEMS } from '../core/data';
+import { KINGDOMS } from '../core/kingdoms';
+import { MONSTERS } from '../core/monsters';
 import type { FriendId } from '../core/types';
 
 export default function Start() {
@@ -12,7 +15,7 @@ export default function Start() {
   return (
     <main className="screen start">
       <div className="title-block">
-        <p className="eyebrow">GRADE 5 · 500단어 · 25개 지역</p>
+        <p className="eyebrow">GRADE 5 · {ITEMS.length}단어 · {KINGDOMS.length}개 왕국 · 몬스터 친구 {MONSTERS.length}마리</p>
         <h1 className="game-title">단어 몬스터 탐험대</h1>
         <p>함께 탐험할 친구 몬스터를 골라 주세요!</p>
       </div>

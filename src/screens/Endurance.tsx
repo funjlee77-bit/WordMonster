@@ -5,25 +5,22 @@ import { gradeItem, diffChars, baseNorm, findSiblingMatch } from '../core/gradin
 import { applyAnswer } from '../core/srs';
 import { localDate } from '../core/dates';
 import { pkey, type GameState } from '../core/types';
-import { FRUIT_BY_ID, COLOSSEUM_LEGENDS, RARITY_LABEL } from '../core/fruits';
+import { MONSTERS } from '../core/monsters';
+import { addCaptureTo, CAPTURE_BONUS, bumpDaily } from '../core/streak';
+import { MonsterArt, monInfo } from '../art/MonsterArt';
+const COLOSSEUM_LEGENDS = MONSTERS.filter((m) => m.tier === 'legend');
 import {
   newRun, answer, blockResult, nextIndex, curQs, curAns, scoreOf, correctCount, monsterForIndex, nextLegend, advance, wrongOf,
-  BLOCK, PASS_SCORE, MAX_STAGE, type EnduranceRun, type EnduranceHistory,
+  BLOCK, PASS_SCORE, MAX_STAGE, COLOSSEUM_SIZE, type EnduranceRun, type EnduranceHistory,
 } from '../core/endurance';
 import { Friend, Colosseum, type Mood } from '../art/Characters';
-import { FruitMonster } from '../art/FruitMonster';
 import { AnswerInput, Btn, Diff, DIR_ICON, DIR_LABEL, KEYBOARD_TIP, Modal, TopBar, nav } from '../ui';
 import { CaptureEvent } from './Result';
 import { play } from '../sound';
 
 const phaseName = (stage: number) => (stage === 0 ? '본선' : `오답 스테이지 ${stage}`);
 
-function addCapture(g: GameState, id: string): { game: GameState; first: boolean } {
-  const first = !g.captured?.[id];
-  const f = FRUIT_BY_ID[id];
-  const bonus = first ? (f.rarity === 'legend' ? 50 : f.rarity === 'rare' ? 20 : 5) : 0;
-  return { first, game: { ...g, coins: g.coins + bonus, captured: { ...(g.captured ?? {}), [id]: { at: g.captured?.[id]?.at ?? new Date().toISOString(), count: (g.captured?.[id]?.count ?? 0) + 1 } } } };
-}
+function addCapture(g: GameState, id: string) { return addCaptureTo(g, id, CAPTURE_BONUS[monInfo(id).rarity]); }
 
 interface Fb { ok: boolean; result: string; input: string; answer: string; sibling: string | null; note: string[]; captureFirst: string | null }
 
@@ -45,19 +42,19 @@ export default function Endurance() {
   if (!run) {
     return (
       <main className="screen endurance">
-        <TopBar title="🏟️ 끝장 퀴즈" />
-        <section className="arena colosseum-hero"><Colosseum /><div className="fighter friend"><Friend id={app.game.friend!} deco={app.game.equipped} mood="cheer" size={120} className="bob" /></div><div className="fighter enemy"><FruitMonster def={COLOSSEUM_LEGENDS[0]} size={130} silhouette={!app.game.captured?.[COLOSSEUM_LEGENDS[0].id]} className="float" /></div></section>
+        <TopBar title="🏟️ 끝장 콜로세움" />
+        <section className="arena colosseum-hero"><Colosseum /><div className="fighter friend"><Friend id={app.game.friend!} deco={app.game.equipped} mood="cheer" size={120} className="bob" /></div><div className="fighter enemy"><MonsterArt id={COLOSSEUM_LEGENDS[0].id} size={130} label={false} silhouette={!app.game.captured?.[COLOSSEUM_LEGENDS[0].id]} className="float" /></div></section>
         <section className="panel">
-          <h2>500단어 전부 도전!</h2>
+          <h2>{COLOSSEUM_SIZE}문제 끝장 도전!</h2>
           <ul>
-            <li>500단어가 한 번씩 나와요. 뜻→영어, 영어→뜻이 반씩 섞여 있어요. <b>힌트는 없어요.</b></li>
-            <li>10문제마다 콜로세움 몬스터가 입장해요. 10문제 중 <b>8개 이상</b> 맞히면 일반 몬스터, <b>10개 모두</b> 맞히면 희귀 몬스터를 포획해요.</li>
-            <li>본선 <b>{PASS_SCORE}점 이상(450개 이상 정답)</b>이면 레전드 몬스터 1마리 포획!</li>
+            <li>전체 {ITEMS.length}단어 중 {COLOSSEUM_SIZE}개가 한 번씩 나와요. 뜻→영어, 영어→뜻이 반씩 섞여 있어요. <b>힌트는 없어요.</b></li>
+            <li>10문제마다 몬스터가 입장해요. 10문제 중 <b>8개 이상</b> 맞히면 일반 몬스터, <b>10개 모두</b> 맞히면 희귀 몬스터를 포획해요.</li>
+            <li>본선 <b>{PASS_SCORE}점 이상({Math.ceil(COLOSSEUM_SIZE * PASS_SCORE / 100)}개 이상 정답)</b>이면 레전드 몬스터 1마리 포획!</li>
             <li>끝나면 틀린 문제만 모아 <b>오답 스테이지 1·2·3</b>에 도전해요. 스테이지마다 레전드 보스가 기다리고, {PASS_SCORE}점 이상이면 포획해요.</li>
             <li>중간에 그만둬도 저장돼요. 며칠에 나눠서 이어 풀 수 있어요.</li>
           </ul>
-          <p className="small">콜로세움 레전드 {legendsGot} / {COLOSSEUM_LEGENDS.length}</p>
-          <div className="legend-row">{COLOSSEUM_LEGENDS.map((f) => <FruitMonster key={f.id} def={f} size={64} aura={false} silhouette={!app.game.captured?.[f.id]} />)}</div>
+          <p className="small">레전드 {legendsGot} / {COLOSSEUM_LEGENDS.length}</p>
+          <div className="legend-row">{COLOSSEUM_LEGENDS.map((f) => <MonsterArt key={f.id} id={f.id} size={56} label={false} silhouette={!app.game.captured?.[f.id]} />)}</div>
           <Btn kind="gold" onClick={start} data-testid="end-start">⚔️ 끝장 퀴즈 시작</Btn>
         </section>
         <History list={app.enduranceHistory} />
@@ -76,11 +73,11 @@ export default function Endurance() {
       const remaining = run.stage === 0 ? 0 : wrongOf(run).length;
       return (
         <main className="screen endurance" data-testid="end-done">
-          <TopBar title="🏟️ 끝장 퀴즈 완료" />
+          <TopBar title="🏟️ 끝장 콜로세움 완료" />
           <section className="panel">
             <h2>{remaining === 0 ? '🏆 완전 정복!' : '수고했어요!'}</h2>
             <p>본선 {scoreOf(run.main)}점 (정답 {correctCount(run.main)}/{run.order.length}){run.stageScores.map((s, i) => ` · 오답 스테이지 ${i + 1}: ${s}점`).join('')}</p>
-            {run.awards.length > 0 && <div className="legend-row">{run.awards.map((a, i) => <div key={i} className="award"><FruitMonster def={FRUIT_BY_ID[a.fruit]} size={90} /><small>{a.phase === 'main' ? '본선' : `스테이지 ${a.phase.slice(5)}`} {a.score}점</small></div>)}</div>}
+            {run.awards.length > 0 && <div className="legend-row">{run.awards.map((a, i) => <div key={i} className="award"><MonsterArt id={a.fruit} size={90} /><small>{a.phase === 'main' ? '본선' : `스테이지 ${a.phase.slice(5)}`} {a.score}점</small></div>)}</div>}
             {remaining > 0 && <p className="tag warn">아직 못 맞힌 단어 {remaining}개는 오답 몬스터 추격에서 계속 연습할 수 있어요.</p>}
             <div className="row wrap">
               <Btn kind="gold" data-testid="end-new" onClick={() => app.commit({}, { endurance: null })}>처음 화면으로</Btn>
@@ -112,14 +109,14 @@ export default function Endurance() {
           <h2 data-testid="end-score">{score}점</h2>
           <p>정답 {done} / {qs.length} · 틀린 문제 {wrong.length}개</p>
           {award ? (
-            <div className="award big"><FruitMonster def={FRUIT_BY_ID[award.fruit]} size={180} mood="cheer" /><p>🌟 레전드 <b>{FRUIT_BY_ID[award.fruit].name}</b> 포획!</p></div>
+            <div className="award big"><MonsterArt id={award.fruit} size={180} mood="happy" /><p>🌟 레전드 <b>{monInfo(award.fruit).name}</b> 포획!</p></div>
           ) : (
             <p className="tag warn">{PASS_SCORE}점까지 {Math.round((PASS_SCORE - score) * 10) / 10}점이 모자라요. 레전드는 다음 기회에! {canNext ? '오답 스테이지에서 또 도전할 수 있어요.' : ''}</p>
           )}
           {canNext ? (
             <>
-              <p>다음: <b>오답 스테이지 {stage + 1}</b> — 틀린 {wrong.length}문제를 다시 풀어요. 보스: <b>{FRUIT_BY_ID[nextBoss!].name}</b> ({PASS_SCORE}점 이상이면 포획)</p>
-              <FruitMonster def={FRUIT_BY_ID[nextBoss!]} size={120} silhouette={!app.game.captured?.[nextBoss!]} />
+              <p>다음: <b>오답 스테이지 {stage + 1}</b> — 틀린 {wrong.length}문제를 다시 풀어요. 보스: <b>{monInfo(nextBoss!).name}</b> ({PASS_SCORE}점 이상이면 포획)</p>
+              <MonsterArt id={nextBoss!} size={120} silhouette={!app.game.captured?.[nextBoss!]} />
               <Btn kind="gold" onClick={goNext} data-testid="end-next-stage">⚔️ 오답 스테이지 {stage + 1} 도전</Btn>
             </>
           ) : <Btn kind="gold" onClick={goNext} data-testid="end-finish">결과 보기</Btn>}
@@ -135,7 +132,7 @@ export default function Endurance() {
   const item = ITEM_BY_ID[q.id];
   const answerText = mainAnswer(item, q.dir, app.overrides);
   const enemyId = stage === 0 ? monsterForIndex(run, i) : run.stageBoss!;
-  const enemy = FRUIT_BY_ID[enemyId];
+  const enemy = { id: enemyId, ...monInfo(enemyId) };
   const blockStart = Math.floor(i / BLOCK) * BLOCK;
   const blockAns = stage === 0 ? run.main.slice(blockStart, blockStart + BLOCK) : [];
   const hpTotal = stage === 0 ? BLOCK : qs.length;
@@ -152,7 +149,7 @@ export default function Endurance() {
     const out = applyAnswer(app.progress[key], g.kind === 'wrong' ? 'wrong' : g.kind, { today, now: new Date().toISOString() });
     out.rec.served++; out.rec.lastServedAt = new Date().toISOString();
     let r2: EnduranceRun = answer(run, idx, { r: g.kind, a: raw });
-    let game = app.game;
+    let game: GameState = { ...app.game, daily: bumpDaily(app.game.daily, today, { solved: 1, overcame: out.overcame ? 1 : 0 }) };
     const note: string[] = [];
     let captureFirst: string | null = null;
     if (r2.stage === 0) {
@@ -160,7 +157,7 @@ export default function Endurance() {
       if (br.done && !r2.blockCaptures.includes(tag)) {
         r2 = { ...r2, blockCaptures: [...r2.blockCaptures, tag] };
         game = { ...game, fruitMet: { ...(game.fruitMet ?? {}), [br.monster]: (game.fruitMet?.[br.monster] ?? 0) + 1 } };
-        const m = FRUIT_BY_ID[br.monster];
+        const m = monInfo(br.monster);
         if (br.capture) { const c = addCapture(game, br.monster); game = c.game; if (c.first) captureFirst = br.monster; note.push(`🎯 ${m.name} 포획! (10문제 중 ${br.correct}개 정답)${c.first ? '' : ' · 포획 횟수 +1'}`); }
         else note.push(`💨 ${m.name}를 쓰러뜨렸지만 포획은 못 했어요 (10문제 중 ${br.correct}개 · ${m.rarity === 'rare' ? '희귀는 10개 모두' : '8개 이상'} 필요)`);
       }
@@ -171,7 +168,7 @@ export default function Endurance() {
         const fid = r2.stage === 0 ? nextLegend(game.captured, r2.awards.map((a) => a.fruit)) : r2.stageBoss!;
         const c = addCapture(game, fid); game = c.game;
         r2 = { ...r2, awards: [...r2.awards, { phase: r2.stage === 0 ? 'main' : (`stage${r2.stage}` as any), fruit: fid, score, at: new Date().toISOString() }] };
-        if (c.first && !captureFirst) captureFirst = fid; else if (c.first) note.push(`🌟 레전드 ${FRUIT_BY_ID[fid].name}도 포획!`);
+        if (c.first && !captureFirst) captureFirst = fid; else if (c.first) note.push(`🌟 레전드 ${monInfo(fid).name}도 포획!`);
       }
     }
     let sibling: string | null = null;
@@ -205,8 +202,8 @@ export default function Endurance() {
         <Colosseum boss={stage > 0} />
         <div className="fighter friend"><Friend id={app.game.friend!} deco={app.game.equipped} mood={friendMood} size={120} className={fx === 'hit' ? 'lunge' : 'bob'} /></div>
         <div className="fighter enemy">
-          <div className="hp"><span>{stage === 0 ? `몬스터 ${Math.floor(i / BLOCK) + 1}/50 · ` : '보스 · '}{enemy.name}{enemy.rarity !== 'common' ? ` (${RARITY_LABEL[enemy.rarity]})` : ''}</span><div className="hpbar"><i style={{ width: `${(hpLeft / hpTotal) * 100}%` }} /></div><small>체력 {hpLeft}/{hpTotal}{app.game.captured?.[enemy.id] ? ' · 포획함' : ''}</small></div>
-          <FruitMonster def={enemy} mood={fx === 'hit' ? 'hurt' : 'normal'} size={stage > 0 ? 150 : 130} className={fx === 'hit' ? 'shake' : 'float'} />
+          <div className="hp"><span>{stage === 0 ? `몬스터 ${Math.floor(i / BLOCK) + 1}/${Math.ceil(run.order.length / BLOCK)} · ` : '보스 · '}{enemy.name}{enemy.rarity !== 'common' ? ` (${enemy.rarityKo})` : ''}</span><div className="hpbar"><i style={{ width: `${(hpLeft / hpTotal) * 100}%` }} /></div><small>체력 {hpLeft}/{hpTotal}{app.game.captured?.[enemy.id] ? ' · 포획함' : ''}</small></div>
+          <MonsterArt id={enemyId} mood={fx === 'hit' ? 'hurt' : 'normal'} size={stage > 0 ? 150 : 130} label={false} className={fx === 'hit' ? 'shake' : 'float'} />
         </div>
         {fx === 'hit' && <div className="burst small">✨ 명중!</div>}
       </section>
@@ -240,7 +237,7 @@ function History({ list }: { list: EnduranceHistory[] }) {
     <section className="panel">
       <h3>지난 끝장 퀴즈</h3>
       <table className="table"><thead><tr><th>날짜</th><th>본선</th><th>오답 스테이지</th><th>레전드</th></tr></thead>
-        <tbody>{list.slice().reverse().map((h) => <tr key={h.id}><td>{new Date(h.finishedAt).toLocaleDateString('ko-KR')}</td><td>{h.mainScore}점</td><td>{h.stageScores.join(' → ') || '-'}</td><td>{h.awards.map((a) => FRUIT_BY_ID[a]?.name).join(', ') || '-'}</td></tr>)}</tbody>
+        <tbody>{list.slice().reverse().map((h) => <tr key={h.id}><td>{new Date(h.finishedAt).toLocaleDateString('ko-KR')}</td><td>{h.mainScore}점</td><td>{h.stageScores.join(' → ') || '-'}</td><td>{h.awards.map((a) => monInfo(a).name).join(', ') || '-'}</td></tr>)}</tbody>
       </table>
     </section>
   );

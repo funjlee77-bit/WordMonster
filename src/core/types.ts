@@ -57,11 +57,14 @@ export interface GameState {
   /** 과일 몬스터 포획 기록 */
   captured: Record<string, { at: string; count: number }>;
   fruitMet: Record<string, number>;
+  /** 함께 다니는 동료 몬스터(잡은 동물 몬스터 id) */
+  partner: string | null;
+  daily?: { date: string; solved: number; bestStreak: number; overcame: number; claimed: string[] };
 }
 export const DEFAULT_GAME: GameState = {
   friend: null, nickname: '', xp: 0, coins: 0, decorations: [], equipped: null,
   chapterStars: {}, chapterClears: {}, dex: {}, rounds: 0, recentSessions: [], selection: [1], lastPlayDate: null,
-  captured: {}, fruitMet: {},
+  captured: {}, fruitMet: {}, partner: null,
 };
 
 export interface ExamRecord {

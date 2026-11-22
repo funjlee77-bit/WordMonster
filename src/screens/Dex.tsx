@@ -1,51 +1,48 @@
 import { useState } from 'react';
 import { useApp } from '../store';
 import { DECOS, ENEMIES, FRIENDS } from '../core/game';
-import { FRUITS, RARITY_LABEL, type Rarity, type FruitDef, type Zone } from '../core/fruits';
-import { appearRuleText, captureRuleText } from '../core/capture';
+import { FRUITS } from '../core/fruits';
+import { MONSTERS, MON_BY_ID, type MTier } from '../core/monsters';
+import { KINGDOMS } from '../core/kingdoms';
+import { TH_NORMAL } from '../core/streak';
 import { Friend, Enemy } from '../art/Characters';
-import { FruitMonster } from '../art/FruitMonster';
+import { MonsterArt, monInfo } from '../art/MonsterArt';
 import { Btn, TopBar, Modal } from '../ui';
 import type { DecoId, FriendId } from '../core/types';
 
+const TIER_KO: Record<MTier, string> = { common: '일반', rare: '희귀', legend: '레전드' };
+
 export default function Dex() {
   const app = useApp(); const g = app.game;
-  const [filter, setFilter] = useState<'all' | Rarity>('all');
-  const [zone, setZone] = useState<Zone>('region');
-  const [detail, setDetail] = useState<FruitDef | null>(null);
+  const [kingdom, setKingdom] = useState<number>(1);
+  const [filter, setFilter] = useState<'all' | MTier>('all');
+  const [detail, setDetail] = useState<string | null>(null);
   const setG = (p: Partial<typeof g>) => app.commit({}, { game: { ...g, ...p } });
   const buy = (id: DecoId, price: number) => { if (g.coins >= price && !g.decorations.includes(id)) setG({ coins: g.coins - price, decorations: [...g.decorations, id], equipped: id }); };
   const cap = g.captured ?? {};
-  const count = (r?: Rarity, z?: Zone) => FRUITS.filter((f) => (!r || f.rarity === r) && (!z || f.zone === z) && cap[f.id]).length;
-  const zoneList = FRUITS.filter((f) => f.zone === zone);
-  const list = zoneList.filter((f) => filter === 'all' || f.rarity === filter);
-  const total = (r: Rarity) => zoneList.filter((f) => f.rarity === r).length;
+  const got = MONSTERS.filter((m) => cap[m.id]).length;
+  const list = MONSTERS.filter((m) => m.kingdom === kingdom && (filter === 'all' || m.tier === filter));
+  const kMons = MONSTERS.filter((m) => m.kingdom === kingdom);
+  const fruitsGot = FRUITS.filter((f) => cap[f.id]);
   const oldMet = ENEMIES.filter((e) => g.dex[e.id]);
+  const d = detail ? MON_BY_ID[detail] : null;
   return (
     <main className="screen dex">
-      <TopBar title="도감 · 꾸미기" />
+      <TopBar title="도감 · 동료 · 꾸미기" />
       <section className="panel">
-        <h2>🍓 과일 몬스터 도감 <span className="chip gold" data-testid="dex-count">{count()} / {FRUITS.length}</span></h2>
-        <div className="row wrap">
-          <Btn kind={zone === 'region' ? 'gold' : 'ghost'} onClick={() => setZone('region')}>🗺️ 지역 몬스터 {count(undefined, 'region')}/50</Btn>
-          <Btn kind={zone === 'colosseum' ? 'gold' : 'ghost'} onClick={() => setZone('colosseum')} data-testid="dex-colosseum">🏟️ 콜로세움 몬스터 {count(undefined, 'colosseum')}/60</Btn>
-        </div>
-        <p className="small">일반 {count('common', zone)}/{total('common')} · 희귀 {count('rare', zone)}/{total('rare')} · 전설 {count('legend', zone)}/{total('legend')} — {zone === 'region' ? '희귀·전설은 복습을 꾸준히 해야 나타나요.' : '끝장 퀴즈에서 만나요. 레전드는 90점 이상 보상이에요.'}</p>
-        <div className="row wrap">
-          {(['all', 'common', 'rare', 'legend'] as const).map((r) => <Btn key={r} kind={filter === r ? 'primary' : 'ghost'} onClick={() => setFilter(r)}>{r === 'all' ? '전체' : RARITY_LABEL[r]}</Btn>)}
-        </div>
+        <h2>🐾 몬스터 친구 도감 <span className="chip gold" data-testid="dex-count">{got} / {MONSTERS.length}</span></h2>
+        <div className="chapter-tabs">{KINGDOMS.map((k) => { const n = MONSTERS.filter((m) => m.kingdom === k.no), c = n.filter((m) => cap[m.id]).length; return <button key={k.no} className={`tab wide ${kingdom === k.no ? 'on' : ''}`} onClick={() => setKingdom(k.no)} data-testid={`dex-k-${k.no}`}>{k.no}. {k.name} {c}/{n.length}{c === n.length && n.length ? ' 🏆' : ''}</button>; })}</div>
+        <p className="small">일반 {kMons.filter((m) => m.tier === 'common' && cap[m.id]).length}/{kMons.filter((m) => m.tier === 'common').length} · 희귀 {kMons.filter((m) => m.tier === 'rare' && cap[m.id]).length}/{kMons.filter((m) => m.tier === 'rare').length} · 레전드 {kMons.filter((m) => m.tier === 'legend' && cap[m.id]).length}/{kMons.filter((m) => m.tier === 'legend').length} — 이 왕국을 탐험하며 연속 정답 {TH_NORMAL.common}·{TH_NORMAL.rare}·{TH_NORMAL.legend}번으로 만나요.</p>
+        <div className="row wrap">{(['all', 'common', 'rare', 'legend'] as const).map((r) => <Btn key={r} kind={filter === r ? 'primary' : 'ghost'} onClick={() => setFilter(r)}>{r === 'all' ? '전체' : TIER_KO[r]}</Btn>)}</div>
         <div className="fruit-grid">
-          {list.map((f) => {
-            const c = cap[f.id];
-            return (
-              <button key={f.id} className={`fruit-card r-${f.rarity} ${c ? 'got' : ''}`} onClick={() => setDetail(f)} data-testid={`fruit-${f.id}`}>
-                <span className="fc-no">No.{String(FRUITS.indexOf(f) + 1).padStart(3, '0')} · {f.zone === 'region' ? `Ch.${f.chapter}` : '콜로세움'}</span>
-                <FruitMonster def={f} size={110} silhouette={!c} aura={!!c} />
-                <b>{c ? f.name : '???'}</b>
-                <span className={`rar rar-${f.rarity}`}>{RARITY_LABEL[f.rarity]}</span>
-              </button>
-            );
-          })}
+          {list.map((m) => (
+            <button key={m.id} className={`fruit-card r-${m.tier} ${cap[m.id] ? 'got' : ''} ${g.partner === m.id ? 'partner-on' : ''}`} onClick={() => setDetail(m.id)} data-testid={`mon-${m.id}`}>
+              <span className="fc-no">{m.id}{g.partner === m.id ? ' · 동료' : ''}</span>
+              <MonsterArt id={m.id} size={100} label={false} silhouette={!cap[m.id]} />
+              <b>{cap[m.id] ? m.name : '???'}</b>
+              <span className={`rar rar-${m.tier}`}>{TIER_KO[m.tier]}</span>
+            </button>
+          ))}
         </div>
       </section>
       <section className="panel">
@@ -53,19 +50,19 @@ export default function Dex() {
         <p className="small">장식은 모습만 바꿔요. 문제를 대신 풀어 주지는 않아요.</p>
         <div className="deco-grid">
           <button className={`deco ${g.equipped === null ? 'on' : ''}`} onClick={() => setG({ equipped: null })}><Friend id={g.friend!} size={90} /><span>장식 없음</span></button>
-          {DECOS.map((d) => {
-            const own = g.decorations.includes(d.id);
+          {DECOS.map((dc) => {
+            const own = g.decorations.includes(dc.id);
             return (
-              <button key={d.id} className={`deco ${g.equipped === d.id ? 'on' : ''}`} onClick={() => (own ? setG({ equipped: d.id }) : buy(d.id, d.price))} disabled={!own && g.coins < d.price}>
-                <Friend id={g.friend!} deco={d.id} size={90} /><span>{d.name}</span>
-                <small>{own ? (g.equipped === d.id ? '✔ 착용 중' : '눌러서 착용') : `🪙 ${d.price}${g.coins < d.price ? ' (코인 부족)' : ' 사기'}`}</small>
+              <button key={dc.id} className={`deco ${g.equipped === dc.id ? 'on' : ''}`} onClick={() => (own ? setG({ equipped: dc.id }) : buy(dc.id, dc.price))} disabled={!own && g.coins < dc.price}>
+                <Friend id={g.friend!} deco={dc.id} size={90} /><span>{dc.name}</span>
+                <small>{own ? (g.equipped === dc.id ? '✔ 착용 중' : '눌러서 착용') : `🪙 ${dc.price}${g.coins < dc.price ? ' (코인 부족)' : ' 사기'}`}</small>
               </button>
             );
           })}
         </div>
       </section>
       <section className="panel">
-        <h2>친구 몬스터</h2>
+        <h2>처음 친구</h2>
         <div className="deco-grid">
           {FRIENDS.map((f) => (
             <button key={f.id} className={`deco ${g.friend === f.id ? 'on' : ''}`} onClick={() => setG({ friend: f.id as FriendId })}>
@@ -74,29 +71,35 @@ export default function Dex() {
           ))}
         </div>
       </section>
-      {oldMet.length > 0 && (
+      {(fruitsGot.length > 0 || oldMet.length > 0) && (
         <section className="panel">
-          <h2>처음 만났던 몬스터</h2>
-          <div className="deco-grid">{oldMet.map((e) => <div key={e.id} className="deco static"><Enemy id={e.id} size={90} /><span>{e.name}</span><small>만남 {g.dex[e.id]!.met}</small></div>)}</div>
+          <h2>🍓 예전 친구들 (과일 몬스터)</h2>
+          <p className="small">이전 버전에서 모은 친구들이에요. 그대로 보관돼요.</p>
+          <div className="deco-grid">
+            {fruitsGot.map((f) => <button key={f.id} className="deco" onClick={() => setDetail(f.id)}><MonsterArt id={f.id} size={90} label={false} /><span>{f.name}</span><small>포획 {cap[f.id].count}번</small></button>)}
+            {oldMet.map((e) => <div key={e.id} className="deco static"><Enemy id={e.id} size={90} /><span>{e.name}</span><small>만남 {g.dex[e.id]!.met}</small></div>)}
+          </div>
         </section>
       )}
       {detail && (
         <Modal onClose={() => setDetail(null)}>
           <div className="fruit-detail">
-            <FruitMonster def={detail} size={220} silhouette={!cap[detail.id]} aura={!!cap[detail.id]} mood={cap[detail.id] ? 'happy' : 'normal'} />
-            <h2>{cap[detail.id] ? detail.name : '???'} <span className={`rar rar-${detail.rarity}`}>{RARITY_LABEL[detail.rarity]}</span></h2>
-            {cap[detail.id] ? (
+            <MonsterArt id={detail} size={220} silhouette={!cap[detail]} mood={cap[detail] ? 'happy' : 'normal'} />
+            <h2>{cap[detail] ? monInfo(detail).name : '???'} <span className={`rar rar-${monInfo(detail).rarity}`}>{monInfo(detail).rarityKo}</span></h2>
+            {cap[detail] ? (
               <>
-                <p>{detail.fruit} × {detail.animal}</p><p>{detail.desc}</p>
-                <p className="small">처음 포획: {new Date(cap[detail.id].at).toLocaleDateString('ko-KR')} · 포획 {cap[detail.id].count}번 · 만남 {g.fruitMet?.[detail.id] ?? 0}번</p>
+                <p>{monInfo(detail).desc}{d ? ` · ${d.nameEn}` : ''}</p>
+                <p className="small">처음 포획: {new Date(cap[detail].at).toLocaleDateString('ko-KR')} · 포획 {cap[detail].count}번 · {monInfo(detail).where}</p>
+                {d && (g.partner === detail
+                  ? <Btn kind="ghost" onClick={() => setG({ partner: null })}>동료에서 쉬게 하기</Btn>
+                  : <Btn kind="gold" data-testid="set-partner" onClick={() => { setG({ partner: detail }); setDetail(null); }}>🤝 동료로 데려가기</Btn>)}
               </>
-            ) : (
+            ) : d ? (
               <>
-                <p>📍 {detail.zone === 'region' ? `Chapter ${detail.chapter}에 살아요.` : '끝장 퀴즈 콜로세움에 살아요.'}</p>
-                <p className="small">🔎 나타나는 조건: {appearRuleText(detail, app.progress)}</p>
-                <p className="small">🎯 포획 조건: {captureRuleText(detail)}</p>
+                <p>📍 {KINGDOMS[d.kingdom - 1]?.name}에 살아요.</p>
+                <p className="small">🎯 {KINGDOMS[d.kingdom - 1]?.name}을(를) 탐험하며 연속 정답 {d.tier === 'common' ? TH_NORMAL.common : d.tier === 'rare' ? TH_NORMAL.rare : TH_NORMAL.legend}번이면 만날 수 있어요. 재도전 스테이지·끝장 콜로세움에서도 만날 수 있어요.</p>
               </>
-            )}
+            ) : null}
             <Btn onClick={() => setDetail(null)}>닫기</Btn>
           </div>
         </Modal>

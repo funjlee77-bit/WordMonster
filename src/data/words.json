@@ -1,9 +1,10 @@
 {
- "dataVersion": 1,
- "textbook": "GRADE 5 Key Words (1~25과)",
+ "dataVersion": 2,
+ "textbook": "GRADE 5 Key Words (1~30과)",
+ "chapterCount": 30,
  "sourceFile": "도윤_영단어_GRADE5.xlsx",
- "sourceSha256": "017b940522dd27e43b70424b4ee5ba5ca69c1b83b8830a2478f78b713809e992",
- "itemCount": 500,
+ "sourceSha256": "cd377f951bd15f05dbc82a32bc9f17a076d547bcc334bec0e88b0fa8c22e3e42",
+ "itemCount": 600,
  "items": [
   {
    "id": "ch01-01",
@@ -7003,6 +7004,1406 @@
    "grading": {
     "en": "convenient",
     "ko": "편리한"
+   }
+  },
+  {
+   "id": "ch26-01",
+   "chapter": 26,
+   "number": 1,
+   "englishDisplay": "sand dune",
+   "koreanAnswer": "모래언덕",
+   "englishAnswer": "sand dune",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "sand dune",
+    "ko": "모래언덕"
+   }
+  },
+  {
+   "id": "ch26-02",
+   "chapter": 26,
+   "number": 2,
+   "englishDisplay": "cactus",
+   "koreanAnswer": "선인장",
+   "englishAnswer": "cactus",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "cactus",
+    "ko": "선인장"
+   }
+  },
+  {
+   "id": "ch26-03",
+   "chapter": 26,
+   "number": 3,
+   "englishDisplay": "bush",
+   "koreanAnswer": "덤불",
+   "englishAnswer": "bush",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "bush",
+    "ko": "덤불"
+   }
+  },
+  {
+   "id": "ch26-04",
+   "chapter": 26,
+   "number": 4,
+   "englishDisplay": "stem",
+   "koreanAnswer": "줄기",
+   "englishAnswer": "stem",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "stem",
+    "ko": "줄기"
+   }
+  },
+  {
+   "id": "ch26-05",
+   "chapter": 26,
+   "number": 5,
+   "englishDisplay": "lizard",
+   "koreanAnswer": "도마뱀",
+   "englishAnswer": "lizard",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "lizard",
+    "ko": "도마뱀"
+   }
+  },
+  {
+   "id": "ch26-06",
+   "chapter": 26,
+   "number": 6,
+   "englishDisplay": "shady",
+   "koreanAnswer": "그늘이 드리워진",
+   "englishAnswer": "shady",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "shady",
+    "ko": "그늘이 드리워진"
+   }
+  },
+  {
+   "id": "ch26-07",
+   "chapter": 26,
+   "number": 7,
+   "englishDisplay": "surprisingly",
+   "koreanAnswer": "놀랍게도",
+   "englishAnswer": "surprisingly",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "surprisingly",
+    "ko": "놀랍게도"
+   }
+  },
+  {
+   "id": "ch26-08",
+   "chapter": 26,
+   "number": 8,
+   "englishDisplay": "see a waterfall",
+   "koreanAnswer": "폭포를 보다",
+   "englishAnswer": "see a waterfall",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "see a waterfall",
+    "ko": "폭포를 보다"
+   }
+  },
+  {
+   "id": "ch26-09",
+   "chapter": 26,
+   "number": 9,
+   "englishDisplay": "go to a desert",
+   "koreanAnswer": "사막에 가다",
+   "englishAnswer": "go to a desert",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "go to a desert",
+    "ko": "사막에 가다"
+   }
+  },
+  {
+   "id": "ch26-10",
+   "chapter": 26,
+   "number": 10,
+   "englishDisplay": "climb a mountain",
+   "koreanAnswer": "산을 오르다",
+   "englishAnswer": "climb a mountain",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "climb a mountain",
+    "ko": "산을 오르다"
+   }
+  },
+  {
+   "id": "ch26-11",
+   "chapter": 26,
+   "number": 11,
+   "englishDisplay": "go on safari",
+   "koreanAnswer": "사파리를 가다",
+   "englishAnswer": "go on safari",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "go on safari",
+    "ko": "사파리를 가다"
+   }
+  },
+  {
+   "id": "ch26-12",
+   "chapter": 26,
+   "number": 12,
+   "englishDisplay": "visit an island",
+   "koreanAnswer": "섬에 방문하다",
+   "englishAnswer": "visit an island",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "visit an island",
+    "ko": "섬에 방문하다"
+   }
+  },
+  {
+   "id": "ch26-13",
+   "chapter": 26,
+   "number": 13,
+   "englishDisplay": "explore the jungle",
+   "koreanAnswer": "정글을 탐험하다",
+   "englishAnswer": "explore the jungle",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "explore the jungle",
+    "ko": "정글을 탐험하다"
+   }
+  },
+  {
+   "id": "ch26-14",
+   "chapter": 26,
+   "number": 14,
+   "englishDisplay": "explore a cave",
+   "koreanAnswer": "동굴을 탐험하다",
+   "englishAnswer": "explore a cave",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "explore a cave",
+    "ko": "동굴을 탐험하다"
+   }
+  },
+  {
+   "id": "ch26-15",
+   "chapter": 26,
+   "number": 15,
+   "englishDisplay": "Wednesday",
+   "koreanAnswer": "수요일",
+   "englishAnswer": "Wednesday",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "Wednesday",
+    "ko": "수요일"
+   }
+  },
+  {
+   "id": "ch26-16",
+   "chapter": 26,
+   "number": 16,
+   "englishDisplay": "walk in the forest",
+   "koreanAnswer": "숲을 걷다",
+   "englishAnswer": "walk in the forest",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "walk in the forest",
+    "ko": "숲을 걷다"
+   }
+  },
+  {
+   "id": "ch26-17",
+   "chapter": 26,
+   "number": 17,
+   "englishDisplay": "Thursday",
+   "koreanAnswer": "목요일",
+   "englishAnswer": "Thursday",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "Thursday",
+    "ko": "목요일"
+   }
+  },
+  {
+   "id": "ch26-18",
+   "chapter": 26,
+   "number": 18,
+   "englishDisplay": "Tuesday",
+   "koreanAnswer": "화요일",
+   "englishAnswer": "Tuesday",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "Tuesday",
+    "ko": "화요일"
+   }
+  },
+  {
+   "id": "ch26-19",
+   "chapter": 26,
+   "number": 19,
+   "englishDisplay": "Saturday",
+   "koreanAnswer": "토요일",
+   "englishAnswer": "Saturday",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "Saturday",
+    "ko": "토요일"
+   }
+  },
+  {
+   "id": "ch26-20",
+   "chapter": 26,
+   "number": 20,
+   "englishDisplay": "heavily",
+   "koreanAnswer": "많이, 심하게",
+   "englishAnswer": "heavily",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "heavily",
+    "ko": "많이, 심하게"
+   }
+  },
+  {
+   "id": "ch27-01",
+   "chapter": 27,
+   "number": 1,
+   "englishDisplay": "regret",
+   "koreanAnswer": "후회하다, 뉘우치다",
+   "englishAnswer": "regret",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "regret",
+    "ko": "후회하다, 뉘우치다"
+   }
+  },
+  {
+   "id": "ch27-02",
+   "chapter": 27,
+   "number": 2,
+   "englishDisplay": "stir",
+   "koreanAnswer": "젓다",
+   "englishAnswer": "stir",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "stir",
+    "ko": "젓다"
+   }
+  },
+  {
+   "id": "ch27-03",
+   "chapter": 27,
+   "number": 3,
+   "englishDisplay": "forgive",
+   "koreanAnswer": "용서하다",
+   "englishAnswer": "forgive",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "forgive",
+    "ko": "용서하다"
+   }
+  },
+  {
+   "id": "ch27-04",
+   "chapter": 27,
+   "number": 4,
+   "englishDisplay": "reply",
+   "koreanAnswer": "대답하다",
+   "englishAnswer": "reply",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "reply",
+    "ko": "대답하다"
+   }
+  },
+  {
+   "id": "ch27-05",
+   "chapter": 27,
+   "number": 5,
+   "englishDisplay": "fortunate",
+   "koreanAnswer": "운 좋은",
+   "englishAnswer": "fortunate",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "fortunate",
+    "ko": "운 좋은"
+   }
+  },
+  {
+   "id": "ch27-06",
+   "chapter": 27,
+   "number": 6,
+   "englishDisplay": "polio",
+   "koreanAnswer": "소아마비",
+   "englishAnswer": "polio",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "polio",
+    "ko": "소아마비"
+   }
+  },
+  {
+   "id": "ch27-07",
+   "chapter": 27,
+   "number": 7,
+   "englishDisplay": "purchase",
+   "koreanAnswer": "구입하다",
+   "englishAnswer": "purchase",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "purchase",
+    "ko": "구입하다"
+   }
+  },
+  {
+   "id": "ch27-08",
+   "chapter": 27,
+   "number": 8,
+   "englishDisplay": "advance",
+   "koreanAnswer": "발전, 진보",
+   "englishAnswer": "advance",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "advance",
+    "ko": "발전, 진보"
+   }
+  },
+  {
+   "id": "ch27-09",
+   "chapter": 27,
+   "number": 9,
+   "englishDisplay": "adapt",
+   "koreanAnswer": "적응하다",
+   "englishAnswer": "adapt",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "adapt",
+    "ko": "적응하다"
+   }
+  },
+  {
+   "id": "ch27-10",
+   "chapter": 27,
+   "number": 10,
+   "englishDisplay": "obtuse",
+   "koreanAnswer": "둔한, 무딘",
+   "englishAnswer": "obtuse",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "obtuse",
+    "ko": "둔한, 무딘"
+   }
+  },
+  {
+   "id": "ch27-11",
+   "chapter": 27,
+   "number": 11,
+   "englishDisplay": "clinic",
+   "koreanAnswer": "진료소, 병원",
+   "englishAnswer": "clinic",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "clinic",
+    "ko": "진료소, 병원"
+   }
+  },
+  {
+   "id": "ch27-12",
+   "chapter": 27,
+   "number": 12,
+   "englishDisplay": "challenge",
+   "koreanAnswer": "도전",
+   "englishAnswer": "challenge",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "challenge",
+    "ko": "도전"
+   }
+  },
+  {
+   "id": "ch27-13",
+   "chapter": 27,
+   "number": 13,
+   "englishDisplay": "athlete",
+   "koreanAnswer": "운동선수",
+   "englishAnswer": "athlete",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "athlete",
+    "ko": "운동선수"
+   }
+  },
+  {
+   "id": "ch27-14",
+   "chapter": 27,
+   "number": 14,
+   "englishDisplay": "tease",
+   "koreanAnswer": "놀리다, 괴롭히다",
+   "englishAnswer": "tease",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "tease",
+    "ko": "놀리다, 괴롭히다"
+   }
+  },
+  {
+   "id": "ch27-15",
+   "chapter": 27,
+   "number": 15,
+   "englishDisplay": "expression",
+   "koreanAnswer": "표현, 표정",
+   "englishAnswer": "expression",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "expression",
+    "ko": "표현, 표정"
+   }
+  },
+  {
+   "id": "ch27-16",
+   "chapter": 27,
+   "number": 16,
+   "englishDisplay": "logical",
+   "koreanAnswer": "논리적인",
+   "englishAnswer": "logical",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "logical",
+    "ko": "논리적인"
+   }
+  },
+  {
+   "id": "ch27-17",
+   "chapter": 27,
+   "number": 17,
+   "englishDisplay": "seek",
+   "koreanAnswer": "찾다, 구하다",
+   "englishAnswer": "seek",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "seek",
+    "ko": "찾다, 구하다"
+   }
+  },
+  {
+   "id": "ch27-18",
+   "chapter": 27,
+   "number": 18,
+   "englishDisplay": "medical",
+   "koreanAnswer": "의료의",
+   "englishAnswer": "medical",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "medical",
+    "ko": "의료의"
+   }
+  },
+  {
+   "id": "ch27-19",
+   "chapter": 27,
+   "number": 19,
+   "englishDisplay": "appearance",
+   "koreanAnswer": "모습, 외모",
+   "englishAnswer": "appearance",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "appearance",
+    "ko": "모습, 외모"
+   }
+  },
+  {
+   "id": "ch27-20",
+   "chapter": 27,
+   "number": 20,
+   "englishDisplay": "memorize",
+   "koreanAnswer": "암기하다",
+   "englishAnswer": "memorize",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "memorize",
+    "ko": "암기하다"
+   }
+  },
+  {
+   "id": "ch28-01",
+   "chapter": 28,
+   "number": 1,
+   "englishDisplay": "sandstorm",
+   "koreanAnswer": "모래 폭풍",
+   "englishAnswer": "sandstorm",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "sandstorm",
+    "ko": "모래 폭풍"
+   }
+  },
+  {
+   "id": "ch28-02",
+   "chapter": 28,
+   "number": 2,
+   "englishDisplay": "take a rest",
+   "koreanAnswer": "쉬다",
+   "englishAnswer": "take a rest",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "take a rest",
+    "ko": "쉬다"
+   }
+  },
+  {
+   "id": "ch28-03",
+   "chapter": 28,
+   "number": 3,
+   "englishDisplay": "outside",
+   "koreanAnswer": "밖으로",
+   "englishAnswer": "outside",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "outside",
+    "ko": "밖으로"
+   }
+  },
+  {
+   "id": "ch28-04",
+   "chapter": 28,
+   "number": 4,
+   "englishDisplay": "bury",
+   "koreanAnswer": "묻다, 매장하다",
+   "englishAnswer": "bury",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "bury",
+    "ko": "묻다, 매장하다"
+   }
+  },
+  {
+   "id": "ch28-05",
+   "chapter": 28,
+   "number": 5,
+   "englishDisplay": "sandy",
+   "koreanAnswer": "모래로 뒤덮인",
+   "englishAnswer": "sandy",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "sandy",
+    "ko": "모래로 뒤덮인"
+   }
+  },
+  {
+   "id": "ch28-06",
+   "chapter": 28,
+   "number": 6,
+   "englishDisplay": "freezing",
+   "koreanAnswer": "매섭게 추운",
+   "englishAnswer": "freezing",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "freezing",
+    "ko": "매섭게 추운"
+   }
+  },
+  {
+   "id": "ch28-07",
+   "chapter": 28,
+   "number": 7,
+   "englishDisplay": "rocky",
+   "koreanAnswer": "바위로 된",
+   "englishAnswer": "rocky",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "rocky",
+    "ko": "바위로 된"
+   }
+  },
+  {
+   "id": "ch28-08",
+   "chapter": 28,
+   "number": 8,
+   "englishDisplay": "country",
+   "koreanAnswer": "국가, 나라",
+   "englishAnswer": "country",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "country",
+    "ko": "국가, 나라"
+   }
+  },
+  {
+   "id": "ch28-09",
+   "chapter": 28,
+   "number": 9,
+   "englishDisplay": "snowstorm",
+   "koreanAnswer": "눈보라",
+   "englishAnswer": "snowstorm",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "snowstorm",
+    "ko": "눈보라"
+   }
+  },
+  {
+   "id": "ch28-10",
+   "chapter": 28,
+   "number": 10,
+   "englishDisplay": "obsolete",
+   "koreanAnswer": "쓸모없게 된",
+   "englishAnswer": "obsolete",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "obsolete",
+    "ko": "쓸모없게 된"
+   }
+  },
+  {
+   "id": "ch28-11",
+   "chapter": 28,
+   "number": 11,
+   "englishDisplay": "past",
+   "koreanAnswer": "과거",
+   "englishAnswer": "past",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "past",
+    "ko": "과거"
+   }
+  },
+  {
+   "id": "ch28-12",
+   "chapter": 28,
+   "number": 12,
+   "englishDisplay": "get along",
+   "koreanAnswer": "사이좋게 지내다",
+   "englishAnswer": "get along",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "get along",
+    "ko": "사이좋게 지내다"
+   }
+  },
+  {
+   "id": "ch28-13",
+   "chapter": 28,
+   "number": 13,
+   "englishDisplay": "good grades",
+   "koreanAnswer": "좋은 성적",
+   "englishAnswer": "good grades",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "good grades",
+    "ko": "좋은 성적"
+   }
+  },
+  {
+   "id": "ch28-14",
+   "chapter": 28,
+   "number": 14,
+   "englishDisplay": "exercise",
+   "koreanAnswer": "운동하다",
+   "englishAnswer": "exercise",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "exercise",
+    "ko": "운동하다"
+   }
+  },
+  {
+   "id": "ch28-15",
+   "chapter": 28,
+   "number": 15,
+   "englishDisplay": "healthy food",
+   "koreanAnswer": "건강한 음식",
+   "englishAnswer": "healthy food",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "healthy food",
+    "ko": "건강한 음식"
+   }
+  },
+  {
+   "id": "ch28-16",
+   "chapter": 28,
+   "number": 16,
+   "englishDisplay": "regularly",
+   "koreanAnswer": "규칙적으로",
+   "englishAnswer": "regularly",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "regularly",
+    "ko": "규칙적으로"
+   }
+  },
+  {
+   "id": "ch28-17",
+   "chapter": 28,
+   "number": 17,
+   "englishDisplay": "volunteer work",
+   "koreanAnswer": "자원봉사",
+   "englishAnswer": "volunteer work",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "volunteer work",
+    "ko": "자원봉사"
+   }
+  },
+  {
+   "id": "ch28-18",
+   "chapter": 28,
+   "number": 18,
+   "englishDisplay": "quite",
+   "koreanAnswer": "꽤, 상당히",
+   "englishAnswer": "quite",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "quite",
+    "ko": "꽤, 상당히"
+   }
+  },
+  {
+   "id": "ch28-19",
+   "chapter": 28,
+   "number": 19,
+   "englishDisplay": "school president",
+   "koreanAnswer": "학생회장",
+   "englishAnswer": "school president",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "school president",
+    "ko": "학생회장"
+   }
+  },
+  {
+   "id": "ch28-20",
+   "chapter": 28,
+   "number": 20,
+   "englishDisplay": "equal",
+   "koreanAnswer": "똑같은, 동등한",
+   "englishAnswer": "equal",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "equal",
+    "ko": "똑같은, 동등한"
+   }
+  },
+  {
+   "id": "ch29-01",
+   "chapter": 29,
+   "number": 1,
+   "englishDisplay": "couch",
+   "koreanAnswer": "소파",
+   "englishAnswer": "couch",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "couch",
+    "ko": "소파"
+   }
+  },
+  {
+   "id": "ch29-02",
+   "chapter": 29,
+   "number": 2,
+   "englishDisplay": "pill",
+   "koreanAnswer": "알약",
+   "englishAnswer": "pill",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "pill",
+    "ko": "알약"
+   }
+  },
+  {
+   "id": "ch29-03",
+   "chapter": 29,
+   "number": 3,
+   "englishDisplay": "global",
+   "koreanAnswer": "세계적인",
+   "englishAnswer": "global",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "global",
+    "ko": "세계적인"
+   }
+  },
+  {
+   "id": "ch29-04",
+   "chapter": 29,
+   "number": 4,
+   "englishDisplay": "baggage",
+   "koreanAnswer": "짐",
+   "englishAnswer": "baggage",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "baggage",
+    "ko": "짐"
+   }
+  },
+  {
+   "id": "ch29-05",
+   "chapter": 29,
+   "number": 5,
+   "englishDisplay": "quality",
+   "koreanAnswer": "질, 품질",
+   "englishAnswer": "quality",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "quality",
+    "ko": "질, 품질"
+   }
+  },
+  {
+   "id": "ch29-06",
+   "chapter": 29,
+   "number": 6,
+   "englishDisplay": "period",
+   "koreanAnswer": "기간, 마침표",
+   "englishAnswer": "period",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "period",
+    "ko": "기간, 마침표"
+   }
+  },
+  {
+   "id": "ch29-07",
+   "chapter": 29,
+   "number": 7,
+   "englishDisplay": "admit",
+   "koreanAnswer": "인정하다",
+   "englishAnswer": "admit",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "admit",
+    "ko": "인정하다"
+   }
+  },
+  {
+   "id": "ch29-08",
+   "chapter": 29,
+   "number": 8,
+   "englishDisplay": "grain",
+   "koreanAnswer": "곡물",
+   "englishAnswer": "grain",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "grain",
+    "ko": "곡물"
+   }
+  },
+  {
+   "id": "ch29-09",
+   "chapter": 29,
+   "number": 9,
+   "englishDisplay": "pattern",
+   "koreanAnswer": "무늬, 양식",
+   "englishAnswer": "pattern",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "pattern",
+    "ko": "무늬, 양식"
+   }
+  },
+  {
+   "id": "ch29-10",
+   "chapter": 29,
+   "number": 10,
+   "englishDisplay": "rude",
+   "koreanAnswer": "무례한, 예의 없는",
+   "englishAnswer": "rude",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "rude",
+    "ko": "무례한, 예의 없는"
+   }
+  },
+  {
+   "id": "ch29-11",
+   "chapter": 29,
+   "number": 11,
+   "englishDisplay": "error",
+   "koreanAnswer": "실수, 오류",
+   "englishAnswer": "error",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "error",
+    "ko": "실수, 오류"
+   }
+  },
+  {
+   "id": "ch29-12",
+   "chapter": 29,
+   "number": 12,
+   "englishDisplay": "capital",
+   "koreanAnswer": "수도, 대문자의",
+   "englishAnswer": "capital",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "capital",
+    "ko": "수도, 대문자의"
+   }
+  },
+  {
+   "id": "ch29-13",
+   "chapter": 29,
+   "number": 13,
+   "englishDisplay": "positive",
+   "koreanAnswer": "긍정적인",
+   "englishAnswer": "positive",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "positive",
+    "ko": "긍정적인"
+   }
+  },
+  {
+   "id": "ch29-14",
+   "chapter": 29,
+   "number": 14,
+   "englishDisplay": "championship",
+   "koreanAnswer": "선수권대회",
+   "englishAnswer": "championship",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "championship",
+    "ko": "선수권대회"
+   }
+  },
+  {
+   "id": "ch29-15",
+   "chapter": 29,
+   "number": 15,
+   "englishDisplay": "decide",
+   "koreanAnswer": "결정하다",
+   "englishAnswer": "decide",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "decide",
+    "ko": "결정하다"
+   }
+  },
+  {
+   "id": "ch29-16",
+   "chapter": 29,
+   "number": 16,
+   "englishDisplay": "harm",
+   "koreanAnswer": "해, 피해",
+   "englishAnswer": "harm",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "harm",
+    "ko": "해, 피해"
+   }
+  },
+  {
+   "id": "ch29-17",
+   "chapter": 29,
+   "number": 17,
+   "englishDisplay": "parallelogram",
+   "koreanAnswer": "평행사변형",
+   "englishAnswer": "parallelogram",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "parallelogram",
+    "ko": "평행사변형"
+   }
+  },
+  {
+   "id": "ch29-18",
+   "chapter": 29,
+   "number": 18,
+   "englishDisplay": "brain",
+   "koreanAnswer": "뇌",
+   "englishAnswer": "brain",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "brain",
+    "ko": "뇌"
+   }
+  },
+  {
+   "id": "ch29-19",
+   "chapter": 29,
+   "number": 19,
+   "englishDisplay": "journey",
+   "koreanAnswer": "여행, 여정",
+   "englishAnswer": "journey",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "journey",
+    "ko": "여행, 여정"
+   }
+  },
+  {
+   "id": "ch29-20",
+   "chapter": 29,
+   "number": 20,
+   "englishDisplay": "businessman",
+   "koreanAnswer": "사업가",
+   "englishAnswer": "businessman",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "businessman",
+    "ko": "사업가"
+   }
+  },
+  {
+   "id": "ch30-01",
+   "chapter": 30,
+   "number": 1,
+   "englishDisplay": "male",
+   "koreanAnswer": "수컷의, 남성의",
+   "englishAnswer": "male",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "male",
+    "ko": "수컷의, 남성의"
+   }
+  },
+  {
+   "id": "ch30-02",
+   "chapter": 30,
+   "number": 2,
+   "englishDisplay": "leather",
+   "koreanAnswer": "가죽",
+   "englishAnswer": "leather",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "leather",
+    "ko": "가죽"
+   }
+  },
+  {
+   "id": "ch30-03",
+   "chapter": 30,
+   "number": 3,
+   "englishDisplay": "fault",
+   "koreanAnswer": "잘못, 결점",
+   "englishAnswer": "fault",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "fault",
+    "ko": "잘못, 결점"
+   }
+  },
+  {
+   "id": "ch30-04",
+   "chapter": 30,
+   "number": 4,
+   "englishDisplay": "recently",
+   "koreanAnswer": "최근에",
+   "englishAnswer": "recently",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "recently",
+    "ko": "최근에"
+   }
+  },
+  {
+   "id": "ch30-05",
+   "chapter": 30,
+   "number": 5,
+   "englishDisplay": "example",
+   "koreanAnswer": "예, 모범",
+   "englishAnswer": "example",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "example",
+    "ko": "예, 모범"
+   }
+  },
+  {
+   "id": "ch30-06",
+   "chapter": 30,
+   "number": 6,
+   "englishDisplay": "express",
+   "koreanAnswer": "표현하다, 고속의",
+   "englishAnswer": "express",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "express",
+    "ko": "표현하다, 고속의"
+   }
+  },
+  {
+   "id": "ch30-07",
+   "chapter": 30,
+   "number": 7,
+   "englishDisplay": "attend",
+   "koreanAnswer": "참석하다",
+   "englishAnswer": "attend",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "attend",
+    "ko": "참석하다"
+   }
+  },
+  {
+   "id": "ch30-08",
+   "chapter": 30,
+   "number": 8,
+   "englishDisplay": "upper",
+   "koreanAnswer": "위쪽의",
+   "englishAnswer": "upper",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "upper",
+    "ko": "위쪽의"
+   }
+  },
+  {
+   "id": "ch30-09",
+   "chapter": 30,
+   "number": 9,
+   "englishDisplay": "appear",
+   "koreanAnswer": "나타나다",
+   "englishAnswer": "appear",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "appear",
+    "ko": "나타나다"
+   }
+  },
+  {
+   "id": "ch30-10",
+   "chapter": 30,
+   "number": 10,
+   "englishDisplay": "freedom",
+   "koreanAnswer": "자유",
+   "englishAnswer": "freedom",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "freedom",
+    "ko": "자유"
+   }
+  },
+  {
+   "id": "ch30-11",
+   "chapter": 30,
+   "number": 11,
+   "englishDisplay": "grateful",
+   "koreanAnswer": "감사하는",
+   "englishAnswer": "grateful",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "grateful",
+    "ko": "감사하는"
+   }
+  },
+  {
+   "id": "ch30-12",
+   "chapter": 30,
+   "number": 12,
+   "englishDisplay": "produce",
+   "koreanAnswer": "생산하다",
+   "englishAnswer": "produce",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "produce",
+    "ko": "생산하다"
+   }
+  },
+  {
+   "id": "ch30-13",
+   "chapter": 30,
+   "number": 13,
+   "englishDisplay": "advise",
+   "koreanAnswer": "충고하다",
+   "englishAnswer": "advise",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "advise",
+    "ko": "충고하다"
+   }
+  },
+  {
+   "id": "ch30-14",
+   "chapter": 30,
+   "number": 14,
+   "englishDisplay": "unfold",
+   "koreanAnswer": "펼치다, 전개되다",
+   "englishAnswer": "unfold",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "unfold",
+    "ko": "펼치다, 전개되다"
+   }
+  },
+  {
+   "id": "ch30-15",
+   "chapter": 30,
+   "number": 15,
+   "englishDisplay": "loss",
+   "koreanAnswer": "손실",
+   "englishAnswer": "loss",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "loss",
+    "ko": "손실"
+   }
+  },
+  {
+   "id": "ch30-16",
+   "chapter": 30,
+   "number": 16,
+   "englishDisplay": "teenager",
+   "koreanAnswer": "십 대",
+   "englishAnswer": "teenager",
+   "sourceCheck": "",
+   "note": "사진에서 가운데 글자가 일부 찢겨 가려짐 → teenager로 판단",
+   "grading": {
+    "en": "teenager",
+    "ko": "십 대"
+   }
+  },
+  {
+   "id": "ch30-17",
+   "chapter": 30,
+   "number": 17,
+   "englishDisplay": "soldier",
+   "koreanAnswer": "군인",
+   "englishAnswer": "soldier",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "soldier",
+    "ko": "군인"
+   }
+  },
+  {
+   "id": "ch30-18",
+   "chapter": 30,
+   "number": 18,
+   "englishDisplay": "divide",
+   "koreanAnswer": "나누다",
+   "englishAnswer": "divide",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "divide",
+    "ko": "나누다"
+   }
+  },
+  {
+   "id": "ch30-19",
+   "chapter": 30,
+   "number": 19,
+   "englishDisplay": "confident",
+   "koreanAnswer": "자신감 있는",
+   "englishAnswer": "confident",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "confident",
+    "ko": "자신감 있는"
+   }
+  },
+  {
+   "id": "ch30-20",
+   "chapter": 30,
+   "number": 20,
+   "englishDisplay": "found",
+   "koreanAnswer": "설립하다",
+   "englishAnswer": "found",
+   "sourceCheck": "",
+   "note": "",
+   "grading": {
+    "en": "found",
+    "ko": "설립하다"
    }
   }
  ]

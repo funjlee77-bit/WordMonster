@@ -4,7 +4,8 @@ import type { WordData, WordItem, Dir, Overrides } from './types';
 export const WORD_DATA = raw as WordData;
 export const ITEMS: WordItem[] = WORD_DATA.items;
 export const ITEM_BY_ID: Record<string, WordItem> = Object.fromEntries(ITEMS.map((i) => [i.id, i]));
-export const CHAPTERS = Array.from({ length: 25 }, (_, i) => i + 1);
+export const CHAPTER_COUNT = Math.max(...ITEMS.map((i) => i.chapter));
+export const CHAPTERS = Array.from({ length: CHAPTER_COUNT }, (_, i) => i + 1);
 export const itemsInChapters = (chs: number[]) => ITEMS.filter((i) => chs.includes(i.chapter));
 
 /** 교재 기본 정답(원문) */
