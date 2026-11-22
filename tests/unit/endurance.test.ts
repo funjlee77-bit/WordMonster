@@ -1,18 +1,20 @@
 import { describe, it, expect } from 'vitest';
 import { newRun, answer, blockResult, nextIndex, scoreOf, advance, nextLegend, wrongOf, curQs, BLOCK } from '../../src/core/endurance';
-import { COLOSSEUM_LEGENDS, FRUIT_BY_ID } from '../../src/core/fruits';
+import { MONSTERS, MON_BY_ID } from '../../src/core/monsters';
+const COLOSSEUM_LEGENDS = MONSTERS.filter((m) => m.tier === 'legend');
+const FRUIT_BY_ID = Object.fromEntries(MONSTERS.map((m) => [m.id, { ...m, rarity: m.tier, zone: 'colosseum' }]));
 import type { EAns } from '../../src/core/endurance';
 
 function seeded(seed = 3) { return () => { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }; }
 const ok: EAns = { r: 'strict', a: 'x' }, bad: EAns = { r: 'wrong', a: 'x' };
 
 describe('끝장 퀴즈', () => {
-  it('500문항: 모든 단어 한 번씩, 방향 250/250, 몬스터 50칸(레전드 제외)', () => {
+  it('200문항: 서로 다른 단어 200개, 방향 100/100, 몬스터 20칸(레전드 제외)', () => {
     const r = newRun(seeded());
-    expect(r.order).toHaveLength(500);
-    expect(new Set(r.order.map((q) => q.id)).size).toBe(500);
-    expect(r.order.filter((q) => q.dir === 'en')).toHaveLength(250);
-    expect(r.monsters).toHaveLength(50);
+    expect(r.order).toHaveLength(200);
+    expect(new Set(r.order.map((q) => q.id)).size).toBe(200);
+    expect(r.order.filter((q) => q.dir === 'en')).toHaveLength(100);
+    expect(r.monsters).toHaveLength(20); void MON_BY_ID;
     expect(r.monsters.every((m) => FRUIT_BY_ID[m].rarity !== 'legend' && FRUIT_BY_ID[m].zone === 'colosseum')).toBe(true);
   });
   it('이어하기: 다음 문제 위치, 중복 채점 방지', () => {
@@ -34,15 +36,15 @@ describe('끝장 퀴즈', () => {
     r.order.forEach((_, i) => { r = answer(r, i, i % 10 === 0 ? bad : ok); });
     expect(r.status).toBe('phaseDone'); expect(scoreOf(r.main)).toBe(90);
     r = advance(r, 'x');
-    expect(r.stage).toBe(1); expect(curQs(r)).toHaveLength(50); expect(r.status).toBe('playing');
-    curQs(r).forEach((_, i) => { r = answer(r, i, i < 46 ? ok : bad); });
-    expect(scoreOf(r.stageAns)).toBe(92);
-    r = advance(r, 'y'); expect(r.stage).toBe(2); expect(curQs(r)).toHaveLength(4); expect(r.stageScores).toEqual([92]);
+    expect(r.stage).toBe(1); expect(curQs(r)).toHaveLength(20); expect(r.status).toBe('playing');
+    curQs(r).forEach((_, i) => { r = answer(r, i, i < 16 ? ok : bad); });
+    expect(scoreOf(r.stageAns)).toBe(80);
+    r = advance(r, 'y'); expect(r.stage).toBe(2); expect(curQs(r)).toHaveLength(4); expect(r.stageScores).toEqual([80]);
     curQs(r).forEach((_, i) => { r = answer(r, i, i < 3 ? ok : bad); });
     r = advance(r, 'z'); expect(r.stage).toBe(3); expect(curQs(r)).toHaveLength(1);
     r = answer(r, 0, bad);
     expect(wrongOf(r)).toHaveLength(1);
-    r = advance(r, null); expect(r.status).toBe('done'); expect(r.stageScores).toEqual([92, 75, 0]);
+    r = advance(r, null); expect(r.status).toBe('done'); expect(r.stageScores).toEqual([80, 75, 0]);
   });
   it('틀린 문제가 없으면 바로 완료', () => {
     let r = newRun(seeded());

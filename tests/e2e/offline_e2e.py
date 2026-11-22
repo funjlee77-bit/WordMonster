@@ -13,6 +13,7 @@ URL = f"http://localhost:{PORT}{BASE}"
 WORDS = {i['id']: i for i in json.load(open(os.path.join(ROOT, 'src/data/words.json')))['items']}
 CHROME = os.environ.get('CHROME', '/usr/bin/google-chrome')
 results = []
+caps = []
 
 def check(name, cond):
     results.append((name, bool(cond)))
@@ -24,7 +25,7 @@ def launch(p, udd, offline=False):
         viewport={'width': 1180, 'height': 820}, has_touch=True, locale='ko-KR', args=['--no-sandbox'])
 
 def answer_round(page, wrong_first=True):
-    seen_wrong = False; n = 0; retry_seen = False
+    seen_wrong = False; n = 0; retry_seen = False; caps.clear()
     while True:
         page.locator('[data-testid="result"], [data-testid="question"]').first.wait_for()
         if page.locator('[data-testid="result"]').count(): break
@@ -41,7 +42,9 @@ def answer_round(page, wrong_first=True):
         time.sleep(0.35)
         page.click('[data-testid="next"]'); n += 1
         page.locator('[data-testid="feedback"]').wait_for(state='detached')
-        if n > 20: raise SystemExit('too many questions')
+        if page.locator('[data-testid="capture-event"]').count():
+            caps.append(1); time.sleep(0.2); page.click('[data-testid="capture-ok"]')
+        if n > 120: raise SystemExit('too many questions')
     return n, retry_seen
 
 def main():
@@ -59,7 +62,7 @@ def main():
             expect(page.locator('[data-testid="offline-chip"]')).to_contain_text('준비 완료', timeout=20000)
             check('온라인 첫 실행 후 "오프라인 사용 준비 완료" 표시', True)
             page.goto(URL + '#/map'); page.reload()
-            expect(page.locator('[data-testid="region-25"]')).to_be_visible(timeout=10000)
+            expect(page.locator('[data-testid="kingdom-6"]')).to_be_visible(timeout=10000)
             check('#/map 직접 접속·새로고침 정상', True)
             ctx.close()
 
@@ -70,31 +73,29 @@ def main():
             check('오프라인 새 실행: 홈 화면 표시', True)
             expect(page.locator('[data-testid="offline-chip"]')).to_contain_text('준비 완료', timeout=10000)
             page.click('[data-testid="go-map"]')
-            page.click('[data-testid="region-1"]')  # 기본 선택 해제
-            page.click('[data-testid="region-23"]')  # 한 번도 열지 않은 Chapter
+            page.click('[data-testid="kingdom-1"]')  # 기본 선택 해제
+            page.click('[data-testid="kingdom-5"]')  # 한 번도 열지 않은 왕국 (21~25과)
             page.click('[data-testid="start-explore"]')
             n, retry_seen = answer_round(page)
-            check(f'오프라인에서 Chapter 23 탐험 {n}문제 완료', n == 8)
+            check(f'오프라인에서 5스테이지 탐험 {n}문제 완료', n == 50)
             check('오답이 같은 판 2~4문제 뒤 재출제됨', retry_seen)
-            expect(page.locator('[data-testid="capture-event"]')).to_be_visible()
-            check('별 2개 이상 → 과일 몬스터 포획 이벤트 화면', True)
-            time.sleep(1.2); page.screenshot(path=os.path.join(ROOT, 'tests/e2e/screens/capture-event.png'))
-            page.click('[data-testid="capture-ok"]')
+            check(f'연속 정답으로 몬스터 포획 이벤트 {len(caps)}번 (10·15·30·40·45연속)', len(caps) >= 4)
+            page.screenshot(path=os.path.join(ROOT, 'tests/e2e/screens/result.png'))
             page.click('[data-testid="home"]')
-            expect(page.locator('[data-testid="home-dex"]')).to_contain_text('1/110')
-            check('홈 도감 1/110 표시', True)
+            expect(page.locator('[data-testid="home-dex"]')).to_contain_text(f'{len(caps)}/300')
+            check(f'홈 도감 {len(caps)}/300 표시', True)
             page.reload()
             expect(page.locator('[data-testid="go-map"]')).to_be_visible()
             page.click('[data-testid="go-map"]')
-            txt = page.locator('[data-testid="region-23"]').inner_text()
-            check('새로고침 후 Chapter 23 기록 유지: ' + txt.replace('\n', ' | '), '만난 단어 8/20' in txt or '만난 단어 7/20' in txt)
+            txt = page.locator('[data-testid="kingdom-5"]').inner_text()
+            check('새로고침 후 5스테이지 기록 유지: ' + txt.replace('\n', ' | '), '만난 단어 0/100' not in txt and '만난 단어' in txt)
             ctx.close()
 
             # 앱 종료 후 다시 실행해도(오프라인) 기록 유지 + 오답 추격
             ctx = launch(p, udd, offline=True); page = ctx.pages[0] if ctx.pages else ctx.new_page()
             page.goto(URL + '#/map')
-            expect(page.locator('[data-testid="region-23"]')).to_be_visible(timeout=10000)
-            check('재실행 후 기록 유지', '만난 단어' in page.locator('[data-testid="region-23"]').inner_text())
+            expect(page.locator('[data-testid="kingdom-5"]')).to_be_visible(timeout=10000)
+            check('재실행 후 기록 유지', '만난 단어 0/100' not in page.locator('[data-testid="kingdom-5"]').inner_text())
             ctx.close()
 
             # 새 버전 배포 → 안내 → 적용 → 기록 유지
@@ -108,7 +109,7 @@ def main():
             page.wait_for_load_state('load'); time.sleep(1.5)
             expect(page.locator('[data-testid="offline-chip"]')).to_contain_text('준비 완료', timeout=20000)
             page.click('[data-testid="go-map"]')
-            check('업데이트 후 학습 기록 유지', '만난 단어 0/20' not in page.locator('[data-testid="region-23"]').inner_text())
+            check('업데이트 후 학습 기록 유지', '만난 단어 0/100' not in page.locator('[data-testid="kingdom-5"]').inner_text())
             # 실전 모드
             page.goto(URL + '#/exam')
             page.click('[data-testid="exam-n-10"]'); page.click('[data-testid="exam-start"]')

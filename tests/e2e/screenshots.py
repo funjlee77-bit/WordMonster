@@ -14,7 +14,7 @@ try:
             pg.screenshot(path=f'{OUT}/{name}-1-start.png')
             pg.click('[data-testid="pick-lumo"]'); pg.click('[data-testid="start-go"]'); time.sleep(0.5)
             pg.screenshot(path=f'{OUT}/{name}-2-home.png')
-            pg.click('[data-testid="go-map"]'); pg.click('[data-testid="region-3"]'); time.sleep(0.3)
+            pg.click('[data-testid="go-map"]'); pg.click('[data-testid="kingdom-2"]'); time.sleep(0.3)
             pg.screenshot(path=f'{OUT}/{name}-3-map.png')
             pg.click('[data-testid="start-explore"]'); time.sleep(0.5)
             pg.screenshot(path=f'{OUT}/{name}-4-battle.png')

@@ -2,20 +2,27 @@ import { describe, it, expect } from 'vitest';
 import { ITEMS, ITEM_BY_ID, WORD_DATA } from '../../src/core/data';
 
 describe('단어 데이터', () => {
-  it('500항목, Chapter 1~25 각 20개, 번호 1~20 누락·중복 없음', () => {
-    expect(ITEMS.length).toBe(500); expect(WORD_DATA.itemCount).toBe(500);
-    for (let ch = 1; ch <= 25; ch++) {
+  it('600항목, Chapter 1~30 각 20개, 번호 1~20 누락·중복 없음', () => {
+    expect(ITEMS.length).toBe(600); expect(WORD_DATA.itemCount).toBe(600);
+    for (let ch = 1; ch <= 30; ch++) {
       const nums = ITEMS.filter((i) => i.chapter === ch).map((i) => i.number).sort((a, b) => a - b);
       expect(nums).toEqual(Array.from({ length: 20 }, (_, k) => k + 1));
     }
   });
   it('안정적인 ID와 중복 영어 보존', () => {
-    expect(new Set(ITEMS.map((i) => i.id)).size).toBe(500);
+    expect(new Set(ITEMS.map((i) => i.id)).size).toBe(600);
     expect(ITEM_BY_ID['ch06-07'].englishAnswer).toBe('disable');
     expect(ITEM_BY_ID['ch17-18'].englishAnswer).toBe('disable');
     expect(ITEM_BY_ID['ch06-07'].koreanAnswer).not.toBe(ITEM_BY_ID['ch17-18'].koreanAnswer);
     expect(ITEM_BY_ID['ch10-12'].englishAnswer).toBe('have');
     expect(ITEM_BY_ID['ch24-02'].englishAnswer).toBe('have');
+  });
+  it('26~30과 추가분 (사진 16쪽)', () => {
+    expect(ITEM_BY_ID['ch26-01']).toMatchObject({ englishDisplay: 'sand dune', englishAnswer: 'sand dune', koreanAnswer: '모래언덕' });
+    expect(ITEM_BY_ID['ch26-15'].englishAnswer).toBe('Wednesday');
+    expect(ITEM_BY_ID['ch29-17'].englishAnswer).toBe('parallelogram');
+    expect(ITEM_BY_ID['ch30-06'].koreanAnswer).toBe('표현하다, 고속의');
+    expect(ITEM_BY_ID['ch30-20']).toMatchObject({ englishAnswer: 'found', koreanAnswer: '설립하다' });
   });
   it('C·D·E열 매핑', () => {
     const t = ITEM_BY_ID['ch18-08'];
