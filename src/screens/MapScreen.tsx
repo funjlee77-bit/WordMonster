@@ -9,6 +9,8 @@ import { KINGDOMS, chaptersOfKingdoms, questionsForKingdoms } from '../core/king
 import { MONSTERS } from '../core/monsters';
 import { pendingKeys, RETRY_UNLOCK } from '../core/streak';
 import { REGIONS } from '../core/game';
+import { ITEMS } from '../core/data';
+import { listenPending } from '../core/listen';
 import type { Dir, Settings } from '../core/types';
 
 export const dirsFor = (m: Settings['dirMode']): Dir[] => (m === 'mix' ? ['en', 'ko'] : [m]);
@@ -25,6 +27,14 @@ export default function MapScreen() {
   const chapters = chaptersOfKingdoms(sel);
   const selStat = stat(chapters);
   const pendingAll = pendingKeys(app.progress).length;
+  const listenWrong = listenPending(app.game, ITEMS.filter((i) => chapters.includes(i.chapter))).length;
+  const goListen = async (mode: 'listen' | 'listenWrong') => {
+    if (!sel.length) { setMsg('왕국을 하나 이상 골라 주세요.'); return; }
+    if (mode === 'listenWrong' && listenWrong === 0) { setMsg('선택한 왕국에 듣기 오답이 없어요! 🎧 듣고 쓰기로 연습해 볼까요?'); return; }
+    await app.commit({}, { game: { ...app.game, selection: chapters } });
+    transient.round = { chapters, mode, dirs: ['en'], kingdoms: sel };
+    nav('battle');
+  };
   const go = async (mode: 'explore' | 'wrong') => {
     if (!sel.length) { setMsg('왕국을 하나 이상 골라 주세요.'); return; }
     if (mode === 'wrong' && selStat.pending === 0) { setMsg('선택한 왕국에 남은 오답이 없어요! 탐험으로 새 단어를 만나 볼까요?'); return; }
@@ -71,6 +81,8 @@ export default function MapScreen() {
       </div>
       <div className="action-bar">
         <Btn kind="gold" data-testid="start-explore" onClick={() => go('explore')}>⚔️ 탐험 시작 ({questionsForKingdoms(sel.length)}문제)</Btn>
+        <Btn kind="secondary" className="listen-start" data-testid="start-listen" onClick={() => goListen('listen')}>🎧 듣고 쓰기 ({questionsForKingdoms(sel.length)}문제)</Btn>
+        {listenWrong > 0 && <Btn kind="ghost" data-testid="listen-wrong" onClick={() => goListen('listenWrong')}>🎧 듣기 오답 다시 듣기 ({listenWrong})</Btn>}
         <Btn kind="primary" onClick={() => go('wrong')}>👾 이 왕국 오답 추격 ({selStat.pending})</Btn>
         <Btn kind={pendingAll >= RETRY_UNLOCK ? 'secondary' : 'ghost'} data-testid="go-retry" onClick={() => { if (pendingAll < RETRY_UNLOCK) { setMsg(`재도전 스테이지는 쌓인 오답이 ${RETRY_UNLOCK}개가 되면 열려요. (지금 ${pendingAll}개)`); return; } transient.round = { chapters: [], mode: 'retry', dirs: ['en', 'ko'] }; nav('battle'); }}>🔁 재도전 스테이지 {pendingAll >= RETRY_UNLOCK ? `(${pendingAll}문제)` : `🔒 ${pendingAll}/${RETRY_UNLOCK}`}</Btn>
         <Btn kind="ghost" onClick={async () => { await app.commit({}, { game: { ...app.game, selection: chapters.length ? chapters : [1] } }); nav('cards'); }}>🃏 학습 카드</Btn>

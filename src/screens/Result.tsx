@@ -42,7 +42,7 @@ export default function Result() {
   const correct = s.strict + s.relaxed + s.aided;
   return (
     <main className="screen result" data-testid="result">
-      <h1 className="game-title small">{s.mode === 'wrong' ? '오답 추격 완료!' : s.mode === 'retry' ? '재도전 스테이지 완료!' : '탐험 완료!'}</h1>
+      <h1 className="game-title small">{s.mode === 'wrong' ? '오답 추격 완료!' : s.mode === 'retry' ? '재도전 스테이지 완료!' : s.mode === 'listen' || s.mode === 'listenWrong' ? '🎧 듣고 쓰기 완료!' : '탐험 완료!'}</h1>
       <div className="result-hero">
         <Friend id={app.game.friend!} deco={app.game.equipped} mood="cheer" size={150} className="jump" />
         {app.game.partner && <MonsterArt id={app.game.partner} size={120} mood="happy" label={false} className="jump" />}
@@ -69,11 +69,14 @@ export default function Result() {
       )}
       {s.carried.length > 0 && (
         <section className="panel"><h3>📌 다음에 다시 만날 단어</h3>
-          <ul>{s.carried.map(({ id, dir }) => { const it = ITEM_BY_ID[id]; return <li key={id + dir}>{DIR_ICON[dir]} Chapter {it.chapter}·{it.number}번 {it.englishDisplay} → <b>{mainAnswer(it, dir, app.overrides)}</b></li>; })}</ul>
-          <p className="small">틀린 단어는 사라지지 않고 오답 추격·재도전 스테이지에서 다시 나와요.</p>
+          {s.mode === 'listen' || s.mode === 'listenWrong'
+            ? <ul data-testid="listen-carried">{s.carried.map(({ id }) => { const it = ITEM_BY_ID[id]; return <li key={id}>🎧 <b lang="en">{mainAnswer(it, 'en', app.overrides)}</b> — {it.koreanAnswer} (Chapter {it.chapter}·{it.number}번)</li>; })}</ul>
+            : <ul>{s.carried.map(({ id, dir }) => { const it = ITEM_BY_ID[id]; return <li key={id + dir}>{DIR_ICON[dir]} Chapter {it.chapter}·{it.number}번 {it.englishDisplay} → <b>{mainAnswer(it, dir, app.overrides)}</b></li>; })}</ul>}
+          <p className="small">{s.mode === 'listen' || s.mode === 'listenWrong' ? '틀린 단어는 지도 화면의 ‘🎧 듣기 오답 다시 듣기’에서 다시 나와요.' : '틀린 단어는 사라지지 않고 오답 추격·재도전 스테이지에서 다시 나와요.'}</p>
         </section>
       )}
       <div className="row wrap">
+        {s.mode === 'listen' && <Btn kind="gold" data-testid="again-listen" onClick={() => { transient.round = { ...transient.round!, mode: 'listen' }; nav('battle'); }}>🎧 한 번 더 듣고 쓰기</Btn>}
         {s.mode === 'explore' && <Btn kind="gold" data-testid="again" onClick={() => { transient.round = { ...transient.round!, mode: 'explore' }; nav('battle'); }}>⚔️ 한 번 더 탐험</Btn>}
         <Btn kind="secondary" onClick={() => nav('dex')}>📚 도감</Btn>
         <Btn kind="ghost" onClick={() => nav('')} data-testid="home">🏠 홈</Btn>

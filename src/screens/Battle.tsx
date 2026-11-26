@@ -16,6 +16,8 @@ import { MonsterArt, monInfo } from '../art/MonsterArt';
 import { AnswerInput, Btn, Diff, DIR_ICON, DIR_LABEL, KEYBOARD_TIP, nav, Modal } from '../ui';
 import { CaptureEvent } from './Result';
 import { play } from '../sound';
+import { speakWord, stopSpeaking, speechSupported } from '../speech';
+import { gradeListen, applyListen, listenPending, planListen } from '../core/listen';
 
 interface Feedback {
   result: AnswerResult; input: string; answer: string; overcame: boolean; stageUp: boolean;
@@ -29,11 +31,17 @@ export default function Battle() {
   const cfg = transient.round;
   const today = localDate();
   const retryMode = cfg?.mode === 'retry';
+  const listenMode = cfg?.mode === 'listen' || cfg?.mode === 'listenWrong';
   const th = retryMode ? TH_RETRY : TH_NORMAL;
   const kingdoms = cfg?.kingdoms?.length ? cfg.kingdoms : null;
   const scope = useMemo(() => (cfg ? (retryMode ? ITEMS : ITEMS.filter((i) => cfg.chapters.includes(i.chapter))) : []), [cfg]);
   const [queue, setQueue] = useState<QueueEntry[]>(() => {
     if (!cfg) return [];
+    if (listenMode) {
+      // 듣고 쓰기: 무작위 순서, 소리로만 출제
+      const ids = cfg.mode === 'listen' ? planListen(scope, questionsForKingdoms(cfg.kingdoms?.length ?? 1)) : planListen(scope.filter((i) => listenPending(app.game, scope).includes(i.id)), 9999);
+      return ids.map((id) => ({ id, dir: 'en' as Dir, kind: 'normal' as const }));
+    }
     if (retryMode) {
       // 재도전: 쌓인 오답 전체 (오래된 것부터)
       return pendingKeys(app.progress).sort((a, b) => (app.progress[a].lastAt ?? '').localeCompare(app.progress[b].lastAt ?? ''))
@@ -52,6 +60,10 @@ export default function Battle() {
   const [practice, setPractice] = useState<null | 'open' | 'done' | 'again'>(null);
   const [quit, setQuit] = useState(false);
   const [capShow, setCapShow] = useState<{ id: string; first: boolean } | null>(null);
+  const [speak, setSpeak] = useState<'idle' | 'speaking' | 'gap'>('idle');
+  const [heard, setHeard] = useState(0);
+  const [homo, setHomo] = useState<string | null>(null);
+  const [caseNote, setCaseNote] = useState(false);
   const counts = useRef({ strict: 0, relaxed: 0, aided: 0, wrong: 0, overcame: [] as string[], served: [] as string[], captures: [] as { id: string; first: boolean }[], best: 0 });
   const retried = useRef(new Set<string>());
   const busy = useRef(false);
@@ -63,11 +75,12 @@ export default function Battle() {
   const total = queue.length;
 
   useEffect(() => { if (!cfg) nav(''); }, [cfg]);
+  useEffect(() => () => stopSpeaking(), [idx]);
   if (!cfg) return null;
   if (total === 0) {
     return (
       <main className="screen center-screen">
-        <p>{cfg.mode === 'explore' ? '출제할 단어가 없어요.' : '남은 오답이 없어요! 🎉'}</p>
+        <p>{cfg.mode === 'explore' || cfg.mode === 'listen' ? '출제할 단어가 없어요.' : '남은 오답이 없어요! 🎉'}</p>
         <Btn kind="gold" onClick={() => nav('map')}>왕국 지도로 가기</Btn>
       </main>
     );
@@ -134,7 +147,58 @@ export default function Battle() {
     busy.current = false;
   }
 
+  function listenNow(times = 2) {
+    play('tap');
+    const ok = speakWord(answer, { times, onState: (s) => setSpeak(s === 'done' ? 'idle' : s) });
+    if (ok) setHeard((h) => h + 1);
+  }
+
+  async function submitListen(raw: string) {
+    if (busy.current || fb) return;
+    if (baseNorm(raw) === '') return;
+    busy.current = true;
+    const g = gradeListen(raw, item, app.overrides);
+    if (g.kind === 'homophone') { setHomo(g.homophone!); play('tap'); busy.current = false; return; }
+    stopSpeaking(); setSpeak('idle');
+    const ok = g.kind !== 'wrong';
+    const result: AnswerResult = ok ? 'strict' : 'wrong';
+    const now = new Date().toISOString();
+    const before = app.game.listen?.[item.id];
+    const overcame = ok && !!before?.pending;
+    const key = pkey(item.id, 'en');
+    counts.current.served.push(key);
+    let retry: Feedback['retry'] = null;
+    if (!ok) {
+      const r = insertRetry(queue, idx, { id: item.id, dir }, retried.current);
+      if (r.inserted) { setQueue(r.queue); retry = 'soon'; } else retry = 'next';
+    }
+    const newStreak = ok ? streak + 1 : 0;
+    if (ok) counts.current.strict++; else counts.current.wrong++;
+    if (overcame) counts.current.overcame.push(key);
+    counts.current.best = Math.max(counts.current.best, newStreak);
+    let game: GameState = { ...app.game, listen: { ...(app.game.listen ?? {}), [item.id]: applyListen(before, ok, now) },
+      daily: bumpDaily(app.game.daily, today, { solved: 1, streak: newStreak, overcame: overcame ? 1 : 0 }) };
+    let capture: Feedback['capture'] = null;
+    const tier = newStreak !== streak ? milestoneTier(newStreak, th) : null;
+    if (tier) {
+      const id = targets[tier];
+      const c = addCaptureTo(game, id, CAPTURE_BONUS[tier]);
+      game = c.game; capture = { id, first: c.first };
+      counts.current.captures.push(capture);
+      setTargets((t) => ({ ...t, [tier]: pickTarget(tier, kingdoms, game.captured, Math.random, [id]) }));
+    }
+    setStreak(newStreak); setHomo(null); setCaseNote(g.kind === 'case');
+    fbAt.current = Date.now();
+    setFb({ result, input: raw, answer: g.answer, overcame, stageUp: false, sibling: null, retry, streak: newStreak, capture });
+    setFx(ok ? (capture || overcame ? 'overcome' : newStreak >= 3 ? 'combo' : 'hit') : 'miss');
+    play(ok ? (capture || overcame ? 'overcome' : newStreak >= 3 ? 'combo' : 'correct') : 'wrong');
+    if (fxOn) setTimeout(() => setFx(''), 900);
+    await app.commit({}, { game });
+    busy.current = false;
+  }
+
   async function practiceSubmit(raw: string) {
+    if (listenMode) { setPractice(baseNorm(raw) === baseNorm(fb?.answer ?? '') ? 'done' : 'again'); return; }
     if (busy.current) return;
     busy.current = true;
     const g = gradeItem(raw, item, dir, app.overrides, app.settings);
@@ -158,7 +222,8 @@ export default function Battle() {
     const game = { ...g, xp: g.xp + rw.xp, coins: g.coins + rw.coins, chapterStars, chapterClears, rounds: g.rounds + 1,
       recentSessions: [...g.recentSessions, c.served.slice(-60)].slice(-5), lastPlayDate: today };
     const carried: { id: string; dir: Dir }[] = [];
-    queue.forEach((q) => { const r = app.progress[pkey(q.id, q.dir)]; if (r?.pendingRetry && !carried.some((x) => x.id === q.id && x.dir === q.dir)) carried.push({ id: q.id, dir: q.dir }); });
+    if (listenMode) queue.forEach((q) => { if (app.game.listen?.[q.id]?.pending && !carried.some((x) => x.id === q.id)) carried.push({ id: q.id, dir: 'en' }); });
+    else queue.forEach((q) => { const r = app.progress[pkey(q.id, q.dir)]; if (r?.pendingRetry && !carried.some((x) => x.id === q.id && x.dir === q.dir)) carried.push({ id: q.id, dir: q.dir }); });
     const saved = await app.commit({}, { game });
     const summary: RoundSummary = { chapters: cfg!.chapters, mode: cfg!.mode, total, strict: c.strict, relaxed: c.relaxed, aided: c.aided, wrong: c.wrong,
       overcame: c.overcame, carried, stars, xp: rw.xp, coins: rw.coins, levelUp: levelOf(game.xp) > levelOf(g.xp), captures: c.captures, bestStreak: c.best, saved };
@@ -170,7 +235,7 @@ export default function Battle() {
   function next_() {
     if (Date.now() - fbAt.current < 300 || !fb) return;
     const cap = fb.capture;
-    setFb(null); setHint(0); setPractice(null);
+    setFb(null); setHint(0); setPractice(null); setHeard(0); setHomo(null); setCaseNote(false); stopSpeaking(); setSpeak('idle');
     if (cap) setCapShow(cap);
     else if (idx + 1 >= queue.length) finish(); else setIdx(idx + 1);
   }
@@ -181,7 +246,7 @@ export default function Battle() {
 
   const friendMood: Mood = fb ? (fb.result === 'wrong' ? 'happy' : 'cheer') : 'normal';
   const enemyMood: Mood = fb && fb.result !== 'wrong' ? 'hurt' : 'normal';
-  const title = cfg.mode === 'retry' ? '🔁 재도전 스테이지' : cfg.mode === 'wrong' ? '👾 오답 추격'
+  const title = cfg.mode === 'listen' ? '🎧 듣고 쓰기' : cfg.mode === 'listenWrong' ? '🎧 듣기 오답 다시 듣기' : cfg.mode === 'retry' ? '🔁 재도전 스테이지' : cfg.mode === 'wrong' ? '👾 오답 추격'
     : `🗺️ ${(cfg.kingdoms ?? []).map((k) => KINGDOMS[k - 1]?.name).join(' · ')}`;
 
   return (
@@ -214,15 +279,34 @@ export default function Battle() {
 
       <section className="question-card" data-testid="question" data-item={item.id} data-dir={dir}>
         <div className="q-meta">
+          {listenMode ? <span className="chip dir-en">🎧 듣고 철자 쓰기</span> : <>
           <span className={`chip dir-${dir}`}>{DIR_ICON[dir]} {DIR_LABEL[dir]}</span>
-          <span className="chip" data-testid="q-ref">Chapter {item.chapter} · {item.number}번</span>
+          <span className="chip" data-testid="q-ref">Chapter {item.chapter} · {item.number}번</span></>}
           {cur.kind === 'retry' && <span className="chip warn">🔁 다시 도전</span>}
         </div>
-        <p className="prompt" lang={dir === 'en' ? 'ko' : 'en'} data-testid="prompt">{promptText(item, dir)}</p>
-        {sibs.length > 0 && (
+        {!listenMode && <p className="prompt" lang={dir === 'en' ? 'ko' : 'en'} data-testid="prompt">{promptText(item, dir)}</p>}
+        {listenMode && !fb && (
+          <div className="listen-box">
+            <button type="button" className={`listen-btn ${speak !== 'idle' ? 'on' : ''}`} data-testid="listen" onClick={() => listenNow(2)} aria-label="단어 듣기 (두 번 읽어 줘요)">
+              <span className="listen-icon" aria-hidden>{speak === 'idle' ? '🔊' : '🔉'}</span>
+              <span>{speak === 'speaking' ? '읽는 중…' : speak === 'gap' ? '잠깐… 한 번 더 읽어 줄게' : heard ? '다시 듣기' : '눌러서 듣기'}</span>
+              <small>한 번 읽고 2초 뒤 한 번 더</small>
+            </button>
+            {!speechSupported() && <p className="tag bad">⚠️ 이 기기에서는 읽어 주기 기능을 쓸 수 없어요.</p>}
+          </div>
+        )}
+        {!listenMode && sibs.length > 0 && (
           <p className="tag warn">⚠️ 이 범위에 같은 {dir === 'en' ? '뜻' : '영어'} 단어가 또 있어요 ({sibs.map((s) => `Chapter ${s.chapter}·${s.number}번`).join(', ')}). 이 문제는 <b>Chapter {item.chapter}의 {item.number}번</b> 단어예요.</p>
         )}
-        {!fb && (
+        {!fb && listenMode && (
+          <>
+            <p className="tip">들은 단어의 철자를 소리 내어 말하면서 영어로 써요. 숙어는 띄어쓰기까지 그대로 써요.</p>
+            {homo && <p className="hint" data-testid="homophone">🔎 <b>{homo}</b>도 소리가 같지만 이 단어가 아니에요! 뜻 힌트: <b>{item.koreanAnswer}</b> — 다시 써 보세요 (틀린 걸로 치지 않아요)</p>}
+            <AnswerInput key={`L${idx}-${cur.id}`} dir="en" onSubmit={submitListen} />
+            <p className="small">💡 iPad 키보드 위에 추천 단어가 보이면: 설정 → 일반 → 키보드에서 ‘자동 수정’과 ‘예측’을 꺼 주세요.</p>
+          </>
+        )}
+        {!fb && !listenMode && (
           <>
             <p className="tip">{KEYBOARD_TIP[dir]}{dir === 'ko' ? ' · 뜻이 여러 개면 교재와 같은 순서로 모두 써요 (괄호·쉼표·띄어쓰기는 안 써도 돼요)' : ''}</p>
             {hint === 1 && <p className="hint">💡 첫 글자: <b>{Array.from(answer)[0]}</b> · 모두 {Array.from(answer).length}글자</p>}
@@ -240,6 +324,13 @@ export default function Battle() {
             {fb.result === 'strict' && <h3>⭕ 정답! {fb.overcame ? '지난번에 틀렸던 단어를 이겨냈어!' : fb.streak >= 3 ? `${fb.streak}연속 정답!` : ''}</h3>}
             {fb.result === 'relaxed' && <h3>🟡 맞았어요 (완화 채점)<small> 교재 표기: <b>{fb.answer}</b> · 엄격 채점 숙련도에는 들어가지 않아요</small></h3>}
             {fb.result === 'aided' && <h3>🟢 맞았어요 (도움 사용)<small> 다음에는 혼자서 맞혀 보자!</small></h3>}
+            {listenMode && (
+              <div className="listen-answer" data-testid="listen-answer">
+                <p><span className="label">들려준 단어</span> <b lang="en">{fb.answer}</b> — {item.koreanAnswer}</p>
+                {caseNote && <p className="small">🔠 철자는 맞았어요! 교재에는 대문자로 시작하는 <b>{fb.answer}</b>로 써요.</p>}
+                <Btn kind="ghost" onClick={() => listenNow(1)}>🔊 한 번 더 듣기</Btn>
+              </div>
+            )}
             {fb.capture && <p className="chip gold">🎯 {fb.streak}연속 달성! {monInfo(fb.capture.id).name}(이)가 친구가 되고 싶어 해요!</p>}
             {fb.stageUp && <p className="chip ok">🏅 숙련 단계가 올랐어요!</p>}
             {fb.result === 'wrong' && (
@@ -263,7 +354,7 @@ export default function Battle() {
               </>
             )}
             {fb.retry === 'soon' && <p className="small">🔁 이 단어는 조금 뒤에 다시 나와요.</p>}
-            {fb.retry === 'next' && <p className="small">📌 이 단어는 다음 탐험에서 먼저 다시 만나요.</p>}
+            {fb.retry === 'next' && <p className="small">{listenMode ? '📌 이 단어는 ‘듣기 오답 다시 듣기’에서 또 나와요.' : '📌 이 단어는 다음 탐험에서 먼저 다시 만나요.'}</p>}
             <Btn kind="gold" autoFocus onClick={next_} data-testid="next">{fb.capture ? '친구 만나러 가기 →' : idx + 1 >= queue.length ? '결과 보기 →' : '다음 문제 →'}</Btn>
           </div>
         )}

@@ -60,6 +60,8 @@ export interface GameState {
   /** 함께 다니는 동료 몬스터(잡은 동물 몬스터 id) */
   partner: string | null;
   daily?: { date: string; solved: number; bestStreak: number; overcame: number; claimed: string[] };
+  /** 🎧 듣고 쓰기 기록(단어 id별) — 숙련 단계와는 따로 */
+  listen?: Record<string, { ok: number; ng: number; pending: boolean; lastAt: string }>;
 }
 export const DEFAULT_GAME: GameState = {
   friend: null, nickname: '', xp: 0, coins: 0, decorations: [], equipped: null,

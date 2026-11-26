@@ -73,6 +73,7 @@ export default function Home() {
           const sel = g.selection, selPending = sel.reduce((a, c) => a + chapterStats(c, app.progress, today).pending, 0);
           if (selPending > 0) { transient.round = { chapters: sel, mode: 'wrong', dirs: dirsFor(app.settings.dirMode) }; nav('battle'); } else nav('map?wrong');
         }}>👾 오답 몬스터 추격<small>고른 왕국의 오답만</small></Btn>
+        <Btn kind="secondary" className="big listen-home" onClick={() => nav('map')} data-testid="go-listen">🎧 듣고 쓰기<small>본선 연습 · 듣고 철자 쓰기</small></Btn>
         <Btn kind="gold" className="big colosseum-btn" onClick={() => nav('endurance')} data-testid="go-endurance">🏟️ 끝장 콜로세움<small>{app.endurance ? (app.endurance.stage === 0 ? `이어하기 · ${app.endurance.main.filter((x) => x).length}/${app.endurance.order.length}` : `오답 스테이지 ${app.endurance.stage} 이어하기`) : '200문제 · 90점이면 레전드'}</small></Btn>
         <Btn kind="secondary" className="big" onClick={() => nav('cards')}>🃏 학습 카드<small>먼저 단어 보기</small></Btn>
         <Btn kind="secondary" className="big" onClick={() => nav('exam')} data-testid="go-exam">📝 학교 실전 모드<small>게임 없이 시험처럼</small></Btn>

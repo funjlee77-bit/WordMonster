@@ -276,3 +276,17 @@ h1, h2, h3 { margin: 0; line-height: 1.25; }
 @media (max-width: 600px) { .mission { grid-template-columns: 1fr 60px auto; } .mission .small-bar { display: none; } }
 .fruit-card.partner-on { box-shadow: 0 0 0 4px #4fd1ff; }
 .aura-rays { animation: spin 14s linear infinite; }
+
+/* 🎧 듣고 쓰기 */
+.listen-box { display: flex; flex-direction: column; align-items: center; gap: 8px; margin: 10px 0 4px; }
+.listen-btn { display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 240px; padding: 18px 28px; border-radius: 28px; border: 0;
+  background: linear-gradient(180deg, #7fd3ff, #3a9be0); color: #06243d; font-weight: 800; font-size: 1.25rem; box-shadow: 0 5px 0 #1f6aa3; cursor: pointer; touch-action: manipulation; }
+.listen-btn:active { transform: translateY(3px); box-shadow: 0 2px 0 #1f6aa3; }
+.listen-btn small { font-weight: 600; font-size: .8rem; opacity: .8; }
+.listen-icon { font-size: 2.6rem; line-height: 1; }
+.listen-btn.on .listen-icon { animation: listen-pulse .8s ease-in-out infinite; }
+@keyframes listen-pulse { 50% { transform: scale(1.18); } }
+.listen-answer { background: rgba(255,255,255,.7); border-radius: 14px; padding: 8px 12px; margin: 8px 0; }
+.listen-answer b[lang="en"] { font-size: 1.4rem; letter-spacing: .04em; }
+.listen-home { background: linear-gradient(180deg, #8fdcff, #3a9be0); color: #06243d; box-shadow: 0 4px 0 #1f6aa3; }
+@media (prefers-reduced-motion: reduce) { .listen-btn.on .listen-icon { animation: none; } }

@@ -8,7 +8,7 @@ import { Btn, TopBar, chapterStats, DIR_LABEL, Modal, StageChip } from '../ui';
 import { REGIONS } from '../core/game';
 
 declare const __BUILD_TAG__: string;
-export const APP_VERSION = '2.0.0';
+export const APP_VERSION = '2.1.0';
 
 type Tab = 'stats' | 'wrong' | 'words' | 'grading' | 'backup' | 'reset' | 'exams';
 
